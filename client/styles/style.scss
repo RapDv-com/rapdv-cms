@@ -1,0 +1,25 @@
+body {
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+}
+
+footer {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: rgb(248, 249, 250);
+  padding-left: 15px;
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: #bcbcbc;
+}

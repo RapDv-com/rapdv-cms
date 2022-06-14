@@ -1,0 +1,20 @@
+{
+  "name": "rapdv-blog",
+  "version": "1.0.0",
+  "description": "RapDv - Low code platform - Blog Example",
+  "author": "Digital Jetty Konrad Gadzinowski",
+  "license": "MIT",
+  "scripts": {
+    "start": "rapdv start",
+    "start-prod": "rapdv start-prod",
+    "build-client": "rapdv build-client",
+    "build-client-dev": "rapdv build-client-dev",
+    "watch-client-dev": "rapdv watch-client-dev",
+    "install-all": "rapdv install-all",
+    "format-code": "rapdv format-code",
+    "test-server": "rapdv test-server"
+  },
+  "dependencies": {
+    "rapdv-lib": "^0.0.16"
+  }
+}
