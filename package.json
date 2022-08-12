@@ -15,6 +15,6 @@
     "test-server": "rapdv test-server"
   },
   "dependencies": {
-    "rapdv-lib": "^0.0.16"
+    "rapdv-lib": "^0.0.17"
   }
 }
