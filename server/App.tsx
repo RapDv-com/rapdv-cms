@@ -112,19 +112,19 @@ export class App extends RapDvApp {
       <>
         <header>
           <Nav appName={appInfo.name}>
-            <NavLink href="/log-in" icon="bi bi-box-arrow-in-left" restrictions={{ req, roles: [Role.Guest] }}>
+            <NavLink href="/log-in" icon="bi bi-box-arrow-in-left" req={req} restrictions={[Role.Guest]}>
               Log In
             </NavLink>
-            <NavLink href="/create-account" icon="bi bi-person-plus-fill" restrictions={{ req, roles: [Role.Guest] }}>
+            <NavLink href="/create-account" icon="bi bi-person-plus-fill" req={req} restrictions={[Role.Guest]}>
               Create Account
             </NavLink>
-            <NavLink href="/publish" restrictions={{ req, roles: [UserRole.Admin, "Writer"] }}>
+            <NavLink href="/publish" req={req} restrictions={[UserRole.Admin, "Writer"]}>
               Publish
             </NavLink>
-            <NavLink href="/users" restrictions={{ req, roles: [UserRole.Admin] }}>
+            <NavLink href="/users" req={req} restrictions={[UserRole.Admin]}>
               Users
             </NavLink>
-            <NavDropdown title={req?.user?.email} icon={await req?.user?.getPhotoSrc()} restrictions={{ req, roles: [Role.LoggedIn] }}>
+            <NavDropdown title={req?.user?.email} icon={await req?.user?.getPhotoSrc()} req={req} restrictions={[Role.LoggedIn]}>
               <NavDropdownItem href="/profile">Profile</NavDropdownItem>
               <NavDropdownItem href="/log-out">Log out</NavDropdownItem>
             </NavDropdown>
