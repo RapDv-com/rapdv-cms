@@ -10,7 +10,7 @@
     "build-client": "rapdv build-client",
     "build-client-dev": "rapdv build-client-dev",
     "watch-client-dev": "rapdv watch-client-dev",
-    "install-all": "rapdv install-all",
+    "install-all": "npm install && cd client-libs && npm install && cd ..",
     "format-code": "rapdv format-code",
     "test-server": "rapdv test-server"
   },
