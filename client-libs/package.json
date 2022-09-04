@@ -5,7 +5,6 @@
   "author": "Digital Jetty Konrad Gadzinowski",
   "license": "MIT",
   "dependencies": {
-    "bs-toaster": "^1.0.4",
     "medium-editor": "^5.23.3"
   }
 }

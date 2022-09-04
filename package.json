@@ -15,7 +15,7 @@
     "test-server": "rapdv test-server"
   },
   "dependencies": {
-    "rapdv-lib": "^0.0.31"
+    "rapdv-lib": "^0.0.32"
   },
   "peerDependencies": {
     "@babel/core": "*",
