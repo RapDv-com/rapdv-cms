@@ -1,5 +1,9 @@
-import { HttpStatus, Collection, AppBasicInfo, RapDvApp, Request, HtmlUtils } from "rapdv-lib"
 import { Response, NextFunction } from "express"
+import { AppBasicInfo, RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
+import { Request } from "../../submodules/rapdv/server/server/Request"
+import { HttpStatus } from "../../submodules/rapdv/server/network/HttpStatus"
+import { HtmlUtils } from "../../submodules/rapdv/server/html/HtmlUtils"
+import { Collection } from "../../submodules/rapdv/server/database/Collection"
 
 export class RssFeed {
   public static get = async (req: Request, res: Response, next: NextFunction, app: RapDvApp) => {

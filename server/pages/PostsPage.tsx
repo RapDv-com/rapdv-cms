@@ -2,18 +2,28 @@ import { Response } from "express"
 import React, { ReactNode } from "react"
 import parse from "html-react-parser"
 import moment from "moment-timezone"
-import { Collection, SetText, FlashType, Request, UserRole, Link, Paginator, List, SubmitForm, Input, ReqType, ButtonAjax } from "rapdv-lib"
+import { Collection } from "../../submodules/rapdv/server/database/Collection"
+import { Paginator } from "../../submodules/rapdv/server/ui/Paginator"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { UserRole } from "../../submodules/rapdv/server/database/CollectionUser"
+import { Link } from "../../submodules/rapdv/server/ui/Link"
+import { List } from "../../submodules/rapdv/server/ui/List"
+import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../submodules/rapdv/server/ui/Input"
+import { ButtonAjax } from "../../submodules/rapdv/server/ui/ButtonAjax"
+import { ReqType } from "../../submodules/rapdv/server/ReqType"
+import { SetText } from "../../submodules/rapdv/server/RapDvApp"
 
 export class PostsPage {
   public static renderList = async (req: Request): Promise<ReactNode> => {
     const postsModel = Collection.get("Post")
-    const count = await postsModel.countAll(undefined)
+    const count = await postsModel.count()
     const from = Paginator.getFromPosition(req, count)
     const collectionComment = Collection.get("Comment")
     let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE)
     posts = await Promise.all(
       posts.map(async (post, index) => {
-        const commentsCount = await collectionComment.countAll({ post: post._id })
+        const commentsCount = await collectionComment.count({ post: post._id })
         return { ...post, commentsCount }
       })
     )

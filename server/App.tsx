@@ -23,6 +23,8 @@ import { FlashMessages } from "../submodules/rapdv/server/ui/FlashMessages"
 import { Footer } from "../submodules/rapdv/server/ui/Footer"
 import { Link } from "../submodules/rapdv/server/ui/Link"
 import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
+import { Request } from "../submodules/rapdv/server/server/Request"
+import { EmailService } from "../submodules/rapdv/server/mailer/EmailService"
 
 export class App extends RapDvApp {
   constructor() {
@@ -162,6 +164,10 @@ export class App extends RapDvApp {
     })
 
     await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => {})
+  }
+
+  public startRecurringTasks = async (emailService: EmailService): Promise<void> => {
+    // Place for starting recurring tasks
   }
 }
 
