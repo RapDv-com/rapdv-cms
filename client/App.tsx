@@ -1,5 +1,5 @@
-import { AppClient, ClientPage } from "../node_modules/rapdv-lib/dist/client/main.js"
-import "../node_modules/rapdv-lib/dist/client/main.css"
+import { AppClient } from "../submodules/rapdv/client/app/AppClient"
+import { ClientPage } from "../submodules/rapdv/client/elements/PagesCtrl"
 import { PageEditPost } from "./PageEditPost"
 import "./styles/style.scss"
 

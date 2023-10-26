@@ -1,5 +1,5 @@
-import { ClientPage } from "../node_modules/rapdv-lib/dist/client/main.js"
 import MediumEditor from "../client-libs/node_modules/medium-editor/dist/js/medium-editor.min.js"
+import { ClientPage } from "../submodules/rapdv/client/elements/PagesCtrl.js"
 import "../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css"
 import "../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css"
 
