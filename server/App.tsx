@@ -43,10 +43,6 @@ export class App extends RapDvApp {
       "RapDv Blog - Create apps quickly",
       "RapDv is a low-code framework for quickly creating any web application."
     )
-    /*
-      // TODO: Simple implementation
-      List("Post", ["title", "description", <Link href="/article/{{key}}" />])
-    */
     this.addRoute("/terms", ReqType.Get, PageTerms.render, "Terms and Conditions", "Our terms and conditions")
     this.addRoute("/privacy", ReqType.Get, PagePrivacy.render, "Privacy Policy", "Our privacy policy")
 
@@ -88,35 +84,19 @@ export class App extends RapDvApp {
     this.addRoute("/change-password", ReqType.Post, ChangePasswordPage.changePassword, "Change password", "Change your password", [Role.LoggedIn])
 
     this.addRoute("/profile", ReqType.Get, ProfilePage.render, "Profile", "Edit your profile", [Role.LoggedIn])
-     /*
-      // TODO: Simple implementation
-      Edit("User", (req) => req.user, [{ key: "email" editable: false}, "firstName", "lasyName", "Photo" />])
-    */
     this.addRoute("/profile", ReqType.Post, ProfilePage.edit, "Profile", "Edit your profile", [Role.LoggedIn], false, true)
 
     this.addRoute("/article/:key", ReqType.Get, PostsPage.renderPost, PostsPage.getPageTitle, PostsPage.getPageDescription)
     this.addRoute("/article/comment/:key", ReqType.Post, EditCommentPage.publishComment, "", "", [Role.LoggedIn])
     this.addRoute("/article/comment/:key", ReqType.Delete, EditCommentPage.deleteComment, "", "", [Role.LoggedIn])
     this.addRoute("/publish", ReqType.Get, EditPostPage.render, "Publish article", "Publish article", [UserRole.Admin, "Writer"])
-    /*
-      // TODO: Simple implementation
-      Add("Post", ["title", "description", "content" />])
-      */
     this.addRoute("/publish", ReqType.Post, EditPostPage.save, "Publish article", "Publish article", [UserRole.Admin, "Writer"])
     this.addRoute("/publish/:key", ReqType.Get, EditPostPage.render, "Edit article", "Edit article", [UserRole.Admin, "Writer"])
-
     this.addRoute("/publish/:key", ReqType.Post, EditPostPage.save, "Edit article", "Edit article", [UserRole.Admin, "Writer"])
     this.addRoute("/publish/:key", ReqType.Delete, EditPostPage.deletePost, "Delete article", "Delete article", [UserRole.Admin, "Writer"])
-    /*
-      // TODO: Simple implementation
-      Edit("Post", Collection.findByKey, ["title", "description", "content" />])
-      */
+
     this.addRoute("/users", ReqType.Get, UsersPage.renderUsersList, "Users List", "Users list", [UserRole.Admin])
     this.addRoute("/user/:email", ReqType.Get, UsersPage.renderUser, "Edit user", "Edit user", [UserRole.Admin])
-    /*
-      // TODO: Simple implementation
-      List("User", ["email", "firstName", "lastName", <Link href="/user/{{email}}" />])
-    */
     this.addRoute("/user/:email", ReqType.Post, UsersPage.updateUser, "Edit user", "Edit user", [UserRole.Admin])
 
     this.addEndpoint("/v1/rss", ReqType.Get, RssFeed.get)
