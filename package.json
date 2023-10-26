@@ -14,9 +14,6 @@
     "format-code": "rapdv format-code",
     "test-server": "rapdv test-server"
   },
-  "dependencies": {
-    "rapdv-lib": "^0.0.32"
-  },
   "peerDependencies": {
     "@babel/core": "*",
     "@types/body-parser": "*",

@@ -1,0 +1,3 @@
+[submodule "submodules/rapdv"]
+	path = submodules/rapdv
+	url = git@github.com:RapDv-com/rapdv.git
