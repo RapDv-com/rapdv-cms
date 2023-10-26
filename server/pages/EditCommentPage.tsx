@@ -1,7 +1,10 @@
 import { Response } from "express"
 import React, { ReactNode } from "react"
 import { PostsPage } from "./PostsPage"
-import { Collection, Form, HttpStatus, FlashType, Request } from "rapdv-lib"
+import { Form } from "../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { HttpStatus } from "../../submodules/rapdv/server/network/HttpStatus"
+import { Collection } from "../../submodules/rapdv/server/database/Collection"
 
 export class EditCommentPage {
   public static publishComment = async (req: Request, res: Response): Promise<ReactNode> => {

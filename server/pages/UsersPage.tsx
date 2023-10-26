@@ -1,28 +1,24 @@
 import { NextFunction, Response } from "express"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
-import {
-  Collection,
-  RapDvApp,
-  Input,
-  Link,
-  List,
-  Select,
-  Paginator,
-  SubmitForm,
-  FlashType,
-  Request,
-  CollectionUser,
-  UserRole,
-  UserStatus,
-  Images,
-  Form
-} from "rapdv-lib"
+import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
+import { CollectionUser, UserRole, UserStatus } from "../../submodules/rapdv/server/database/CollectionUser"
+import { Link } from "../../submodules/rapdv/server/ui/Link"
+import { Collection } from "../../submodules/rapdv/server/database/Collection"
+import { Paginator } from "../../submodules/rapdv/server/ui/Paginator"
+import { List } from "../../submodules/rapdv/server/ui/List"
+import { Select } from "../../submodules/rapdv/server/ui/Select"
+import { Images } from "../../submodules/rapdv/server/files/Images"
+import { FileStorageType } from "../../submodules/rapdv/server/database/CollectionFile"
 
 export class UsersPage {
   public static renderUsersList = async (req: Request): Promise<ReactNode> => {
     const collectionUsers = Collection.get("User")
-    const count = await collectionUsers.countAll(undefined)
+    const count = await collectionUsers.count()
     const from = Paginator.getFromPosition(req, count)
     const users = await collectionUsers.findAll(undefined, from, Paginator.ITEMS_PER_PAGE)
 
@@ -110,7 +106,7 @@ export class UsersPage {
 
       const photoFile = req.files?.find((entry) => entry.fieldname === "photo")
       if (!!photoFile) {
-        const image = await Images.savePhoto(photoFile, 200, true)
+        const image = await Images.savePhoto(photoFile, FileStorageType.Database)
         entry.photoId = image._id
       }
 

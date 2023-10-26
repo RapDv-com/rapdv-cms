@@ -1,6 +1,12 @@
 import React, { ReactNode } from "react"
 import { NextFunction, Response } from "express"
-import { Input, SubmitForm, Form, Link, FlashType, Request, AuthEmail, PageId } from "rapdv-lib"
+import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
+import { Link } from "../../submodules/rapdv/server/ui/Link"
+import { PageId } from "../../submodules/rapdv/server/pages/PageId"
 
 export class LogInPage {
   public static render = async (req: Request): Promise<ReactNode> => {

@@ -2,7 +2,15 @@ import { Response } from "express"
 import moment from "moment-timezone"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
-import { Collection, Form, HttpStatus, PageId, ReqType, FlashType, Request, Input, SubmitForm, Textarea } from "rapdv-lib"
+import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { PageId } from "../../submodules/rapdv/server/pages/PageId"
+import { Textarea } from "../../submodules/rapdv/server/ui/Textarea"
+import { ReqType } from "../../submodules/rapdv/server/ReqType"
+import { Collection } from "../../submodules/rapdv/server/database/Collection"
+import { HttpStatus } from "../../submodules/rapdv/server/network/HttpStatus"
 
 export class EditPostPage {
   public static render = async (req: Request): Promise<ReactNode> => {

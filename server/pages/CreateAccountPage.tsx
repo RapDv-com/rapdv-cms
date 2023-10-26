@@ -1,7 +1,17 @@
 import React, { ReactNode } from "react"
-import { AuthEmail, UserRole, Form, PageId, Link, SubmitForm, Auth, EmailService, RapDvApp, Input, FlashType, Request } from "rapdv-lib"
 import { NextFunction, Response } from "express"
 import { check } from "express-validator"
+import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
+import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
+import { EmailService } from "../../submodules/rapdv/server/mailer/EmailService"
+import { Auth } from "../../submodules/rapdv/server/auth/Auth"
+import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
+import { UserRole } from "../../submodules/rapdv/server/database/CollectionUser"
+import { Link } from "../../submodules/rapdv/server/ui/Link"
+import { PageId } from "../../submodules/rapdv/server/pages/PageId"
 
 export class CreateAccountPage {
   public static render = async (req: Request): Promise<ReactNode> => {
