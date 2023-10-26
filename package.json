@@ -5,16 +5,18 @@
   "author": "Digital Jetty Konrad Gadzinowski",
   "license": "MIT",
   "scripts": {
-    "start": "rapdv start",
-    "start-prod": "rapdv start-prod",
-    "build-client": "rapdv build-client",
-    "build-client-dev": "rapdv build-client-dev",
-    "watch-client-dev": "rapdv watch-client-dev",
-    "install-all": "npm install && cd client-libs && npm install && cd ..",
-    "format-code": "rapdv format-code",
-    "test-server": "rapdv test-server"
+    "start": "npm run start-dev && npm run watch-client-dev",
+    "start-dev": "npx nodemon --watch server --watch client --watch dist --watch assets --ext ts,tsx,js,css --exec '\"ts-node\" -- \"server/App.tsx\"'",
+    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./server/App.tsx\"",
+    "build-client": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js build-client",
+    "build-client-dev": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js build-client-dev",
+    "watch-client-dev": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js dev-client",
+    "install-all": "npm install && cd client-libs && npm install && cd .. && cd submodules/rapdv/client-libs/ && npm install && cd .. && cd .. && cd ..",
+    "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
+    "test-server": "mocha -r ts-node/register server/**/*.test.tsx"
   },
   "peerDependencies": {
+    "@aws-sdk/client-s3": "*",
     "@babel/core": "*",
     "@types/body-parser": "*",
     "@types/chai": "*",
