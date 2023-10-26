@@ -45,7 +45,6 @@
     "gulp-nodemon": "*",
     "gulp-run-sequence": "*",
     "gulp-typescript": "*",
-    "gulp-uglify": "*",
     "hbs": "*",
     "html-react-parser": "*",
     "i": "*",

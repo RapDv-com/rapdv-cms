@@ -1,20 +1,5 @@
 import React, { ReactNode } from "react"
 import { RssFeed } from "./api/RssFeed"
-import {
-  AppBasicInfo,
-  UserRole,
-  RapDvApp,
-  ReqType,
-  NavDropdownItem,
-  FlashMessages,
-  Link,
-  NavDropdown,
-  Request,
-  NavLink,
-  Nav,
-  Footer,
-  Role
-} from "rapdv-lib"
 import { ChangePasswordPage } from "./pages/ChangePasswordPage"
 import { EditCommentPage } from "./pages/EditCommentPage"
 import { CreateAccountPage } from "./pages/CreateAccountPage"
@@ -27,6 +12,17 @@ import { PagePrivacy } from "./pages/PagePrivacy"
 import { ResetPasswordPage } from "./pages/ResetPasswordPage"
 import { Schema } from "mongoose"
 import { UsersPage } from "./pages/UsersPage"
+import { AppBasicInfo, RapDvApp } from "../submodules/rapdv/server/RapDvApp"
+import { ReqType } from "../submodules/rapdv/server/ReqType"
+import { Role } from "../submodules/rapdv/server/Role"
+import { NavLink } from "../submodules/rapdv/server/ui/NavLink"
+import { Nav } from "../submodules/rapdv/server/ui/Nav"
+import { NavDropdownItem } from "../submodules/rapdv/server/ui/NavDropdownItem"
+import { NavDropdown } from "../submodules/rapdv/server/ui/NavDropdown"
+import { FlashMessages } from "../submodules/rapdv/server/ui/FlashMessages"
+import { Footer } from "../submodules/rapdv/server/ui/Footer"
+import { Link } from "../submodules/rapdv/server/ui/Link"
+import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
 
 export class App extends RapDvApp {
   constructor() {
