@@ -39,13 +39,13 @@ export class App extends RapDvApp {
     this.addRoute(
       "/",
       ReqType.Get,
-      Pages.List("Post", ["title", "description", <Link href="/article/{{key}}" />]),
+      PostsPage.renderList,
       "RapDv Blog - Create apps quickly",
       "RapDv is a low-code framework for quickly creating any web application."
     )
     /*
       // TODO: Simple implementation
-      
+      List("Post", ["title", "description", <Link href="/article/{{key}}" />])
     */
     this.addRoute("/terms", ReqType.Get, PageTerms.render, "Terms and Conditions", "Our terms and conditions")
     this.addRoute("/privacy", ReqType.Get, PagePrivacy.render, "Privacy Policy", "Our privacy policy")
