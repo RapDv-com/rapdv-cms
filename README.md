@@ -6,6 +6,7 @@ The quickest way to deploy your own blog! It's an example application that uses 
 [https://blog.rapdv.com](https://blog.rapdv.com)  
   
 ## Before running it
+- Install RapDv submodule: `git submodule update --init --recursive`. You can also just copy its code to `submodules/rapdv`  
 - Install all dependencies: `npm run install-all`  
 - Start MongoDB
 - Copy `.env.example` to `.env`, and set correct values in `.env files`
