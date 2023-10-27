@@ -13,7 +13,8 @@
     "watch-client-dev": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js dev-client",
     "install-all": "npm install && cd client-libs && npm install && cd .. && cd submodules/rapdv/client-libs/ && npm install && cd .. && cd .. && cd ..",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
-    "test-server": "mocha -r ts-node/register server/**/*.test.tsx"
+    "test-server": "mocha -r ts-node/register server/**/*.test.tsx",
+    "start-webpack": "cd submodules/rapdv/ && webpack serve --config webpack.client.config.js"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
@@ -85,5 +86,9 @@
     "validator": "*",
     "webpack": "*",
     "webpack-stream": "*"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
