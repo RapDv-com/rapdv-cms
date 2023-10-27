@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run start-dev && npm run watch-client-dev",
-    "start-dev": "npx nodemon --watch server --watch client --watch dist --watch assets --ext ts,tsx,js,css --exec '\"ts-node\" -- \"server/App.tsx\"'",
-    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./server/App.tsx\"",
+    "start-dev": "cross-env NODE_ENV=development \"ts-node\" \"./server/Boot.tsx\"",
+    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./server/Boot.tsx\"",
     "build-client": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js build-client",
     "build-client-dev": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js build-client-dev",
     "watch-client-dev": "gulp --gulpfile ./submodules/rapdv/client-build/gulpfile.js dev-client",

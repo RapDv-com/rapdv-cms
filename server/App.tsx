@@ -172,6 +172,3 @@ export class App extends RapDvApp {
     // Place for starting recurring tasks
   }
 }
-
-const app = new App()
-app.start()
