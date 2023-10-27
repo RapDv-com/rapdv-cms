@@ -24,7 +24,8 @@ export class PostsPage {
     posts = await Promise.all(
       posts.map(async (post, index) => {
         const commentsCount = await collectionComment.count({ post: post._id })
-        return { ...post, commentsCount }
+        const postData = post.toObject()
+        return { ...postData, commentsCount }
       })
     )
 
