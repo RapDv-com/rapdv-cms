@@ -84,6 +84,8 @@
     "typescript": "*",
     "validator": "*",
     "webpack": "*",
+    "webpack-dev-middleware": "*",
+    "webpack-hot-middleware": "*",
     "webpack-stream": "*"
   }
 }
