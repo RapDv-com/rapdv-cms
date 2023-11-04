@@ -85,5 +85,10 @@
     "validator": "*",
     "webpack": "*",
     "webpack-stream": "*"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.2",
+    "parcel": "^2.10.2",
+    "process": "^0.11.10"
   }
 }
