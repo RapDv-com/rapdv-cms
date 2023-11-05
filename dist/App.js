@@ -58,9 +58,9 @@
           return nodeRequire(name);
         }
 
-        var err = new Error("Cannot find module '" + name + "'");
-        err.code = 'MODULE_NOT_FOUND';
-        throw err;
+        var error = new Error("Cannot find module '" + name + "'");
+        error.code = 'MODULE_NOT_FOUND';
+        throw error;
       }
 
       localRequire.resolve = resolve;
@@ -230,8 +230,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var ws;
     try {
         ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/");
-    } catch (err) {
-        if (err.message) console.error(err.message);
+    } catch (error) {
+        if (error.message) console.error(error.message);
         ws = {};
     }
     // Web extension context
@@ -241,8 +241,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var supportsSourceURL = false;
     try {
         (0, eval)('throw new Error("test"); //# sourceURL=test.js');
-    } catch (err) {
-        supportsSourceURL = err.stack.includes("test.js");
+    } catch (error) {
+        supportsSourceURL = error.stack.includes("test.js");
     }
     // $FlowFixMe
     ws.onmessage = async function(event /*: {data: string, ...} */ ) {
@@ -406,8 +406,8 @@ function hmrDownload(asset) {
                 try {
                     importScripts(asset.url + "?t=" + Date.now());
                     resolve();
-                } catch (err) {
-                    reject(err);
+                } catch (error) {
+                    reject(error);
                 }
             });
         }
@@ -426,13 +426,13 @@ async function hmrApplyUpdates(assets) {
         if (!supportsSourceURL) {
             let promises = assets.map((asset)=>{
                 var _hmrDownload;
-                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((err)=>{
+                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((error)=>{
                     // Web extension fix
                     if (extCtx && extCtx.runtime && extCtx.runtime.getManifest().manifest_version == 3 && typeof ServiceWorkerGlobalScope != "undefined" && global instanceof ServiceWorkerGlobalScope) {
                         extCtx.runtime.reload();
                         return;
                     }
-                    throw err;
+                    throw error;
                 });
             });
             scriptsToRemove = await Promise.all(promises);
@@ -683,7 +683,7 @@ module.exports = require("96622d495519d4e");
         var hooks;
         try {
             hooks = signature.getCustomHooks();
-        } catch (err) {
+        } catch (error) {
             // This can happen in an edge case, e.g. if expression like Foo.useSomething
             // depends on Foo which is lazily initialized during rendering.
             // In that case just assume we'll have to remount.
@@ -790,10 +790,10 @@ module.exports = require("96622d495519d4e");
                 var element = rootElements.get(root);
                 try {
                     helpers.scheduleRoot(root, element);
-                } catch (err) {
+                } catch (error) {
                     if (!didError) {
                         didError = true;
-                        firstError = err;
+                        firstError = error;
                     } // Keep trying other roots.
                 }
             });
@@ -803,10 +803,10 @@ module.exports = require("96622d495519d4e");
                 mountedRoots.has(root);
                 try {
                     helpers.scheduleRefresh(root, update);
-                } catch (err) {
+                } catch (error) {
                     if (!didError) {
                         didError = true;
-                        firstError = err;
+                        firstError = error;
                     } // Keep trying other roots.
                 }
             });
