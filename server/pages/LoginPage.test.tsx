@@ -3,7 +3,7 @@ import { describe } from "mocha"
 import { LogInPage } from "./LogInPage"
 import ReactDOMServer from "react-dom/server"
 
-describe("Login page", function () {
+describe("Login page", () => {
   it("renders email and password fields", async () => {
     const renderedPage = await LogInPage.render(undefined)
     const html = ReactDOMServer.renderToStaticMarkup(renderedPage)
