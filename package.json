@@ -5,17 +5,18 @@
   "author": "Digital Jetty Konrad Gadzinowski",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run start-dev\" \"bunx parcel watch client/App.tsx\"",
+    "start": "concurrently \"bun run start-dev\" \"bunx parcel watch client/App.tsx\"",
     "start-dev": "cross-env NODE_ENV=development \"bun\" \"./submodules/rapdv/server/Boot.tsx\"",
     "start-prod": "cross-env NODE_ENV=production \"bun\" \"./submodules/rapdv/server/Boot.tsx\"",
     "build-prod": "bunx parcel build client/App.tsx",
-    "install-all": "npm install && cd client-libs && npm install && cd .. && cd submodules/rapdv/client-libs/ && npm install && cd .. && cd .. && cd ..",
+    "install-all": "bun install && cd client-libs && bun install && cd .. && cd submodules/rapdv/client-libs/ && bun install && cd .. && cd .. && cd ..",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
     "test-server": "mocha -r bun/register server/**/*.test.tsx"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
     "@babel/core": "*",
+    "@parcel/transformer-sass": "*",
     "@types/body-parser": "*",
     "@types/chai": "*",
     "@types/express": "*",
@@ -26,6 +27,7 @@
     "babel-loader": "*",
     "bcrypt-nodejs": "*",
     "body-parser": "*",
+    "bun-types": "*",
     "chai": "*",
     "concurrently": "*",
     "connect-mongo": "*",
@@ -56,10 +58,11 @@
     "multer": "*",
     "nodemailer": "*",
     "nodemon": "*",
-    "npm": "*",
+    "parcel": "*",
     "passport": "*",
     "passport-local": "*",
     "prettier": "*",
+    "process": "*",
     "react": "*",
     "react-dom": "*",
     "reload": "*",
@@ -73,14 +76,6 @@
     "ts-loader": "*",
     "typescript": "*",
     "validator": "*"
-  },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.10.2",
-    "parcel": "^2.10.2",
-    "process": "^0.11.10"
-  },
-  "dependencies": {
-    "bun-types": "^1.0.8"
   },
   "trustedDependencies": [
     "sharp"
