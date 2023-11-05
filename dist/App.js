@@ -142,10 +142,10 @@
       this[globalName] = mainExports;
     }
   }
-})({"4vsWu":[function(require,module,exports) {
+})({"lFifw":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
-var HMR_PORT = 1234;
+var HMR_PORT = 3003;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "957da39d6b7013ff";
@@ -2962,53 +2962,56 @@ var _form = require("../elements/Form");
 var _mainScss = require("./styles/main.scss");
 var _sizingScss = require("./styles/sizing.scss");
 class AppClient {
+    initiated = false;
+    pagesCtrl;
+    pjax;
+    onPageLoaded;
     constructor(onPageLoaded){
-        this.initiated = false;
-        this.start = (pages)=>{
-            if (this.initiated) return;
-            this.initiated = true;
-            this.setupPjax();
-            this.pagesCtrl = new (0, _pagesCtrl.PagesCtrl)();
-            if (!!pages) for (const page of pages)this.pagesCtrl.addPage(page);
-        };
-        this.setupPjax = ()=>{
-            document.addEventListener("DOMContentLoaded", ()=>{
-                this.pjax = new (0, _pjaxDefault.default)({
-                    elements: 'a:not([target="_blank"]):not(.noPjax)[href], form.pjax',
-                    selectors: [
-                        "title",
-                        "header",
-                        "main",
-                        "style"
-                    ],
-                    cacheBust: false
-                });
-                (0, _nprogressJsDefault.default).configure({
-                    parent: "body",
-                    showSpinner: false
-                });
-                this.pagesCtrl.setupPage();
-                (0, _form.Form).setupForms();
-                if (!!this.onPageLoaded) this.onPageLoaded();
-            });
-            document.addEventListener("pjax:send", ()=>{
-                (0, _nprogressJsDefault.default).start();
-            });
-            document.addEventListener("pjax:complete", ()=>{
-                (0, _nprogressJsDefault.default).done();
-            });
-            document.addEventListener("pjax:error", ()=>{
-                (0, _nprogressJsDefault.default).done();
-            });
-            document.addEventListener("pjax:success", ()=>{
-                (0, _nprogressJsDefault.default).done();
-                this.pagesCtrl.setupPage();
-                (0, _form.Form).setupForms();
-                if (!!this.onPageLoaded) this.onPageLoaded();
-            });
-        };
         this.onPageLoaded = onPageLoaded;
     }
+    start = (pages)=>{
+        if (this.initiated) return;
+        this.initiated = true;
+        this.setupPjax();
+        this.pagesCtrl = new (0, _pagesCtrl.PagesCtrl)();
+        if (!!pages) for (const page of pages)this.pagesCtrl.addPage(page);
+    };
+    setupPjax = ()=>{
+        document.addEventListener("DOMContentLoaded", ()=>{
+            this.pjax = new (0, _pjaxDefault.default)({
+                elements: 'a:not([target="_blank"]):not(.noPjax)[href], form.pjax',
+                selectors: [
+                    "title",
+                    "header",
+                    "main",
+                    "style"
+                ],
+                cacheBust: false
+            });
+            (0, _nprogressJsDefault.default).configure({
+                parent: "body",
+                showSpinner: false
+            });
+            this.pagesCtrl.setupPage();
+            (0, _form.Form).setupForms();
+            if (!!this.onPageLoaded) this.onPageLoaded();
+        });
+        document.addEventListener("pjax:send", ()=>{
+            (0, _nprogressJsDefault.default).start();
+        });
+        document.addEventListener("pjax:complete", ()=>{
+            (0, _nprogressJsDefault.default).done();
+        });
+        document.addEventListener("pjax:error", ()=>{
+            (0, _nprogressJsDefault.default).done();
+        });
+        document.addEventListener("pjax:success", ()=>{
+            (0, _nprogressJsDefault.default).done();
+            this.pagesCtrl.setupPage();
+            (0, _form.Form).setupForms();
+            if (!!this.onPageLoaded) this.onPageLoaded();
+        });
+    };
 }
 
 },{"./../../client-libs/node_modules/pjax":"k9fa8","./../../client-libs/node_modules/bootstrap/dist/css/bootstrap.css":"fdhEw","./../../client-libs/node_modules/bootstrap/dist/js/bootstrap.js":"dy6kG","./../../client-libs/node_modules/bootstrap-icons/font/bootstrap-icons.css":"a2c3U","./../../client-libs/node_modules/nprogress/nprogress.css":"ijsBi","./../../client-libs/node_modules/nprogress/nprogress.js":"arm6m","../elements/PagesCtrl":"jcT59","../elements/Form":"gCcLc","./styles/main.scss":"kNC6N","./styles/sizing.scss":"362eY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k9fa8":[function(require,module,exports) {
@@ -9874,43 +9877,44 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PagesCtrl", ()=>PagesCtrl);
 class PagesCtrl {
+    pages = new Array();
+    currentPage;
     constructor(){
         this.pages = new Array();
-        this.addPage = (page)=>{
-            this.pages.push(page);
-        };
-        this.getCurrentPageId = ()=>{
-            if (!this.currentPage) return "";
-            return this.currentPage.getPageId();
-        };
-        this.setupPage = ()=>{
-            this.closePage();
-            let page = this.executeCurrentPageLogic();
-            if (page) this.currentPage = page;
-        };
-        this.closePage = ()=>{
-            if (this.currentPage) {
-                this.currentPage.onPageClose();
-                this.currentPage = null;
-            }
-        };
-        this.executeCurrentPageLogic = ()=>{
-            const pageIdElement = document.querySelector("#pageId");
-            if (!pageIdElement) return;
-            const pageId = pageIdElement.innerText;
-            pageIdElement.parentNode.removeChild(pageIdElement);
-            if (!pageId || pageId.length === 0) return;
-            for(let i = 0; i < this.pages.length; i++){
-                let page = this.pages[i];
-                if (pageId == page.getPageId()) {
-                    page.execute();
-                    return page;
-                }
-            }
-            return null;
-        };
-        this.pages = new Array();
     }
+    addPage = (page)=>{
+        this.pages.push(page);
+    };
+    getCurrentPageId = ()=>{
+        if (!this.currentPage) return "";
+        return this.currentPage.getPageId();
+    };
+    setupPage = ()=>{
+        this.closePage();
+        let page = this.executeCurrentPageLogic();
+        if (page) this.currentPage = page;
+    };
+    closePage = ()=>{
+        if (this.currentPage) {
+            this.currentPage.onPageClose();
+            this.currentPage = null;
+        }
+    };
+    executeCurrentPageLogic = ()=>{
+        const pageIdElement = document.querySelector("#pageId");
+        if (!pageIdElement) return;
+        const pageId = pageIdElement.innerText;
+        pageIdElement.parentNode.removeChild(pageIdElement);
+        if (!pageId || pageId.length === 0) return;
+        for(let i = 0; i < this.pages.length; i++){
+            let page = this.pages[i];
+            if (pageId == page.getPageId()) {
+                page.execute();
+                return page;
+            }
+        }
+        return null;
+    };
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gCcLc":[function(require,module,exports) {
@@ -9919,7 +9923,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Form", ()=>Form);
 class Form {
-    static #_ = this.setupForms = ()=>{
+    static setupForms = ()=>{
         // Validate forms
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.querySelectorAll(".needs-validation");
@@ -9967,14 +9971,12 @@ var _mediumEditorMinJsDefault = parcelHelpers.interopDefault(_mediumEditorMinJs)
 var _mediumEditorMinCss = require("../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css");
 var _beagleMinCss = require("../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css");
 class PageEditPost {
-    constructor(){
-        this.getPageId = ()=>"edit-post";
-        this.execute = ()=>{
-            new (0, _mediumEditorMinJsDefault.default)('textarea[name="description"]', {});
-            new (0, _mediumEditorMinJsDefault.default)('textarea[name="content"]', {});
-        };
-        this.onPageClose = ()=>{};
-    }
+    getPageId = ()=>"edit-post";
+    execute = ()=>{
+        new (0, _mediumEditorMinJsDefault.default)('textarea[name="description"]', {});
+        new (0, _mediumEditorMinJsDefault.default)('textarea[name="content"]', {});
+    };
+    onPageClose = ()=>{};
 }
 
 },{"../client-libs/node_modules/medium-editor/dist/js/medium-editor.min.js":"9AwUM","../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css":"2tK7o","../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css":"9FQq2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9AwUM":[function(require,module,exports) {
@@ -12910,6 +12912,6 @@ var process = require("17859caaba74acba");
     }, a.version = a.parseVersionString.call(this, "5.23.3"), a;
 }());
 
-},{"17859caaba74acba":"d5jf4"}],"2tK7o":[function() {},{}],"9FQq2":[function() {},{}],"5NKOb":[function() {},{}]},["4vsWu","1xC6H","846Bb"], "846Bb", "parcelRequire9ae1")
+},{"17859caaba74acba":"d5jf4"}],"2tK7o":[function() {},{}],"9FQq2":[function() {},{}],"5NKOb":[function() {},{}]},["lFifw","1xC6H","846Bb"], "846Bb", "parcelRequire9ae1")
 
 //# sourceMappingURL=App.js.map
