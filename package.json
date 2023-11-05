@@ -6,12 +6,12 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"npm run start-dev\" \"npx parcel client/App.tsx\"",
-    "start-dev": "cross-env NODE_ENV=development \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
-    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
+    "start-dev": "cross-env NODE_ENV=development \"bun\" \"./submodules/rapdv/server/Boot.tsx\"",
+    "start-prod": "cross-env NODE_ENV=production \"bun\" \"./submodules/rapdv/server/Boot.tsx\"",
     "build-prod": "npx parcel build client/App.tsx",
     "install-all": "npm install && cd client-libs && npm install && cd .. && cd submodules/rapdv/client-libs/ && npm install && cd .. && cd .. && cd ..",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
-    "test-server": "mocha -r ts-node/register server/**/*.test.tsx"
+    "test-server": "mocha -r bun/register server/**/*.test.tsx"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
@@ -21,7 +21,6 @@
     "@types/express": "*",
     "@types/mocha": "*",
     "@types/mongoose": "*",
-    "@types/node": "*",
     "@types/sharp": "*",
     "@types/styled-components": "*",
     "babel-loader": "*",
@@ -72,7 +71,6 @@
     "style-loader": "*",
     "styled-components": "*",
     "ts-loader": "*",
-    "ts-node": "*",
     "typescript": "*",
     "validator": "*"
   },
@@ -80,5 +78,11 @@
     "@parcel/transformer-sass": "^2.10.2",
     "parcel": "^2.10.2",
     "process": "^0.11.10"
-  }
+  },
+  "dependencies": {
+    "bun-types": "^1.0.8"
+  },
+  "trustedDependencies": [
+    "sharp"
+ ]
 }

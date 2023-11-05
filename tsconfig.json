@@ -2,11 +2,14 @@
   "compilerOptions": {
     "jsx": "react",
     "esModuleInterop": true,
-    "module": "CommonJS",
-    "target": "es6",
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
     "noImplicitAny": false,
     "sourceMap": false,
     "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "nodenext",
+    "types": ["bun-types"],
     "typeRoots": [
       "node_modules/@types"
     ]
