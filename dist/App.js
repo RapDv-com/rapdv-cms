@@ -58,9 +58,9 @@
           return nodeRequire(name);
         }
 
-        var error = new Error("Cannot find module '" + name + "'");
-        error.code = 'MODULE_NOT_FOUND';
-        throw error;
+        var err = new Error("Cannot find module '" + name + "'");
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
       }
 
       localRequire.resolve = resolve;
@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"lFifw":[function(require,module,exports) {
+})({"ihZL7":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
-var HMR_PORT = 3003;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "957da39d6b7013ff";
+module.bundle.HMR_BUNDLE_ID = "087aa818f66eb993";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -230,8 +230,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var ws;
     try {
         ws = new WebSocket(protocol + "://" + hostname + (port ? ":" + port : "") + "/");
-    } catch (error) {
-        if (error.message) console.error(error.message);
+    } catch (err) {
+        if (err.message) console.error(err.message);
         ws = {};
     }
     // Web extension context
@@ -241,8 +241,8 @@ if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== "undefined") {
     var supportsSourceURL = false;
     try {
         (0, eval)('throw new Error("test"); //# sourceURL=test.js');
-    } catch (error) {
-        supportsSourceURL = error.stack.includes("test.js");
+    } catch (err) {
+        supportsSourceURL = err.stack.includes("test.js");
     }
     // $FlowFixMe
     ws.onmessage = async function(event /*: {data: string, ...} */ ) {
@@ -406,8 +406,8 @@ function hmrDownload(asset) {
                 try {
                     importScripts(asset.url + "?t=" + Date.now());
                     resolve();
-                } catch (error) {
-                    reject(error);
+                } catch (err) {
+                    reject(err);
                 }
             });
         }
@@ -426,13 +426,13 @@ async function hmrApplyUpdates(assets) {
         if (!supportsSourceURL) {
             let promises = assets.map((asset)=>{
                 var _hmrDownload;
-                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((error)=>{
+                return (_hmrDownload = hmrDownload(asset)) === null || _hmrDownload === void 0 ? void 0 : _hmrDownload.catch((err)=>{
                     // Web extension fix
                     if (extCtx && extCtx.runtime && extCtx.runtime.getManifest().manifest_version == 3 && typeof ServiceWorkerGlobalScope != "undefined" && global instanceof ServiceWorkerGlobalScope) {
                         extCtx.runtime.reload();
                         return;
                     }
-                    throw error;
+                    throw err;
                 });
             });
             scriptsToRemove = await Promise.all(promises);
@@ -574,9 +574,9 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"1xC6H":[function(require,module,exports) {
-var Refresh = require("6d18d6bd340e7473");
-var ErrorOverlay = require("74ad5ea14201648c");
+},{}],"b0WHo":[function(require,module,exports) {
+var Refresh = require("938602586d11df2d");
+var ErrorOverlay = require("d4b6b6cc3e58c647");
 Refresh.injectIntoGlobalHook(window);
 window.$RefreshReg$ = function() {};
 window.$RefreshSig$ = function() {
@@ -595,11 +595,11 @@ window.addEventListener("parcelhmraccept", ()=>{
     ErrorOverlay.dismissRuntimeErrors();
 });
 
-},{"6d18d6bd340e7473":"786KC","74ad5ea14201648c":"1dldy"}],"786KC":[function(require,module,exports) {
+},{"938602586d11df2d":"6pHtr","d4b6b6cc3e58c647":"6co1m"}],"6pHtr":[function(require,module,exports) {
 "use strict";
-module.exports = require("96622d495519d4e");
+module.exports = require("6382984805d3d6df");
 
-},{"96622d495519d4e":"hdge7"}],"hdge7":[function(require,module,exports) {
+},{"6382984805d3d6df":"8nWa6"}],"8nWa6":[function(require,module,exports) {
 /** @license React v0.9.0
  * react-refresh-runtime.development.js
  *
@@ -683,7 +683,7 @@ module.exports = require("96622d495519d4e");
         var hooks;
         try {
             hooks = signature.getCustomHooks();
-        } catch (error) {
+        } catch (err) {
             // This can happen in an edge case, e.g. if expression like Foo.useSomething
             // depends on Foo which is lazily initialized during rendering.
             // In that case just assume we'll have to remount.
@@ -790,10 +790,10 @@ module.exports = require("96622d495519d4e");
                 var element = rootElements.get(root);
                 try {
                     helpers.scheduleRoot(root, element);
-                } catch (error) {
+                } catch (err) {
                     if (!didError) {
                         didError = true;
-                        firstError = error;
+                        firstError = err;
                     } // Keep trying other roots.
                 }
             });
@@ -803,10 +803,10 @@ module.exports = require("96622d495519d4e");
                 mountedRoots.has(root);
                 try {
                     helpers.scheduleRefresh(root, update);
-                } catch (error) {
+                } catch (err) {
                     if (!didError) {
                         didError = true;
-                        firstError = error;
+                        firstError = err;
                     } // Keep trying other roots.
                 }
             });
@@ -1059,8 +1059,8 @@ module.exports = require("96622d495519d4e");
     exports.setSignature = setSignature;
 })();
 
-},{}],"1dldy":[function(require,module,exports) {
-var process = require("d1546958eb39fdcf");
+},{}],"6co1m":[function(require,module,exports) {
+var process = require("8b52f274cb17fff1");
 !function(e, t) {
     module.exports = t();
 }(window, function() {
@@ -2790,7 +2790,7 @@ var process = require("d1546958eb39fdcf");
     ]);
 });
 
-},{"d1546958eb39fdcf":"d5jf4"}],"d5jf4":[function(require,module,exports) {
+},{"8b52f274cb17fff1":"jgCMb"}],"jgCMb":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -2935,7 +2935,7 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"846Bb":[function(require,module,exports) {
+},{}],"76U4L":[function(require,module,exports) {
 var _appClient = require("../submodules/rapdv/client/app/AppClient");
 var _pageEditPost = require("./PageEditPost");
 var _styleScss = require("./styles/style.scss");
@@ -2944,7 +2944,7 @@ pages.push(new (0, _pageEditPost.PageEditPost)());
 const app = new (0, _appClient.AppClient)();
 app.start(pages);
 
-},{"../submodules/rapdv/client/app/AppClient":"7SZo4","./PageEditPost":"lt3ul","./styles/style.scss":"5NKOb"}],"7SZo4":[function(require,module,exports) {
+},{"../submodules/rapdv/client/app/AppClient":"iNHVN","./PageEditPost":"kW15U","./styles/style.scss":"3M6ub"}],"iNHVN":[function(require,module,exports) {
 // Copyright (C) Digital Jetty Konrad Gadzinowski - All Rights Reserved
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -2962,70 +2962,67 @@ var _form = require("../elements/Form");
 var _mainScss = require("./styles/main.scss");
 var _sizingScss = require("./styles/sizing.scss");
 class AppClient {
-    initiated = false;
-    pagesCtrl;
-    pjax;
-    onPageLoaded;
     constructor(onPageLoaded){
+        this.initiated = false;
+        this.start = (pages)=>{
+            if (this.initiated) return;
+            this.initiated = true;
+            this.setupPjax();
+            this.pagesCtrl = new (0, _pagesCtrl.PagesCtrl)();
+            if (!!pages) for (const page of pages)this.pagesCtrl.addPage(page);
+        };
+        this.setupPjax = ()=>{
+            document.addEventListener("DOMContentLoaded", ()=>{
+                this.pjax = new (0, _pjaxDefault.default)({
+                    elements: 'a:not([target="_blank"]):not(.noPjax)[href], form.pjax',
+                    selectors: [
+                        "title",
+                        "header",
+                        "main",
+                        "style"
+                    ],
+                    cacheBust: false
+                });
+                (0, _nprogressJsDefault.default).configure({
+                    parent: "body",
+                    showSpinner: false
+                });
+                this.pagesCtrl.setupPage();
+                (0, _form.Form).setupForms();
+                if (!!this.onPageLoaded) this.onPageLoaded();
+            });
+            document.addEventListener("pjax:send", ()=>{
+                (0, _nprogressJsDefault.default).start();
+            });
+            document.addEventListener("pjax:complete", ()=>{
+                (0, _nprogressJsDefault.default).done();
+            });
+            document.addEventListener("pjax:error", ()=>{
+                (0, _nprogressJsDefault.default).done();
+            });
+            document.addEventListener("pjax:success", ()=>{
+                (0, _nprogressJsDefault.default).done();
+                this.pagesCtrl.setupPage();
+                (0, _form.Form).setupForms();
+                if (!!this.onPageLoaded) this.onPageLoaded();
+            });
+        };
         this.onPageLoaded = onPageLoaded;
     }
-    start = (pages)=>{
-        if (this.initiated) return;
-        this.initiated = true;
-        this.setupPjax();
-        this.pagesCtrl = new (0, _pagesCtrl.PagesCtrl)();
-        if (!!pages) for (const page of pages)this.pagesCtrl.addPage(page);
-    };
-    setupPjax = ()=>{
-        document.addEventListener("DOMContentLoaded", ()=>{
-            this.pjax = new (0, _pjaxDefault.default)({
-                elements: 'a:not([target="_blank"]):not(.noPjax)[href], form.pjax',
-                selectors: [
-                    "title",
-                    "header",
-                    "main",
-                    "style"
-                ],
-                cacheBust: false
-            });
-            (0, _nprogressJsDefault.default).configure({
-                parent: "body",
-                showSpinner: false
-            });
-            this.pagesCtrl.setupPage();
-            (0, _form.Form).setupForms();
-            if (!!this.onPageLoaded) this.onPageLoaded();
-        });
-        document.addEventListener("pjax:send", ()=>{
-            (0, _nprogressJsDefault.default).start();
-        });
-        document.addEventListener("pjax:complete", ()=>{
-            (0, _nprogressJsDefault.default).done();
-        });
-        document.addEventListener("pjax:error", ()=>{
-            (0, _nprogressJsDefault.default).done();
-        });
-        document.addEventListener("pjax:success", ()=>{
-            (0, _nprogressJsDefault.default).done();
-            this.pagesCtrl.setupPage();
-            (0, _form.Form).setupForms();
-            if (!!this.onPageLoaded) this.onPageLoaded();
-        });
-    };
 }
 
-},{"./../../client-libs/node_modules/pjax":"k9fa8","./../../client-libs/node_modules/bootstrap/dist/css/bootstrap.css":"fdhEw","./../../client-libs/node_modules/bootstrap/dist/js/bootstrap.js":"dy6kG","./../../client-libs/node_modules/bootstrap-icons/font/bootstrap-icons.css":"a2c3U","./../../client-libs/node_modules/nprogress/nprogress.css":"ijsBi","./../../client-libs/node_modules/nprogress/nprogress.js":"arm6m","../elements/PagesCtrl":"jcT59","../elements/Form":"gCcLc","./styles/main.scss":"kNC6N","./styles/sizing.scss":"362eY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"k9fa8":[function(require,module,exports) {
-var executeScripts = require("20ad39f240b7fd31");
-var forEachEls = require("23527138d996a43f");
-var parseOptions = require("a20267cbc3493ca9");
-var switches = require("fc6475e2e5ccfb62");
-var newUid = require("9cf485e01dd3e2f2");
-var on = require("872d68422a0d3b60");
-var trigger = require("e075740f24fc4254");
-var clone = require("d85bae67e2c5d313");
-var contains = require("64a6697e7a753991");
-var extend = require("297b7a871262ef30");
-var noop = require("fa0b01c7bf917388");
+},{"./../../client-libs/node_modules/pjax":"l8DWm","./../../client-libs/node_modules/bootstrap/dist/css/bootstrap.css":"iESTa","./../../client-libs/node_modules/bootstrap/dist/js/bootstrap.js":"69JYM","./../../client-libs/node_modules/bootstrap-icons/font/bootstrap-icons.css":"58ieE","./../../client-libs/node_modules/nprogress/nprogress.css":"eC8bt","./../../client-libs/node_modules/nprogress/nprogress.js":"6mZ1F","../elements/PagesCtrl":"eQfa1","../elements/Form":"i9hfR","./styles/main.scss":"hoSdK","./styles/sizing.scss":"5WWcA","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"l8DWm":[function(require,module,exports) {
+var executeScripts = require("d6aecb149ae20aeb");
+var forEachEls = require("e2260f4f2e91c394");
+var parseOptions = require("f6cce08103ad8041");
+var switches = require("2cde312daedf926d");
+var newUid = require("d8f843e377619d69");
+var on = require("5136de839f18b4ed");
+var trigger = require("8e988eac1bbce05d");
+var clone = require("996f00ed4c8ef4e1");
+var contains = require("6963a6752e6e41bf");
+var extend = require("1638b7e1610dbfa9");
+var noop = require("91435de4f9e109af");
 var Pjax = function(options) {
     this.state = {
         numPendingSwitches: 0,
@@ -3055,12 +3052,12 @@ var Pjax = function(options) {
 };
 Pjax.switches = switches;
 Pjax.prototype = {
-    log: require("bb741ddabc90b977"),
+    log: require("4eab41103151a6ed"),
     getElements: function(el) {
         return el.querySelectorAll(this.options.elements);
     },
     parseDOM: function(el) {
-        var parseElement = require("c847facbe1ae3fca");
+        var parseElement = require("46632517095d96af");
         forEachEls(this.getElements(el), parseElement, this);
     },
     refresh: function(el) {
@@ -3069,13 +3066,13 @@ Pjax.prototype = {
     reload: function() {
         window.location.reload();
     },
-    attachLink: require("be9a5822fa1b80a6"),
-    attachForm: require("763251e8d4b655c"),
+    attachLink: require("43ab4aba4bcfff52"),
+    attachForm: require("b780a434ff72270f"),
     forEachSelectors: function(cb, context, DOMcontext) {
-        return require("5e41ab3b79271ae0").bind(this)(this.options.selectors, cb, context, DOMcontext);
+        return require("de7f623b69aa1d2f").bind(this)(this.options.selectors, cb, context, DOMcontext);
     },
     switchSelectors: function(selectors, fromEl, toEl, options) {
-        return require("ddf3809a5331636e").bind(this)(this.options.switches, this.options.switchesOptions, selectors, fromEl, toEl, options);
+        return require("50d65abce3a14ed3").bind(this)(this.options.switches, this.options.switchesOptions, selectors, fromEl, toEl, options);
     },
     latestChance: function(href) {
         window.location = href;
@@ -3116,9 +3113,9 @@ Pjax.prototype = {
         } catch (e) {} // eslint-disable-line no-empty
         this.switchSelectors(this.options.selectors, tmpEl, document, options);
     },
-    abortRequest: require("6d5a940ffd5fdc0e"),
-    doRequest: require("8c721bad56335367"),
-    handleResponse: require("c73d0877c1274ae2"),
+    abortRequest: require("b75b4d5a7f3b665f"),
+    doRequest: require("d652fcba0ae675a2"),
+    handleResponse: require("199148ee2c0cca2f"),
     loadUrl: function(href, options) {
         options = typeof options === "object" ? extend({}, this.options, options) : clone(this.options);
         this.log("load href", href, options);
@@ -3204,7 +3201,7 @@ Pjax.prototype = {
         };
     }
 };
-Pjax.isSupported = require("8e5aa08db2924c7d");
+Pjax.isSupported = require("40f722b8a69369bb");
 // arguably could do `if( require("./lib/is-supported")()) {` but that might be a little to simple
 if (Pjax.isSupported()) module.exports = Pjax;
 else {
@@ -3213,9 +3210,9 @@ else {
     module.exports = stupidPjax;
 }
 
-},{"20ad39f240b7fd31":"aBz1d","23527138d996a43f":"3YOov","a20267cbc3493ca9":"32cy9","fc6475e2e5ccfb62":"6gzMB","9cf485e01dd3e2f2":"lrlqf","872d68422a0d3b60":"kRJvO","e075740f24fc4254":"hhf4l","d85bae67e2c5d313":"1aUEr","64a6697e7a753991":"hFihX","297b7a871262ef30":"aMWkM","fa0b01c7bf917388":"9aQWT","bb741ddabc90b977":"1nBIZ","c847facbe1ae3fca":"kBDxb","be9a5822fa1b80a6":"5tEvk","763251e8d4b655c":"e83eQ","5e41ab3b79271ae0":"5Pe65","ddf3809a5331636e":"eQWof","6d5a940ffd5fdc0e":"uM1v6","8c721bad56335367":"amiOA","c73d0877c1274ae2":"fAoar","8e5aa08db2924c7d":"l4XOj"}],"aBz1d":[function(require,module,exports) {
-var forEachEls = require("639b9037877d6ade");
-var evalScript = require("ef93785f470ab9ca");
+},{"d6aecb149ae20aeb":"ibFXi","e2260f4f2e91c394":"9F8Zv","f6cce08103ad8041":"ksMuR","2cde312daedf926d":"1QuhV","d8f843e377619d69":"eh06k","5136de839f18b4ed":"aIloz","8e988eac1bbce05d":"1ZvYZ","996f00ed4c8ef4e1":"bmDlT","6963a6752e6e41bf":"knThk","1638b7e1610dbfa9":"kaPJA","91435de4f9e109af":"bUdj7","4eab41103151a6ed":"gbxku","46632517095d96af":"c7yR1","43ab4aba4bcfff52":"kASEb","b780a434ff72270f":"j4cOg","de7f623b69aa1d2f":"8SDHU","50d65abce3a14ed3":"aRXj9","b75b4d5a7f3b665f":"3vfSo","d652fcba0ae675a2":"bQsue","199148ee2c0cca2f":"iApWZ","40f722b8a69369bb":"eOCGv"}],"ibFXi":[function(require,module,exports) {
+var forEachEls = require("32da54a714047812");
+var evalScript = require("ff830b978fa5c1b1");
 // Finds and executes scripts (used for newly added elements)
 // Needed since innerHTML does not run scripts
 module.exports = function(el) {
@@ -3228,14 +3225,14 @@ module.exports = function(el) {
     });
 };
 
-},{"639b9037877d6ade":"3YOov","ef93785f470ab9ca":"1UNL6"}],"3YOov":[function(require,module,exports) {
+},{"32da54a714047812":"9F8Zv","ff830b978fa5c1b1":"eOqi4"}],"9F8Zv":[function(require,module,exports) {
 /* global HTMLCollection: true */ module.exports = function(els, fn, context) {
     if (els instanceof HTMLCollection || els instanceof NodeList || els instanceof Array) return Array.prototype.forEach.call(els, fn, context);
     // assume simple DOM element
     return fn.call(context, els);
 };
 
-},{}],"1UNL6":[function(require,module,exports) {
+},{}],"eOqi4":[function(require,module,exports) {
 module.exports = function(el) {
     var code = el.text || el.textContent || el.innerHTML || "";
     var src = el.src || "";
@@ -3264,8 +3261,8 @@ module.exports = function(el) {
     return true;
 };
 
-},{}],"32cy9":[function(require,module,exports) {
-/* global _gaq: true, ga: true */ var defaultSwitches = require("3046bed454093aea");
+},{}],"ksMuR":[function(require,module,exports) {
+/* global _gaq: true, ga: true */ var defaultSwitches = require("4bcff098b4774439");
 module.exports = function(options) {
     options = options || {};
     options.elements = options.elements || "a[href], form[action]";
@@ -3300,8 +3297,8 @@ module.exports = function(options) {
     });
 }
 
-},{"3046bed454093aea":"6gzMB"}],"6gzMB":[function(require,module,exports) {
-var on = require("ef44d31bc03bc997");
+},{"4bcff098b4774439":"1QuhV"}],"1QuhV":[function(require,module,exports) {
+var on = require("151699f3969e423");
 module.exports = {
     outerHTML: function(oldEl, newEl) {
         oldEl.outerHTML = newEl.outerHTML;
@@ -3389,8 +3386,8 @@ module.exports = {
     }
 };
 
-},{"ef44d31bc03bc997":"kRJvO"}],"kRJvO":[function(require,module,exports) {
-var forEachEls = require("d829c3c8320f1eff");
+},{"151699f3969e423":"aIloz"}],"aIloz":[function(require,module,exports) {
+var forEachEls = require("44eb6589127fdc68");
 module.exports = function(els, events, listener, useCapture) {
     events = typeof events === "string" ? events.split(" ") : events;
     events.forEach(function(e) {
@@ -3400,7 +3397,7 @@ module.exports = function(els, events, listener, useCapture) {
     });
 };
 
-},{"d829c3c8320f1eff":"3YOov"}],"lrlqf":[function(require,module,exports) {
+},{"44eb6589127fdc68":"9F8Zv"}],"eh06k":[function(require,module,exports) {
 module.exports = function() {
     var counter = 0;
     return function() {
@@ -3410,8 +3407,8 @@ module.exports = function() {
     };
 }();
 
-},{}],"hhf4l":[function(require,module,exports) {
-var forEachEls = require("fe77a4ee4c603ba8");
+},{}],"1ZvYZ":[function(require,module,exports) {
+var forEachEls = require("82536a810f516d1e");
 module.exports = function(els, events, opts) {
     events = typeof events === "string" ? events.split(" ") : events;
     events.forEach(function(e) {
@@ -3436,7 +3433,7 @@ module.exports = function(els, events, opts) {
     });
 };
 
-},{"fe77a4ee4c603ba8":"3YOov"}],"1aUEr":[function(require,module,exports) {
+},{"82536a810f516d1e":"9F8Zv"}],"bmDlT":[function(require,module,exports) {
 module.exports = function(obj) {
     /* istanbul ignore if */ if (null === obj || "object" !== typeof obj) return obj;
     var copy = obj.constructor();
@@ -3444,7 +3441,7 @@ module.exports = function(obj) {
     return copy;
 };
 
-},{}],"hFihX":[function(require,module,exports) {
+},{}],"knThk":[function(require,module,exports) {
 module.exports = function contains(doc, selectors, el) {
     for(var i = 0; i < selectors.length; i++){
         var selectedEls = doc.querySelectorAll(selectors[i]);
@@ -3455,7 +3452,7 @@ module.exports = function contains(doc, selectors, el) {
     return false;
 };
 
-},{}],"aMWkM":[function(require,module,exports) {
+},{}],"kaPJA":[function(require,module,exports) {
 module.exports = function(target) {
     if (target == null) return null;
     var to = Object(target);
@@ -3469,10 +3466,10 @@ module.exports = function(target) {
     return to;
 };
 
-},{}],"9aQWT":[function(require,module,exports) {
+},{}],"bUdj7":[function(require,module,exports) {
 module.exports = function() {};
 
-},{}],"1nBIZ":[function(require,module,exports) {
+},{}],"gbxku":[function(require,module,exports) {
 module.exports = function() {
     if (this.options.debug && console) {
         if (typeof console.log === "function") console.log.apply(console, arguments);
@@ -3480,7 +3477,7 @@ module.exports = function() {
     }
 };
 
-},{}],"kBDxb":[function(require,module,exports) {
+},{}],"c7yR1":[function(require,module,exports) {
 var attrState = "data-pjax-state";
 module.exports = function(el) {
     switch(el.tagName.toLowerCase()){
@@ -3497,9 +3494,9 @@ module.exports = function(el) {
     }
 };
 
-},{}],"5tEvk":[function(require,module,exports) {
-var on = require("67367cb9e54be1bb");
-var clone = require("13c4e598c6410f80");
+},{}],"kASEb":[function(require,module,exports) {
+var on = require("23b2de619ea689a0");
+var clone = require("a44a01c7c4a18506");
 var attrState = "data-pjax-state";
 var linkAction = function(el, event) {
     if (isDefaultPrevented(event)) return;
@@ -3548,9 +3545,9 @@ module.exports = function(el) {
     }).bind(this));
 };
 
-},{"67367cb9e54be1bb":"kRJvO","13c4e598c6410f80":"1aUEr"}],"e83eQ":[function(require,module,exports) {
-var on = require("f4d7159bd23fdbd6");
-var clone = require("a55a5d8dd830938a");
+},{"23b2de619ea689a0":"aIloz","a44a01c7c4a18506":"bmDlT"}],"j4cOg":[function(require,module,exports) {
+var on = require("fbcdaf4a4923fe19");
+var clone = require("8fb8aaefb7d4d69c");
 var attrState = "data-pjax-state";
 var formAction = function(el, event) {
     if (isDefaultPrevented(event)) return;
@@ -3627,8 +3624,8 @@ module.exports = function(el) {
     });
 };
 
-},{"f4d7159bd23fdbd6":"kRJvO","a55a5d8dd830938a":"1aUEr"}],"5Pe65":[function(require,module,exports) {
-var forEachEls = require("903439bd6be5db5f");
+},{"fbcdaf4a4923fe19":"aIloz","8fb8aaefb7d4d69c":"bmDlT"}],"8SDHU":[function(require,module,exports) {
+var forEachEls = require("2c183a0090806a7c");
 module.exports = function(selectors, cb, context, DOMcontext) {
     DOMcontext = DOMcontext || document;
     selectors.forEach(function(selector) {
@@ -3636,9 +3633,9 @@ module.exports = function(selectors, cb, context, DOMcontext) {
     });
 };
 
-},{"903439bd6be5db5f":"3YOov"}],"eQWof":[function(require,module,exports) {
-var forEachEls = require("5ed1cc7c3fd76a1b");
-var defaultSwitches = require("7164a3b689d50106");
+},{"2c183a0090806a7c":"9F8Zv"}],"aRXj9":[function(require,module,exports) {
+var forEachEls = require("ec87db8ef24b659a");
+var defaultSwitches = require("4592026a4fdaef5a");
 module.exports = function(switches, switchesOptions, selectors, fromEl, toEl, options) {
     var switchesQueue = [];
     selectors.forEach(function(selector) {
@@ -3659,8 +3656,8 @@ module.exports = function(switches, switchesOptions, selectors, fromEl, toEl, op
     });
 };
 
-},{"5ed1cc7c3fd76a1b":"3YOov","7164a3b689d50106":"6gzMB"}],"uM1v6":[function(require,module,exports) {
-var noop = require("2ba4b781fd868edf");
+},{"ec87db8ef24b659a":"9F8Zv","4592026a4fdaef5a":"1QuhV"}],"3vfSo":[function(require,module,exports) {
+var noop = require("9f720cd57b9e1a68");
 module.exports = function(request) {
     if (request && request.readyState < 4) {
         request.onreadystatechange = noop;
@@ -3668,8 +3665,8 @@ module.exports = function(request) {
     }
 };
 
-},{"2ba4b781fd868edf":"9aQWT"}],"amiOA":[function(require,module,exports) {
-var updateQueryString = require("f8624913b4d3329");
+},{"9f720cd57b9e1a68":"bUdj7"}],"bQsue":[function(require,module,exports) {
+var updateQueryString = require("faaf3b8a50d39f4d");
 module.exports = function(location, options, callback) {
     options = options || {};
     var queryString;
@@ -3726,7 +3723,7 @@ module.exports = function(location, options, callback) {
     return request;
 };
 
-},{"f8624913b4d3329":"kLbRS"}],"kLbRS":[function(require,module,exports) {
+},{"faaf3b8a50d39f4d":"gsiun"}],"gsiun":[function(require,module,exports) {
 module.exports = function(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf("?") !== -1 ? "&" : "?";
@@ -3734,10 +3731,10 @@ module.exports = function(uri, key, value) {
     else return uri + separator + key + "=" + value;
 };
 
-},{}],"fAoar":[function(require,module,exports) {
-var clone = require("2dd6e36ff3c17e6b");
-var newUid = require("d829f45a978d6057");
-var trigger = require("fd5f7e21ff27a09e");
+},{}],"iApWZ":[function(require,module,exports) {
+var clone = require("7fd6b6f2207a3eed");
+var newUid = require("c59be672ae555358");
+var trigger = require("5105749491578d52");
 module.exports = function(responseText, request, href, options) {
     options = clone(options || this.options);
     options.request = request;
@@ -3785,24 +3782,23 @@ module.exports = function(responseText, request, href, options) {
     }
 };
 
-},{"2dd6e36ff3c17e6b":"1aUEr","d829f45a978d6057":"lrlqf","fd5f7e21ff27a09e":"hhf4l"}],"l4XOj":[function(require,module,exports) {
+},{"7fd6b6f2207a3eed":"bmDlT","c59be672ae555358":"eh06k","5105749491578d52":"1ZvYZ"}],"eOCGv":[function(require,module,exports) {
 module.exports = function() {
     // Borrowed wholesale from https://github.com/defunkt/jquery-pjax
     return window.history && window.history.pushState && window.history.replaceState && // pushState isn’t reliable on iOS until 5.
     !navigator.userAgent.match(/((iPod|iPhone|iPad).+\bOS\s+[1-4]\D|WebApps\/.+CFNetwork)/);
 };
 
-},{}],"fdhEw":[function() {},{}],"dy6kG":[function(require,module,exports) {
+},{}],"iESTa":[function() {},{}],"69JYM":[function(require,module,exports) {
 /*!
-  * Bootstrap v5.2.3 (https://getbootstrap.com/)
-  * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v5.3.2 (https://getbootstrap.com/)
+  * Copyright 2011-2023 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */ (function(global, factory) {
-    module.exports = factory(require("9903f0d4ad4b017e"));
+    module.exports = factory(require("1b763573dc3dcc9e"));
 })(this, function(Popper) {
     "use strict";
-    function _interopNamespace(e) {
-        if (e && e.__esModule) return e;
+    function _interopNamespaceDefault(e) {
         const n = Object.create(null, {
             [Symbol.toStringTag]: {
                 value: "Module"
@@ -3820,15 +3816,58 @@ module.exports = function() {
         n.default = e;
         return Object.freeze(n);
     }
-    const Popper__namespace = /*#__PURE__*/ _interopNamespace(Popper);
+    const Popper__namespace = /*#__PURE__*/ _interopNamespaceDefault(Popper);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/index.js
+   * Bootstrap dom/data.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */ /**
+   * Constants
+   */ const elementMap = new Map();
+    const Data = {
+        set (element, key, instance) {
+            if (!elementMap.has(element)) elementMap.set(element, new Map());
+            const instanceMap = elementMap.get(element);
+            // make it clear we only want one instance per element
+            // can be removed later when multiple key/instances are fine to be used
+            if (!instanceMap.has(key) && instanceMap.size !== 0) {
+                // eslint-disable-next-line no-console
+                console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
+                return;
+            }
+            instanceMap.set(key, instance);
+        },
+        get (element, key) {
+            if (elementMap.has(element)) return elementMap.get(element).get(key) || null;
+            return null;
+        },
+        remove (element, key) {
+            if (!elementMap.has(element)) return;
+            const instanceMap = elementMap.get(element);
+            instanceMap.delete(key);
+            // free up element references if there are no instances left for an element
+            if (instanceMap.size === 0) elementMap.delete(element);
+        }
+    };
+    /**
+   * --------------------------------------------------------------------------
+   * Bootstrap util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ const MAX_UID = 1000000;
     const MILLISECONDS_MULTIPLIER = 1000;
-    const TRANSITION_END = "transitionend"; // Shout-out Angus Croll (https://goo.gl/pxwQGp)
+    const TRANSITION_END = "transitionend";
+    /**
+   * Properly escape IDs selectors to handle weird IDs
+   * @param {string} selector
+   * @returns {string}
+   */ const parseSelector = (selector)=>{
+        if (selector && window.CSS && window.CSS.escape) // document.querySelector needs escaping to handle IDs (html5+) containing for instance /
+        selector = selector.replace(/#([^\s"#']+)/g, (match, id)=>`#${CSS.escape(id)}`);
+        return selector;
+    };
+    // Shout-out Angus Croll (https://goo.gl/pxwQGp)
     const toType = (object)=>{
         if (object === null || object === undefined) return `${object}`;
         return Object.prototype.toString.call(object).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -3840,37 +3879,15 @@ module.exports = function() {
         while (document.getElementById(prefix));
         return prefix;
     };
-    const getSelector = (element)=>{
-        let selector = element.getAttribute("data-bs-target");
-        if (!selector || selector === "#") {
-            let hrefAttribute = element.getAttribute("href"); // The only valid content that could double as a selector are IDs or classes,
-            // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
-            // `document.querySelector` will rightfully complain it is invalid.
-            // See https://github.com/twbs/bootstrap/issues/32273
-            if (!hrefAttribute || !hrefAttribute.includes("#") && !hrefAttribute.startsWith(".")) return null;
-             // Just in case some CMS puts out a full URL with the anchor appended
-            if (hrefAttribute.includes("#") && !hrefAttribute.startsWith("#")) hrefAttribute = `#${hrefAttribute.split("#")[1]}`;
-            selector = hrefAttribute && hrefAttribute !== "#" ? hrefAttribute.trim() : null;
-        }
-        return selector;
-    };
-    const getSelectorFromElement = (element)=>{
-        const selector = getSelector(element);
-        if (selector) return document.querySelector(selector) ? selector : null;
-        return null;
-    };
-    const getElementFromSelector = (element)=>{
-        const selector = getSelector(element);
-        return selector ? document.querySelector(selector) : null;
-    };
     const getTransitionDurationFromElement = (element)=>{
         if (!element) return 0;
-         // Get transition-duration of the element
+        // Get transition-duration of the element
         let { transitionDuration, transitionDelay } = window.getComputedStyle(element);
         const floatTransitionDuration = Number.parseFloat(transitionDuration);
-        const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+        const floatTransitionDelay = Number.parseFloat(transitionDelay);
+        // Return 0 if element or transition duration is not found
         if (!floatTransitionDuration && !floatTransitionDelay) return 0;
-         // If multiple durations are defined, take the first
+        // If multiple durations are defined, take the first
         transitionDuration = transitionDuration.split(",")[0];
         transitionDelay = transitionDelay.split(",")[0];
         return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
@@ -3886,12 +3903,13 @@ module.exports = function() {
     const getElement = (object)=>{
         // it's a jQuery object or a node element
         if (isElement(object)) return object.jquery ? object[0] : object;
-        if (typeof object === "string" && object.length > 0) return document.querySelector(object);
+        if (typeof object === "string" && object.length > 0) return document.querySelector(parseSelector(object));
         return null;
     };
     const isVisible = (element)=>{
         if (!isElement(element) || element.getClientRects().length === 0) return false;
-        const elementIsVisible = getComputedStyle(element).getPropertyValue("visibility") === "visible"; // Handle `details` element as its content may falsie appear visible when it is closed
+        const elementIsVisible = getComputedStyle(element).getPropertyValue("visibility") === "visible";
+        // Handle `details` element as its content may falsie appear visible when it is closed
         const closedDetails = element.closest("details:not([open])");
         if (!closedDetails) return elementIsVisible;
         if (closedDetails !== element) {
@@ -3909,13 +3927,13 @@ module.exports = function() {
     };
     const findShadowRoot = (element)=>{
         if (!document.documentElement.attachShadow) return null;
-         // Can find the shadow root otherwise it'll return the document
+        // Can find the shadow root otherwise it'll return the document
         if (typeof element.getRootNode === "function") {
             const root = element.getRootNode();
             return root instanceof ShadowRoot ? root : null;
         }
         if (element instanceof ShadowRoot) return element;
-         // when we don't find a shadow root
+        // when we don't find a shadow root
         if (!element.parentNode) return null;
         return findShadowRoot(element.parentNode);
     };
@@ -3960,8 +3978,8 @@ module.exports = function() {
             }
         });
     };
-    const execute = (callback)=>{
-        if (typeof callback === "function") callback();
+    const execute = (possibleCallback, args = [], defaultValue = possibleCallback)=>{
+        return typeof possibleCallback === "function" ? possibleCallback(...args) : defaultValue;
     };
     const executeAfterTransition = (callback, transitionElement, waitForTransition = true)=>{
         if (!waitForTransition) {
@@ -3992,7 +4010,8 @@ module.exports = function() {
    * @return {Element|elem} The proper element
    */ const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed)=>{
         const listLength = list.length;
-        let index = list.indexOf(activeElement); // if the element does not exist in the list return an element
+        let index = list.indexOf(activeElement);
+        // if the element does not exist in the list return an element
         // depending on the direction and if cycle is allowed
         if (index === -1) return !shouldGetNext && isCycleAllowed ? list[listLength - 1] : list[0];
         index += shouldGetNext ? 1 : -1;
@@ -4001,7 +4020,7 @@ module.exports = function() {
     };
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dom/event-handler.js
+   * Bootstrap dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -4104,7 +4123,8 @@ module.exports = function() {
         return Object.values(events).find((event)=>event.callable === callable && event.delegationSelector === delegationSelector);
     }
     function normalizeParameters(originalTypeEvent, handler, delegationFunction) {
-        const isDelegated = typeof handler === "string"; // todo: tooltip passes `false` instead of selector, so we need to check
+        const isDelegated = typeof handler === "string";
+        // TODO: tooltip passes `false` instead of selector, so we need to check
         const callable = isDelegated ? delegationFunction : handler || delegationFunction;
         let typeEvent = getTypeEvent(originalTypeEvent);
         if (!nativeEvents.has(typeEvent)) typeEvent = originalTypeEvent;
@@ -4116,7 +4136,8 @@ module.exports = function() {
     }
     function addHandler(element, originalTypeEvent, handler, delegationFunction, oneOff) {
         if (typeof originalTypeEvent !== "string" || !element) return;
-        let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction); // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+        let [isDelegated, callable, typeEvent] = normalizeParameters(originalTypeEvent, handler, delegationFunction);
+        // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
         // this prevents the handler from being dispatched the same way as mouseover or mouseout does
         if (originalTypeEvent in customEvents) {
             const wrapFunction = (fn)=>{
@@ -4150,10 +4171,7 @@ module.exports = function() {
     }
     function removeNamespacedHandlers(element, events, typeEvent, namespace) {
         const storeElementEvent = events[typeEvent] || {};
-        for (const handlerKey of Object.keys(storeElementEvent))if (handlerKey.includes(namespace)) {
-            const event = storeElementEvent[handlerKey];
-            removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
-        }
+        for (const [handlerKey, event] of Object.entries(storeElementEvent))if (handlerKey.includes(namespace)) removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
     }
     function getTypeEvent(event) {
         // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
@@ -4181,12 +4199,9 @@ module.exports = function() {
                 return;
             }
             if (isNamespace) for (const elementEvent of Object.keys(events))removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
-            for (const keyHandlers of Object.keys(storeElementEvent)){
+            for (const [keyHandlers, event] of Object.entries(storeElementEvent)){
                 const handlerKey = keyHandlers.replace(stripUidRegex, "");
-                if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
-                    const event = storeElementEvent[keyHandlers];
-                    removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
-                }
+                if (!inNamespace || originalTypeEvent.includes(handlerKey)) removeHandler(element, events, typeEvent, event.callable, event.delegationSelector);
             }
         },
         trigger (element, event, args) {
@@ -4205,19 +4220,18 @@ module.exports = function() {
                 nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
                 defaultPrevented = jQueryEvent.isDefaultPrevented();
             }
-            let evt = new Event(event, {
+            const evt = hydrateObj(new Event(event, {
                 bubbles,
                 cancelable: true
-            });
-            evt = hydrateObj(evt, args);
+            }), args);
             if (defaultPrevented) evt.preventDefault();
             if (nativeDispatch) element.dispatchEvent(evt);
             if (evt.defaultPrevented && jQueryEvent) jQueryEvent.preventDefault();
             return evt;
         }
     };
-    function hydrateObj(obj, meta) {
-        for (const [key, value] of Object.entries(meta || {}))try {
+    function hydrateObj(obj, meta = {}) {
+        for (const [key, value] of Object.entries(meta))try {
             obj[key] = value;
         } catch (_unused) {
             Object.defineProperty(obj, key, {
@@ -4231,38 +4245,7 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dom/data.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */ /**
-   * Constants
-   */ const elementMap = new Map();
-    const Data = {
-        set (element, key, instance) {
-            if (!elementMap.has(element)) elementMap.set(element, new Map());
-            const instanceMap = elementMap.get(element); // make it clear we only want one instance per element
-            // can be removed later when multiple key/instances are fine to be used
-            if (!instanceMap.has(key) && instanceMap.size !== 0) {
-                // eslint-disable-next-line no-console
-                console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
-                return;
-            }
-            instanceMap.set(key, instance);
-        },
-        get (element, key) {
-            if (elementMap.has(element)) return elementMap.get(element).get(key) || null;
-            return null;
-        },
-        remove (element, key) {
-            if (!elementMap.has(element)) return;
-            const instanceMap = elementMap.get(element);
-            instanceMap.delete(key); // free up element references if there are no instances left for an element
-            if (instanceMap.size === 0) elementMap.delete(element);
-        }
-    };
-    /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dom/manipulator.js
+   * Bootstrap dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ function normalizeData(value) {
@@ -4304,7 +4287,7 @@ module.exports = function() {
     };
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/config.js
+   * Bootstrap util/config.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -4339,8 +4322,7 @@ module.exports = function() {
             };
         }
         _typeCheckConfig(config, configTypes = this.constructor.DefaultType) {
-            for (const property of Object.keys(configTypes)){
-                const expectedTypes = configTypes[property];
+            for (const [property, expectedTypes] of Object.entries(configTypes)){
                 const value = config[property];
                 const valueType = isElement(value) ? "element" : toType(value);
                 if (!new RegExp(expectedTypes).test(valueType)) throw new TypeError(`${this.constructor.NAME.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
@@ -4349,12 +4331,12 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): base-component.js
+   * Bootstrap base-component.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
    * Constants
-   */ const VERSION = "5.2.3";
+   */ const VERSION = "5.3.2";
     /**
    * Class definition
    */ class BaseComponent extends Config {
@@ -4366,6 +4348,7 @@ module.exports = function() {
             this._config = this._getConfig(config);
             Data.set(this._element, this.constructor.DATA_KEY, this);
         }
+        // Public
         dispose() {
             Data.remove(this._element, this.constructor.DATA_KEY);
             EventHandler.off(this._element, this.constructor.EVENT_KEY);
@@ -4380,6 +4363,7 @@ module.exports = function() {
             this._typeCheckConfig(config);
             return config;
         }
+        // Static
         static getInstance(element) {
             return Data.get(getElement(element), this.DATA_KEY);
         }
@@ -4401,122 +4385,25 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/component-functions.js
+   * Bootstrap dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
-   */ const enableDismissTrigger = (component, method = "hide")=>{
-        const clickEvent = `click.dismiss${component.EVENT_KEY}`;
-        const name = component.NAME;
-        EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
-            if ([
-                "A",
-                "AREA"
-            ].includes(this.tagName)) event.preventDefault();
-            if (isDisabled(this)) return;
-            const target = getElementFromSelector(this) || this.closest(`.${name}`);
-            const instance = component.getOrCreateInstance(target); // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
-            instance[method]();
-        });
+   */ const getSelector = (element)=>{
+        let selector = element.getAttribute("data-bs-target");
+        if (!selector || selector === "#") {
+            let hrefAttribute = element.getAttribute("href");
+            // The only valid content that could double as a selector are IDs or classes,
+            // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+            // `document.querySelector` will rightfully complain it is invalid.
+            // See https://github.com/twbs/bootstrap/issues/32273
+            if (!hrefAttribute || !hrefAttribute.includes("#") && !hrefAttribute.startsWith(".")) return null;
+            // Just in case some CMS puts out a full URL with the anchor appended
+            if (hrefAttribute.includes("#") && !hrefAttribute.startsWith("#")) hrefAttribute = `#${hrefAttribute.split("#")[1]}`;
+            selector = hrefAttribute && hrefAttribute !== "#" ? parseSelector(hrefAttribute.trim()) : null;
+        }
+        return selector;
     };
-    /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): alert.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */ /**
-   * Constants
-   */ const NAME$f = "alert";
-    const DATA_KEY$a = "bs.alert";
-    const EVENT_KEY$b = `.${DATA_KEY$a}`;
-    const EVENT_CLOSE = `close${EVENT_KEY$b}`;
-    const EVENT_CLOSED = `closed${EVENT_KEY$b}`;
-    const CLASS_NAME_FADE$5 = "fade";
-    const CLASS_NAME_SHOW$8 = "show";
-    /**
-   * Class definition
-   */ class Alert extends BaseComponent {
-        // Getters
-        static get NAME() {
-            return NAME$f;
-        }
-        close() {
-            const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
-            if (closeEvent.defaultPrevented) return;
-            this._element.classList.remove(CLASS_NAME_SHOW$8);
-            const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
-            this._queueCallback(()=>this._destroyElement(), this._element, isAnimated);
-        }
-        _destroyElement() {
-            this._element.remove();
-            EventHandler.trigger(this._element, EVENT_CLOSED);
-            this.dispose();
-        }
-        static jQueryInterface(config) {
-            return this.each(function() {
-                const data = Alert.getOrCreateInstance(this);
-                if (typeof config !== "string") return;
-                if (data[config] === undefined || config.startsWith("_") || config === "constructor") throw new TypeError(`No method named "${config}"`);
-                data[config](this);
-            });
-        }
-    }
-    /**
-   * Data API implementation
-   */ enableDismissTrigger(Alert, "close");
-    /**
-   * jQuery
-   */ defineJQueryPlugin(Alert);
-    /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): button.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */ /**
-   * Constants
-   */ const NAME$e = "button";
-    const DATA_KEY$9 = "bs.button";
-    const EVENT_KEY$a = `.${DATA_KEY$9}`;
-    const DATA_API_KEY$6 = ".data-api";
-    const CLASS_NAME_ACTIVE$3 = "active";
-    const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="button"]';
-    const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
-    /**
-   * Class definition
-   */ class Button extends BaseComponent {
-        // Getters
-        static get NAME() {
-            return NAME$e;
-        }
-        toggle() {
-            // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
-            this._element.setAttribute("aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
-        }
-        static jQueryInterface(config) {
-            return this.each(function() {
-                const data = Button.getOrCreateInstance(this);
-                if (config === "toggle") data[config]();
-            });
-        }
-    }
-    /**
-   * Data API implementation
-   */ EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, (event)=>{
-        event.preventDefault();
-        const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
-        const data = Button.getOrCreateInstance(button);
-        data.toggle();
-    });
-    /**
-   * jQuery
-   */ defineJQueryPlugin(Button);
-    /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dom/selector-engine.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */ /**
-   * Constants
-   */ const SelectorEngine = {
+    const SelectorEngine = {
         find (selector, element = document.documentElement) {
             return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
         },
@@ -4568,11 +4455,140 @@ module.exports = function() {
                 '[contenteditable="true"]'
             ].map((selector)=>`${selector}:not([tabindex^="-"])`).join(",");
             return this.find(focusables, element).filter((el)=>!isDisabled(el) && isVisible(el));
+        },
+        getSelectorFromElement (element) {
+            const selector = getSelector(element);
+            if (selector) return SelectorEngine.findOne(selector) ? selector : null;
+            return null;
+        },
+        getElementFromSelector (element) {
+            const selector = getSelector(element);
+            return selector ? SelectorEngine.findOne(selector) : null;
+        },
+        getMultipleElementsFromSelector (element) {
+            const selector = getSelector(element);
+            return selector ? SelectorEngine.find(selector) : [];
         }
     };
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/swipe.js
+   * Bootstrap util/component-functions.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */ const enableDismissTrigger = (component, method = "hide")=>{
+        const clickEvent = `click.dismiss${component.EVENT_KEY}`;
+        const name = component.NAME;
+        EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function(event) {
+            if ([
+                "A",
+                "AREA"
+            ].includes(this.tagName)) event.preventDefault();
+            if (isDisabled(this)) return;
+            const target = SelectorEngine.getElementFromSelector(this) || this.closest(`.${name}`);
+            const instance = component.getOrCreateInstance(target);
+            // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
+            instance[method]();
+        });
+    };
+    /**
+   * --------------------------------------------------------------------------
+   * Bootstrap alert.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */ /**
+   * Constants
+   */ const NAME$f = "alert";
+    const DATA_KEY$a = "bs.alert";
+    const EVENT_KEY$b = `.${DATA_KEY$a}`;
+    const EVENT_CLOSE = `close${EVENT_KEY$b}`;
+    const EVENT_CLOSED = `closed${EVENT_KEY$b}`;
+    const CLASS_NAME_FADE$5 = "fade";
+    const CLASS_NAME_SHOW$8 = "show";
+    /**
+   * Class definition
+   */ class Alert extends BaseComponent {
+        // Getters
+        static get NAME() {
+            return NAME$f;
+        }
+        // Public
+        close() {
+            const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+            if (closeEvent.defaultPrevented) return;
+            this._element.classList.remove(CLASS_NAME_SHOW$8);
+            const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
+            this._queueCallback(()=>this._destroyElement(), this._element, isAnimated);
+        }
+        // Private
+        _destroyElement() {
+            this._element.remove();
+            EventHandler.trigger(this._element, EVENT_CLOSED);
+            this.dispose();
+        }
+        // Static
+        static jQueryInterface(config) {
+            return this.each(function() {
+                const data = Alert.getOrCreateInstance(this);
+                if (typeof config !== "string") return;
+                if (data[config] === undefined || config.startsWith("_") || config === "constructor") throw new TypeError(`No method named "${config}"`);
+                data[config](this);
+            });
+        }
+    }
+    /**
+   * Data API implementation
+   */ enableDismissTrigger(Alert, "close");
+    /**
+   * jQuery
+   */ defineJQueryPlugin(Alert);
+    /**
+   * --------------------------------------------------------------------------
+   * Bootstrap button.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */ /**
+   * Constants
+   */ const NAME$e = "button";
+    const DATA_KEY$9 = "bs.button";
+    const EVENT_KEY$a = `.${DATA_KEY$9}`;
+    const DATA_API_KEY$6 = ".data-api";
+    const CLASS_NAME_ACTIVE$3 = "active";
+    const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="button"]';
+    const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+    /**
+   * Class definition
+   */ class Button extends BaseComponent {
+        // Getters
+        static get NAME() {
+            return NAME$e;
+        }
+        // Public
+        toggle() {
+            // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
+            this._element.setAttribute("aria-pressed", this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
+        }
+        // Static
+        static jQueryInterface(config) {
+            return this.each(function() {
+                const data = Button.getOrCreateInstance(this);
+                if (config === "toggle") data[config]();
+            });
+        }
+    }
+    /**
+   * Data API implementation
+   */ EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, (event)=>{
+        event.preventDefault();
+        const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
+        const data = Button.getOrCreateInstance(button);
+        data.toggle();
+    });
+    /**
+   * jQuery
+   */ defineJQueryPlugin(Button);
+    /**
+   * --------------------------------------------------------------------------
+   * Bootstrap util/swipe.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -4610,6 +4626,7 @@ module.exports = function() {
             this._supportPointerEvents = Boolean(window.PointerEvent);
             this._initEvents();
         }
+        // Getters
         static get Default() {
             return Default$c;
         }
@@ -4619,9 +4636,11 @@ module.exports = function() {
         static get NAME() {
             return NAME$d;
         }
+        // Public
         dispose() {
             EventHandler.off(this._element, EVENT_KEY$9);
         }
+        // Private
         _start(event) {
             if (!this._supportPointerEvents) {
                 this._deltaX = event.touches[0].clientX;
@@ -4659,13 +4678,14 @@ module.exports = function() {
         _eventIsPointerPenTouch(event) {
             return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
         }
+        // Static
         static isSupported() {
             return "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0;
         }
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): carousel.js
+   * Bootstrap carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -4738,6 +4758,7 @@ module.exports = function() {
             this._addEventListeners();
             if (this._config.ride === CLASS_NAME_CAROUSEL) this.cycle();
         }
+        // Getters
         static get Default() {
             return Default$b;
         }
@@ -4747,6 +4768,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$c;
         }
+        // Public
         next() {
             this._slide(ORDER_NEXT);
         }
@@ -4792,6 +4814,7 @@ module.exports = function() {
             if (this._swipeHelper) this._swipeHelper.dispose();
             super.dispose();
         }
+        // Private
         _configAfterMerge(config) {
             config.defaultInterval = config.interval;
             return config;
@@ -4808,7 +4831,7 @@ module.exports = function() {
             for (const img of SelectorEngine.find(SELECTOR_ITEM_IMG, this._element))EventHandler.on(img, EVENT_DRAG_START, (event)=>event.preventDefault());
             const endCallBack = ()=>{
                 if (this._config.pause !== "hover") return;
-                 // If it's a touch-enabled device, mouseenter/leave are fired as
+                // If it's a touch-enabled device, mouseenter/leave are fired as
                 // part of the mouse compatibility events on first tap - the carousel
                 // would stop cycling until user tapped out of it;
                 // here, we listen for touchend, explicitly pause the carousel
@@ -4872,7 +4895,7 @@ module.exports = function() {
             const slideEvent = triggerEvent(EVENT_SLIDE);
             if (slideEvent.defaultPrevented) return;
             if (!activeElement || !nextElement) // Some weirdness is happening, so we bail
-            // todo: change tests that use empty divs to avoid this check
+            // TODO: change tests that use empty divs to avoid this check
             return;
             const isCycling = Boolean(this._interval);
             this.pause();
@@ -4918,6 +4941,7 @@ module.exports = function() {
             if (isRTL()) return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT;
             return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Carousel.getOrCreateInstance(this, config);
@@ -4935,7 +4959,7 @@ module.exports = function() {
     /**
    * Data API implementation
    */ EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, function(event) {
-        const target = getElementFromSelector(this);
+        const target = SelectorEngine.getElementFromSelector(this);
         if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) return;
         event.preventDefault();
         const carousel = Carousel.getOrCreateInstance(target);
@@ -4962,7 +4986,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Carousel);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): collapse.js
+   * Bootstrap collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5003,7 +5027,7 @@ module.exports = function() {
             this._triggerArray = [];
             const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$4);
             for (const elem of toggleList){
-                const selector = getSelectorFromElement(elem);
+                const selector = SelectorEngine.getSelectorFromElement(elem);
                 const filterElement = SelectorEngine.find(selector).filter((foundElement)=>foundElement === this._element);
                 if (selector !== null && filterElement.length) this._triggerArray.push(elem);
             }
@@ -5011,6 +5035,7 @@ module.exports = function() {
             if (!this._config.parent) this._addAriaAndCollapsedClass(this._triggerArray, this._isShown());
             if (this._config.toggle) this.toggle();
         }
+        // Getters
         static get Default() {
             return Default$a;
         }
@@ -5020,13 +5045,15 @@ module.exports = function() {
         static get NAME() {
             return NAME$b;
         }
+        // Public
         toggle() {
             if (this._isShown()) this.hide();
             else this.show();
         }
         show() {
             if (this._isTransitioning || this._isShown()) return;
-            let activeChildren = []; // find active children
+            let activeChildren = [];
+            // find active children
             if (this._config.parent) activeChildren = this._getFirstLevelChildren(SELECTOR_ACTIVES).filter((element)=>element !== this._element).map((element)=>Collapse.getOrCreateInstance(element, {
                     toggle: false
                 }));
@@ -5062,7 +5089,7 @@ module.exports = function() {
             this._element.classList.add(CLASS_NAME_COLLAPSING);
             this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
             for (const trigger of this._triggerArray){
-                const element = getElementFromSelector(trigger);
+                const element = SelectorEngine.getElementFromSelector(trigger);
                 if (element && !this._isShown(element)) this._addAriaAndCollapsedClass([
                     trigger
                 ], false);
@@ -5080,6 +5107,7 @@ module.exports = function() {
         _isShown(element = this._element) {
             return element.classList.contains(CLASS_NAME_SHOW$7);
         }
+        // Private
         _configAfterMerge(config) {
             config.toggle = Boolean(config.toggle); // Coerce string values
             config.parent = getElement(config.parent);
@@ -5092,14 +5120,15 @@ module.exports = function() {
             if (!this._config.parent) return;
             const children = this._getFirstLevelChildren(SELECTOR_DATA_TOGGLE$4);
             for (const element of children){
-                const selected = getElementFromSelector(element);
+                const selected = SelectorEngine.getElementFromSelector(element);
                 if (selected) this._addAriaAndCollapsedClass([
                     element
                 ], this._isShown(selected));
             }
         }
         _getFirstLevelChildren(selector) {
-            const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent); // remove children if greater depth
+            const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
+            // remove children if greater depth
             return SelectorEngine.find(selector, this._config.parent).filter((element)=>!children.includes(element));
         }
         _addAriaAndCollapsedClass(triggerArray, isOpen) {
@@ -5109,6 +5138,7 @@ module.exports = function() {
                 element.setAttribute("aria-expanded", isOpen);
             }
         }
+        // Static
         static jQueryInterface(config) {
             const _config = {};
             if (typeof config === "string" && /show|hide/.test(config)) _config.toggle = false;
@@ -5126,9 +5156,7 @@ module.exports = function() {
    */ EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function(event) {
         // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
         if (event.target.tagName === "A" || event.delegateTarget && event.delegateTarget.tagName === "A") event.preventDefault();
-        const selector = getSelectorFromElement(this);
-        const selectorElements = SelectorEngine.find(selector);
-        for (const element of selectorElements)Collapse.getOrCreateInstance(element, {
+        for (const element of SelectorEngine.getMultipleElementsFromSelector(this))Collapse.getOrCreateInstance(element, {
             toggle: false
         }).toggle();
     });
@@ -5137,7 +5165,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Collapse);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): dropdown.js
+   * Bootstrap dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5204,10 +5232,11 @@ module.exports = function() {
             super(element, config);
             this._popper = null;
             this._parent = this._element.parentNode; // dropdown wrapper
-            // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+            // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
             this._menu = SelectorEngine.next(this._element, SELECTOR_MENU)[0] || SelectorEngine.prev(this._element, SELECTOR_MENU)[0] || SelectorEngine.findOne(SELECTOR_MENU, this._parent);
             this._inNavbar = this._detectNavbar();
         }
+        // Getters
         static get Default() {
             return Default$9;
         }
@@ -5217,6 +5246,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$a;
         }
+        // Public
         toggle() {
             return this._isShown() ? this.hide() : this.show();
         }
@@ -5227,7 +5257,8 @@ module.exports = function() {
             };
             const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$5, relatedTarget);
             if (showEvent.defaultPrevented) return;
-            this._createPopper(); // If this is a touch-enabled device we add extra
+            this._createPopper();
+            // If this is a touch-enabled device we add extra
             // empty mouseover listeners to the body's immediate children;
             // only needed because of broken event delegation on iOS
             // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
@@ -5253,10 +5284,11 @@ module.exports = function() {
             this._inNavbar = this._detectNavbar();
             if (this._popper) this._popper.update();
         }
+        // Private
         _completeHide(relatedTarget) {
             const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$5, relatedTarget);
             if (hideEvent.defaultPrevented) return;
-             // If this is a touch-enabled device we remove the extra
+            // If this is a touch-enabled device we remove the extra
             // empty mouseover listeners we added for iOS support
             if ("ontouchstart" in document.documentElement) for (const element of [].concat(...document.body.children))EventHandler.off(element, "mouseover", noop);
             if (this._popper) this._popper.destroy();
@@ -5290,7 +5322,7 @@ module.exports = function() {
             if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) return PLACEMENT_LEFT;
             if (parentDropdown.classList.contains(CLASS_NAME_DROPUP_CENTER)) return PLACEMENT_TOPCENTER;
             if (parentDropdown.classList.contains(CLASS_NAME_DROPDOWN_CENTER)) return PLACEMENT_BOTTOMCENTER;
-             // We need to trim the value because custom properties can also include spaces
+            // We need to trim the value because custom properties can also include spaces
             const isEnd = getComputedStyle(this._menu).getPropertyValue("--bs-position").trim() === "end";
             if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
             return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
@@ -5321,9 +5353,10 @@ module.exports = function() {
                         }
                     }
                 ]
-            }; // Disable Popper if we have a static display or Dropdown is in Navbar
+            };
+            // Disable Popper if we have a static display or Dropdown is in Navbar
             if (this._inNavbar || this._config.display === "static") {
-                Manipulator.setDataAttribute(this._menu, "popper", "static"); // todo:v6 remove
+                Manipulator.setDataAttribute(this._menu, "popper", "static"); // TODO: v6 remove
                 defaultBsPopperConfig.modifiers = [
                     {
                         name: "applyStyles",
@@ -5333,16 +5366,19 @@ module.exports = function() {
             }
             return {
                 ...defaultBsPopperConfig,
-                ...typeof this._config.popperConfig === "function" ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig
+                ...execute(this._config.popperConfig, [
+                    defaultBsPopperConfig
+                ])
             };
         }
         _selectMenuItem({ key, target }) {
             const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter((element)=>isVisible(element));
             if (!items.length) return;
-             // if target isn't included in items (e.g. when expanding the dropdown)
+            // if target isn't included in items (e.g. when expanding the dropdown)
             // allow cycling to get the last item in case key equals ARROW_UP_KEY
             getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Dropdown.getOrCreateInstance(this, config);
@@ -5360,7 +5396,7 @@ module.exports = function() {
                 const composedPath = event.composedPath();
                 const isMenuTarget = composedPath.includes(context._menu);
                 if (composedPath.includes(context._element) || context._config.autoClose === "inside" && !isMenuTarget || context._config.autoClose === "outside" && isMenuTarget) continue;
-                 // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+                // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
                 if (context._menu.contains(event.target) && (event.type === "keyup" && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) continue;
                 const relatedTarget = {
                     relatedTarget: context._element
@@ -5380,7 +5416,8 @@ module.exports = function() {
             ].includes(event.key);
             if (!isUpOrDownEvent && !isEscapeEvent) return;
             if (isInput && !isEscapeEvent) return;
-            event.preventDefault(); // todo: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.2/forms/input-group/
+            event.preventDefault();
+            // TODO: v6 revert #37011 & change markup https://getbootstrap.com/docs/5.3/forms/input-group/
             const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$3) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$3)[0] || SelectorEngine.next(this, SELECTOR_DATA_TOGGLE$3)[0] || SelectorEngine.findOne(SELECTOR_DATA_TOGGLE$3, event.delegateTarget.parentNode);
             const instance = Dropdown.getOrCreateInstance(getToggleButton);
             if (isUpOrDownEvent) {
@@ -5412,83 +5449,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Dropdown);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/scrollBar.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */ /**
-   * Constants
-   */ const SELECTOR_FIXED_CONTENT = ".fixed-top, .fixed-bottom, .is-fixed, .sticky-top";
-    const SELECTOR_STICKY_CONTENT = ".sticky-top";
-    const PROPERTY_PADDING = "padding-right";
-    const PROPERTY_MARGIN = "margin-right";
-    /**
-   * Class definition
-   */ class ScrollBarHelper {
-        constructor(){
-            this._element = document.body;
-        }
-        getWidth() {
-            // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
-            const documentWidth = document.documentElement.clientWidth;
-            return Math.abs(window.innerWidth - documentWidth);
-        }
-        hide() {
-            const width = this.getWidth();
-            this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
-            this._setElementAttributes(this._element, PROPERTY_PADDING, (calculatedValue)=>calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
-            this._setElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING, (calculatedValue)=>calculatedValue + width);
-            this._setElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN, (calculatedValue)=>calculatedValue - width);
-        }
-        reset() {
-            this._resetElementAttributes(this._element, "overflow");
-            this._resetElementAttributes(this._element, PROPERTY_PADDING);
-            this._resetElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING);
-            this._resetElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN);
-        }
-        isOverflowing() {
-            return this.getWidth() > 0;
-        }
-        _disableOverFlow() {
-            this._saveInitialAttribute(this._element, "overflow");
-            this._element.style.overflow = "hidden";
-        }
-        _setElementAttributes(selector, styleProperty, callback) {
-            const scrollbarWidth = this.getWidth();
-            const manipulationCallBack = (element)=>{
-                if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) return;
-                this._saveInitialAttribute(element, styleProperty);
-                const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
-                element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
-            };
-            this._applyManipulationCallback(selector, manipulationCallBack);
-        }
-        _saveInitialAttribute(element, styleProperty) {
-            const actualValue = element.style.getPropertyValue(styleProperty);
-            if (actualValue) Manipulator.setDataAttribute(element, styleProperty, actualValue);
-        }
-        _resetElementAttributes(selector, styleProperty) {
-            const manipulationCallBack = (element)=>{
-                const value = Manipulator.getDataAttribute(element, styleProperty); // We only want to remove the property if the value is `null`; the value can also be zero
-                if (value === null) {
-                    element.style.removeProperty(styleProperty);
-                    return;
-                }
-                Manipulator.removeDataAttribute(element, styleProperty);
-                element.style.setProperty(styleProperty, value);
-            };
-            this._applyManipulationCallback(selector, manipulationCallBack);
-        }
-        _applyManipulationCallback(selector, callBack) {
-            if (isElement(selector)) {
-                callBack(selector);
-                return;
-            }
-            for (const sel of SelectorEngine.find(selector, this._element))callBack(sel);
-        }
-    }
-    /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/backdrop.js
+   * Bootstrap util/backdrop.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5521,6 +5482,7 @@ module.exports = function() {
             this._isAppended = false;
             this._element = null;
         }
+        // Getters
         static get Default() {
             return Default$8;
         }
@@ -5530,6 +5492,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$9;
         }
+        // Public
         show(callback) {
             if (!this._config.isVisible) {
                 execute(callback);
@@ -5560,6 +5523,7 @@ module.exports = function() {
             this._element.remove();
             this._isAppended = false;
         }
+        // Private
         _getElement() {
             if (!this._element) {
                 const backdrop = document.createElement("div");
@@ -5589,7 +5553,7 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/focustrap.js
+   * Bootstrap util/focustrap.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5619,6 +5583,7 @@ module.exports = function() {
             this._isActive = false;
             this._lastTabNavDirection = null;
         }
+        // Getters
         static get Default() {
             return Default$7;
         }
@@ -5628,6 +5593,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$8;
         }
+        // Public
         activate() {
             if (this._isActive) return;
             if (this._config.autofocus) this._config.trapElement.focus();
@@ -5641,6 +5607,7 @@ module.exports = function() {
             this._isActive = false;
             EventHandler.off(document, EVENT_KEY$5);
         }
+        // Private
         _handleFocusin(event) {
             const { trapElement } = this._config;
             if (event.target === document || event.target === trapElement || trapElement.contains(event.target)) return;
@@ -5656,7 +5623,88 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): modal.js
+   * Bootstrap util/scrollBar.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+   * --------------------------------------------------------------------------
+   */ /**
+   * Constants
+   */ const SELECTOR_FIXED_CONTENT = ".fixed-top, .fixed-bottom, .is-fixed, .sticky-top";
+    const SELECTOR_STICKY_CONTENT = ".sticky-top";
+    const PROPERTY_PADDING = "padding-right";
+    const PROPERTY_MARGIN = "margin-right";
+    /**
+   * Class definition
+   */ class ScrollBarHelper {
+        constructor(){
+            this._element = document.body;
+        }
+        // Public
+        getWidth() {
+            // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+            const documentWidth = document.documentElement.clientWidth;
+            return Math.abs(window.innerWidth - documentWidth);
+        }
+        hide() {
+            const width = this.getWidth();
+            this._disableOverFlow();
+            // give padding to element to balance the hidden scrollbar width
+            this._setElementAttributes(this._element, PROPERTY_PADDING, (calculatedValue)=>calculatedValue + width);
+            // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
+            this._setElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING, (calculatedValue)=>calculatedValue + width);
+            this._setElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN, (calculatedValue)=>calculatedValue - width);
+        }
+        reset() {
+            this._resetElementAttributes(this._element, "overflow");
+            this._resetElementAttributes(this._element, PROPERTY_PADDING);
+            this._resetElementAttributes(SELECTOR_FIXED_CONTENT, PROPERTY_PADDING);
+            this._resetElementAttributes(SELECTOR_STICKY_CONTENT, PROPERTY_MARGIN);
+        }
+        isOverflowing() {
+            return this.getWidth() > 0;
+        }
+        // Private
+        _disableOverFlow() {
+            this._saveInitialAttribute(this._element, "overflow");
+            this._element.style.overflow = "hidden";
+        }
+        _setElementAttributes(selector, styleProperty, callback) {
+            const scrollbarWidth = this.getWidth();
+            const manipulationCallBack = (element)=>{
+                if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) return;
+                this._saveInitialAttribute(element, styleProperty);
+                const calculatedValue = window.getComputedStyle(element).getPropertyValue(styleProperty);
+                element.style.setProperty(styleProperty, `${callback(Number.parseFloat(calculatedValue))}px`);
+            };
+            this._applyManipulationCallback(selector, manipulationCallBack);
+        }
+        _saveInitialAttribute(element, styleProperty) {
+            const actualValue = element.style.getPropertyValue(styleProperty);
+            if (actualValue) Manipulator.setDataAttribute(element, styleProperty, actualValue);
+        }
+        _resetElementAttributes(selector, styleProperty) {
+            const manipulationCallBack = (element)=>{
+                const value = Manipulator.getDataAttribute(element, styleProperty);
+                // We only want to remove the property if the value is `null`; the value can also be zero
+                if (value === null) {
+                    element.style.removeProperty(styleProperty);
+                    return;
+                }
+                Manipulator.removeDataAttribute(element, styleProperty);
+                element.style.setProperty(styleProperty, value);
+            };
+            this._applyManipulationCallback(selector, manipulationCallBack);
+        }
+        _applyManipulationCallback(selector, callBack) {
+            if (isElement(selector)) {
+                callBack(selector);
+                return;
+            }
+            for (const sel of SelectorEngine.find(selector, this._element))callBack(sel);
+        }
+    }
+    /**
+   * --------------------------------------------------------------------------
+   * Bootstrap modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5707,6 +5755,7 @@ module.exports = function() {
             this._scrollBar = new ScrollBarHelper();
             this._addEventListeners();
         }
+        // Getters
         static get Default() {
             return Default$6;
         }
@@ -5716,6 +5765,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$7;
         }
+        // Public
         toggle(relatedTarget) {
             return this._isShown ? this.hide() : this.show(relatedTarget);
         }
@@ -5743,10 +5793,8 @@ module.exports = function() {
             this._queueCallback(()=>this._hideModal(), this._element, this._isAnimated());
         }
         dispose() {
-            for (const htmlElement of [
-                window,
-                this._dialog
-            ])EventHandler.off(htmlElement, EVENT_KEY$4);
+            EventHandler.off(window, EVENT_KEY$4);
+            EventHandler.off(this._dialog, EVENT_KEY$4);
             this._backdrop.dispose();
             this._focustrap.deactivate();
             super.dispose();
@@ -5754,6 +5802,7 @@ module.exports = function() {
         handleUpdate() {
             this._adjustDialog();
         }
+        // Private
         _initializeBackDrop() {
             return new Backdrop({
                 isVisible: Boolean(this._config.backdrop),
@@ -5791,7 +5840,6 @@ module.exports = function() {
             EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS$1, (event)=>{
                 if (event.key !== ESCAPE_KEY$1) return;
                 if (this._config.keyboard) {
-                    event.preventDefault();
                     this.hide();
                     return;
                 }
@@ -5832,7 +5880,8 @@ module.exports = function() {
             const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED$1);
             if (hideEvent.defaultPrevented) return;
             const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
-            const initialOverflowY = this._element.style.overflowY; // return if the following background transition hasn't yet completed
+            const initialOverflowY = this._element.style.overflowY;
+            // return if the following background transition hasn't yet completed
             if (initialOverflowY === "hidden" || this._element.classList.contains(CLASS_NAME_STATIC)) return;
             if (!isModalOverflowing) this._element.style.overflowY = "hidden";
             this._element.classList.add(CLASS_NAME_STATIC);
@@ -5863,6 +5912,7 @@ module.exports = function() {
             this._element.style.paddingLeft = "";
             this._element.style.paddingRight = "";
         }
+        // Static
         static jQueryInterface(config, relatedTarget) {
             return this.each(function() {
                 const data = Modal.getOrCreateInstance(this, config);
@@ -5875,7 +5925,7 @@ module.exports = function() {
     /**
    * Data API implementation
    */ EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function(event) {
-        const target = getElementFromSelector(this);
+        const target = SelectorEngine.getElementFromSelector(this);
         if ([
             "A",
             "AREA"
@@ -5886,7 +5936,8 @@ module.exports = function() {
             EventHandler.one(target, EVENT_HIDDEN$4, ()=>{
                 if (isVisible(this)) this.focus();
             });
-        }); // avoid conflict when clicking modal toggler while another one is open
+        });
+        // avoid conflict when clicking modal toggler while another one is open
         const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR$1);
         if (alreadyOpen) Modal.getInstance(alreadyOpen).hide();
         const data = Modal.getOrCreateInstance(target);
@@ -5898,7 +5949,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Modal);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): offcanvas.js
+   * Bootstrap offcanvas.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -5943,6 +5994,7 @@ module.exports = function() {
             this._focustrap = this._initializeFocusTrap();
             this._addEventListeners();
         }
+        // Getters
         static get Default() {
             return Default$5;
         }
@@ -5952,6 +6004,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$6;
         }
+        // Public
         toggle(relatedTarget) {
             return this._isShown ? this.hide() : this.show(relatedTarget);
         }
@@ -6000,6 +6053,7 @@ module.exports = function() {
             this._focustrap.deactivate();
             super.dispose();
         }
+        // Private
         _initializeBackDrop() {
             const clickCallback = ()=>{
                 if (this._config.backdrop === "static") {
@@ -6007,7 +6061,8 @@ module.exports = function() {
                     return;
                 }
                 this.hide();
-            }; // 'static' option will be translated to true, and booleans will keep their value
+            };
+            // 'static' option will be translated to true, and booleans will keep their value
             const isVisible = Boolean(this._config.backdrop);
             return new Backdrop({
                 className: CLASS_NAME_BACKDROP,
@@ -6025,13 +6080,14 @@ module.exports = function() {
         _addEventListeners() {
             EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, (event)=>{
                 if (event.key !== ESCAPE_KEY) return;
-                if (!this._config.keyboard) {
-                    EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
+                if (this._config.keyboard) {
+                    this.hide();
                     return;
                 }
-                this.hide();
+                EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
             });
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Offcanvas.getOrCreateInstance(this, config);
@@ -6044,7 +6100,7 @@ module.exports = function() {
     /**
    * Data API implementation
    */ EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function(event) {
-        const target = getElementFromSelector(this);
+        const target = SelectorEngine.getElementFromSelector(this);
         if ([
             "A",
             "AREA"
@@ -6053,7 +6109,8 @@ module.exports = function() {
         EventHandler.one(target, EVENT_HIDDEN$3, ()=>{
             // focus on trigger when it is closed
             if (isVisible(this)) this.focus();
-        }); // avoid conflict when clicking a toggler of an offcanvas, while another is open
+        });
+        // avoid conflict when clicking a toggler of an offcanvas, while another is open
         const alreadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
         if (alreadyOpen && alreadyOpen !== target) Offcanvas.getInstance(alreadyOpen).hide();
         const data = Offcanvas.getOrCreateInstance(target);
@@ -6071,38 +6128,11 @@ module.exports = function() {
    */ defineJQueryPlugin(Offcanvas);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/sanitizer.js
+   * Bootstrap util/sanitizer.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
-   */ const uriAttributes = new Set([
-        "background",
-        "cite",
-        "href",
-        "itemtype",
-        "longdesc",
-        "poster",
-        "src",
-        "xlink:href"
-    ]);
+   */ // js-docs-start allow-list
     const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
-    /**
-   * A pattern that recognizes a commonly useful subset of URLs that are safe.
-   *
-   * Shout-out to Angular https://github.com/angular/angular/blob/12.2.x/packages/core/src/sanitization/url_sanitizer.ts
-   */ const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file|sms):|[^#&/:?]*(?:[#/?]|$))/i;
-    /**
-   * A pattern that matches safe data URLs. Only matches image, video and audio types.
-   *
-   * Shout-out to Angular https://github.com/angular/angular/blob/12.2.x/packages/core/src/sanitization/url_sanitizer.ts
-   */ const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i;
-    const allowedAttribute = (attribute, allowedAttributeList)=>{
-        const attributeName = attribute.nodeName.toLowerCase();
-        if (allowedAttributeList.includes(attributeName)) {
-            if (uriAttributes.has(attributeName)) return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue) || DATA_URL_PATTERN.test(attribute.nodeValue));
-            return true;
-        } // Check if a regular expression validates the attribute.
-        return allowedAttributeList.filter((attributeRegex)=>attributeRegex instanceof RegExp).some((regex)=>regex.test(attributeName));
-    };
     const DefaultAllowlist = {
         // Global attributes allowed on any supplied element below.
         "*": [
@@ -6155,6 +6185,33 @@ module.exports = function() {
         u: [],
         ul: []
     };
+    // js-docs-end allow-list
+    const uriAttributes = new Set([
+        "background",
+        "cite",
+        "href",
+        "itemtype",
+        "longdesc",
+        "poster",
+        "src",
+        "xlink:href"
+    ]);
+    /**
+   * A pattern that recognizes URLs that are safe wrt. XSS in URL navigation
+   * contexts.
+   *
+   * Shout-out to Angular https://github.com/angular/angular/blob/15.2.8/packages/core/src/sanitization/url_sanitizer.ts#L38
+   */ // eslint-disable-next-line unicorn/better-regex
+    const SAFE_URL_PATTERN = /^(?!javascript:)(?:[a-z0-9+.-]+:|[^&:/?#]*(?:[/?#]|$))/i;
+    const allowedAttribute = (attribute, allowedAttributeList)=>{
+        const attributeName = attribute.nodeName.toLowerCase();
+        if (allowedAttributeList.includes(attributeName)) {
+            if (uriAttributes.has(attributeName)) return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue));
+            return true;
+        }
+        // Check if a regular expression validates the attribute.
+        return allowedAttributeList.filter((attributeRegex)=>attributeRegex instanceof RegExp).some((regex)=>regex.test(attributeName));
+    };
     function sanitizeHtml(unsafeHtml, allowList, sanitizeFunction) {
         if (!unsafeHtml.length) return unsafeHtml;
         if (sanitizeFunction && typeof sanitizeFunction === "function") return sanitizeFunction(unsafeHtml);
@@ -6175,7 +6232,7 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): util/template-factory.js
+   * Bootstrap util/template-factory.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -6211,6 +6268,7 @@ module.exports = function() {
             super();
             this._config = this._getConfig(config);
         }
+        // Getters
         static get Default() {
             return Default$4;
         }
@@ -6220,6 +6278,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$5;
         }
+        // Public
         getContent() {
             return Object.values(this._config.content).map((config)=>this._resolvePossibleFunction(config)).filter(Boolean);
         }
@@ -6243,6 +6302,7 @@ module.exports = function() {
             if (extraClass) template.classList.add(...extraClass.split(" "));
             return template;
         }
+        // Private
         _typeCheckConfig(config) {
             super._typeCheckConfig(config);
             this._checkContent(config.content);
@@ -6275,7 +6335,9 @@ module.exports = function() {
             return this._config.sanitize ? sanitizeHtml(arg, this._config.allowList, this._config.sanitizeFn) : arg;
         }
         _resolvePossibleFunction(arg) {
-            return typeof arg === "function" ? arg(this) : arg;
+            return execute(arg, [
+                this
+            ]);
         }
         _putElementInTemplate(element, templateElement) {
             if (this._config.html) {
@@ -6288,7 +6350,7 @@ module.exports = function() {
     }
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): tooltip.js
+   * Bootstrap tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -6342,7 +6404,7 @@ module.exports = function() {
         html: false,
         offset: [
             0,
-            0
+            6
         ],
         placement: "top",
         popperConfig: null,
@@ -6377,18 +6439,21 @@ module.exports = function() {
    */ class Tooltip extends BaseComponent {
         constructor(element, config){
             if (typeof Popper__namespace === "undefined") throw new TypeError("Bootstrap's tooltips require Popper (https://popper.js.org)");
-            super(element, config); // Private
+            super(element, config);
+            // Private
             this._isEnabled = true;
             this._timeout = 0;
             this._isHovered = null;
             this._activeTrigger = {};
             this._popper = null;
             this._templateFactory = null;
-            this._newContent = null; // Protected
+            this._newContent = null;
+            // Protected
             this.tip = null;
             this._setListeners();
             if (!this._config.selector) this._fixTitle();
         }
+        // Getters
         static get Default() {
             return Default$3;
         }
@@ -6398,6 +6463,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$4;
         }
+        // Public
         enable() {
             this._isEnabled = true;
         }
@@ -6430,7 +6496,7 @@ module.exports = function() {
             const shadowRoot = findShadowRoot(this._element);
             const isInTheDom = (shadowRoot || this._element.ownerDocument.documentElement).contains(this._element);
             if (showEvent.defaultPrevented || !isInTheDom) return;
-             // todo v6 remove this OR make it optional
+            // TODO: v6 remove this or make it optional
             this._disposePopper();
             const tip = this._getTipElement();
             this._element.setAttribute("aria-describedby", tip.getAttribute("id"));
@@ -6440,7 +6506,8 @@ module.exports = function() {
                 EventHandler.trigger(this._element, this.constructor.eventName(EVENT_INSERTED));
             }
             this._popper = this._createPopper(tip);
-            tip.classList.add(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we add extra
+            tip.classList.add(CLASS_NAME_SHOW$2);
+            // If this is a touch-enabled device we add extra
             // empty mouseover listeners to the body's immediate children;
             // only needed because of broken event delegation on iOS
             // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
@@ -6457,7 +6524,8 @@ module.exports = function() {
             const hideEvent = EventHandler.trigger(this._element, this.constructor.eventName(EVENT_HIDE$2));
             if (hideEvent.defaultPrevented) return;
             const tip = this._getTipElement();
-            tip.classList.remove(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we remove the extra
+            tip.classList.remove(CLASS_NAME_SHOW$2);
+            // If this is a touch-enabled device we remove the extra
             // empty mouseover listeners we added for iOS support
             if ("ontouchstart" in document.documentElement) for (const element of [].concat(...document.body.children))EventHandler.off(element, "mouseover", noop);
             this._activeTrigger[TRIGGER_CLICK] = false;
@@ -6475,6 +6543,7 @@ module.exports = function() {
         update() {
             if (this._popper) this._popper.update();
         }
+        // Protected
         _isWithContent() {
             return Boolean(this._getTitle());
         }
@@ -6483,9 +6552,11 @@ module.exports = function() {
             return this.tip;
         }
         _createTipElement(content) {
-            const tip = this._getTemplateFactory(content).toHtml(); // todo: remove this check on v6
+            const tip = this._getTemplateFactory(content).toHtml();
+            // TODO: remove this check in v6
             if (!tip) return null;
-            tip.classList.remove(CLASS_NAME_FADE$2, CLASS_NAME_SHOW$2); // todo: on v6 the following can be achieved with CSS only
+            tip.classList.remove(CLASS_NAME_FADE$2, CLASS_NAME_SHOW$2);
+            // TODO: v6 the following can be achieved with CSS only
             tip.classList.add(`bs-${this.constructor.NAME}-auto`);
             const tipId = getUID(this.constructor.NAME).toString();
             tip.setAttribute("id", tipId);
@@ -6518,6 +6589,7 @@ module.exports = function() {
         _getTitle() {
             return this._resolvePossibleFunction(this._config.title) || this._element.getAttribute("data-bs-original-title");
         }
+        // Private
         _initializeOnDelegatedTarget(event) {
             return this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
         }
@@ -6528,7 +6600,11 @@ module.exports = function() {
             return this.tip && this.tip.classList.contains(CLASS_NAME_SHOW$2);
         }
         _createPopper(tip) {
-            const placement = typeof this._config.placement === "function" ? this._config.placement.call(this, tip, this._element) : this._config.placement;
+            const placement = execute(this._config.placement, [
+                this,
+                tip,
+                this._element
+            ]);
             const attachment = AttachmentMap[placement.toUpperCase()];
             return Popper__namespace.createPopper(this._element, tip, this._getPopperConfig(attachment));
         }
@@ -6539,7 +6615,9 @@ module.exports = function() {
             return offset;
         }
         _resolvePossibleFunction(arg) {
-            return typeof arg === "function" ? arg.call(this._element) : arg;
+            return execute(arg, [
+                this._element
+            ]);
         }
         _getPopperConfig(attachment) {
             const defaultBsPopperConfig = {
@@ -6583,7 +6661,9 @@ module.exports = function() {
             };
             return {
                 ...defaultBsPopperConfig,
-                ...typeof this._config.popperConfig === "function" ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig
+                ...execute(this._config.popperConfig, [
+                    defaultBsPopperConfig
+                ])
             };
         }
         _setListeners() {
@@ -6668,9 +6748,10 @@ module.exports = function() {
         }
         _getDelegateConfig() {
             const config = {};
-            for(const key in this._config)if (this.constructor.Default[key] !== this._config[key]) config[key] = this._config[key];
+            for (const [key, value] of Object.entries(this._config))if (this.constructor.Default[key] !== value) config[key] = value;
             config.selector = false;
-            config.trigger = "manual"; // In the future can be replaced with:
+            config.trigger = "manual";
+            // In the future can be replaced with:
             // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
             // `Object.fromEntries(keysWithDifferentValues)`
             return config;
@@ -6685,6 +6766,7 @@ module.exports = function() {
                 this.tip = null;
             }
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Tooltip.getOrCreateInstance(this, config);
@@ -6699,7 +6781,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Tooltip);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): popover.js
+   * Bootstrap popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -6735,9 +6817,11 @@ module.exports = function() {
         static get NAME() {
             return NAME$3;
         }
+        // Overrides
         _isWithContent() {
             return this._getTitle() || this._getContent();
         }
+        // Private
         _getContentForTemplate() {
             return {
                 [SELECTOR_TITLE]: this._getTitle(),
@@ -6747,6 +6831,7 @@ module.exports = function() {
         _getContent() {
             return this._resolvePossibleFunction(this._config.content);
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Popover.getOrCreateInstance(this, config);
@@ -6761,7 +6846,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Popover);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): scrollspy.js
+   * Bootstrap scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -6808,7 +6893,8 @@ module.exports = function() {
    * Class definition
    */ class ScrollSpy extends BaseComponent {
         constructor(element, config){
-            super(element, config); // this._element is the observablesContainer and config.target the menu links wrapper
+            super(element, config);
+            // this._element is the observablesContainer and config.target the menu links wrapper
             this._targetLinks = new Map();
             this._observableSections = new Map();
             this._rootElement = getComputedStyle(this._element).overflowY === "visible" ? null : this._element;
@@ -6820,6 +6906,7 @@ module.exports = function() {
             };
             this.refresh(); // initialize
         }
+        // Getters
         static get Default() {
             return Default$1;
         }
@@ -6829,6 +6916,7 @@ module.exports = function() {
         static get NAME() {
             return NAME$2;
         }
+        // Public
         refresh() {
             this._initializeTargetsAndObservables();
             this._maybeEnableSmoothScroll();
@@ -6840,16 +6928,18 @@ module.exports = function() {
             this._observer.disconnect();
             super.dispose();
         }
+        // Private
         _configAfterMerge(config) {
             // TODO: on v6 target should be given explicitly & remove the {target: 'ss-target'} case
-            config.target = getElement(config.target) || document.body; // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
+            config.target = getElement(config.target) || document.body;
+            // TODO: v6 Only for backwards compatibility reasons. Use rootMargin only
             config.rootMargin = config.offset ? `${config.offset}px 0px -30%` : config.rootMargin;
             if (typeof config.threshold === "string") config.threshold = config.threshold.split(",").map((value)=>Number.parseFloat(value));
             return config;
         }
         _maybeEnableSmoothScroll() {
             if (!this._config.smoothScroll) return;
-             // unregister any previous listeners
+            // unregister any previous listeners
             EventHandler.off(this._config.target, EVENT_CLICK);
             EventHandler.on(this._config.target, EVENT_CLICK, SELECTOR_TARGET_LINKS, (event)=>{
                 const observableSection = this._observableSections.get(event.target.hash);
@@ -6863,7 +6953,8 @@ module.exports = function() {
                             behavior: "smooth"
                         });
                         return;
-                    } // Chrome 60 doesn't support `scrollTo`
+                    }
+                    // Chrome 60 doesn't support `scrollTo`
                     root.scrollTop = height;
                 }
             });
@@ -6876,6 +6967,7 @@ module.exports = function() {
             };
             return new IntersectionObserver((entries)=>this._observerCallback(entries), options);
         }
+        // The logic of selection
         _observerCallback(entries) {
             const targetElement = (entry)=>this._targetLinks.get(`#${entry.target.id}`);
             const activate = (entry)=>{
@@ -6891,12 +6983,15 @@ module.exports = function() {
                     this._clearActiveClass(targetElement(entry));
                     continue;
                 }
-                const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop; // if we are scrolling down, pick the bigger offsetTop
+                const entryIsLowerThanPrevious = entry.target.offsetTop >= this._previousScrollData.visibleEntryTop;
+                // if we are scrolling down, pick the bigger offsetTop
                 if (userScrollsDown && entryIsLowerThanPrevious) {
-                    activate(entry); // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
+                    activate(entry);
+                    // if parent isn't scrolled, let's keep the first visible item, breaking the iteration
                     if (!parentScrollTop) return;
                     continue;
-                } // if we are scrolling up, pick the smallest offsetTop
+                }
+                // if we are scrolling up, pick the smallest offsetTop
                 if (!userScrollsDown && !entryIsLowerThanPrevious) activate(entry);
             }
         }
@@ -6907,9 +7002,10 @@ module.exports = function() {
             for (const anchor of targetLinks){
                 // ensure that the anchor has an id and is not disabled
                 if (!anchor.hash || isDisabled(anchor)) continue;
-                const observableSection = SelectorEngine.findOne(anchor.hash, this._element); // ensure that the observableSection exists & is visible
+                const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element);
+                // ensure that the observableSection exists & is visible
                 if (isVisible(observableSection)) {
-                    this._targetLinks.set(anchor.hash, anchor);
+                    this._targetLinks.set(decodeURI(anchor.hash), anchor);
                     this._observableSections.set(anchor.hash, observableSection);
                 }
             }
@@ -6939,6 +7035,7 @@ module.exports = function() {
             const activeNodes = SelectorEngine.find(`${SELECTOR_TARGET_LINKS}.${CLASS_NAME_ACTIVE$1}`, parent);
             for (const node of activeNodes)node.classList.remove(CLASS_NAME_ACTIVE$1);
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = ScrollSpy.getOrCreateInstance(this, config);
@@ -6958,7 +7055,7 @@ module.exports = function() {
    */ defineJQueryPlugin(ScrollSpy);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): tab.js
+   * Bootstrap tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -6977,17 +7074,19 @@ module.exports = function() {
     const ARROW_RIGHT_KEY = "ArrowRight";
     const ARROW_UP_KEY = "ArrowUp";
     const ARROW_DOWN_KEY = "ArrowDown";
+    const HOME_KEY = "Home";
+    const END_KEY = "End";
     const CLASS_NAME_ACTIVE = "active";
     const CLASS_NAME_FADE$1 = "fade";
     const CLASS_NAME_SHOW$1 = "show";
     const CLASS_DROPDOWN = "dropdown";
     const SELECTOR_DROPDOWN_TOGGLE = ".dropdown-toggle";
     const SELECTOR_DROPDOWN_MENU = ".dropdown-menu";
-    const NOT_SELECTOR_DROPDOWN_TOGGLE = ":not(.dropdown-toggle)";
+    const NOT_SELECTOR_DROPDOWN_TOGGLE = `:not(${SELECTOR_DROPDOWN_TOGGLE})`;
     const SELECTOR_TAB_PANEL = '.list-group, .nav, [role="tablist"]';
     const SELECTOR_OUTER = ".nav-item, .list-group-item";
     const SELECTOR_INNER = `.nav-link${NOT_SELECTOR_DROPDOWN_TOGGLE}, .list-group-item${NOT_SELECTOR_DROPDOWN_TOGGLE}, [role="tab"]${NOT_SELECTOR_DROPDOWN_TOGGLE}`;
-    const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // todo:v6: could be only `tab`
+    const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]'; // TODO: could only be `tab` in v6
     const SELECTOR_INNER_ELEM = `${SELECTOR_INNER}, ${SELECTOR_DATA_TOGGLE}`;
     const SELECTOR_DATA_TOGGLE_ACTIVE = `.${CLASS_NAME_ACTIVE}[data-bs-toggle="tab"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="pill"], .${CLASS_NAME_ACTIVE}[data-bs-toggle="list"]`;
     /**
@@ -6996,19 +7095,21 @@ module.exports = function() {
         constructor(element){
             super(element);
             this._parent = this._element.closest(SELECTOR_TAB_PANEL);
-            if (!this._parent) return; // todo: should Throw exception on v6
-             // Set up initial aria attributes
+            if (!this._parent) return;
+            // Set up initial aria attributes
             this._setInitialAttributes(this._parent, this._getChildren());
             EventHandler.on(this._element, EVENT_KEYDOWN, (event)=>this._keydown(event));
         }
+        // Getters
         static get NAME() {
             return NAME$1;
         }
+        // Public
         show() {
             // Shows this elem and deactivate the active sibling if exists
             const innerElem = this._element;
             if (this._elemIsActive(innerElem)) return;
-             // Search for active tab on same parent to deactivate it
+            // Search for active tab on same parent to deactivate it
             const active = this._getActiveElem();
             const hideEvent = active ? EventHandler.trigger(active, EVENT_HIDE$1, {
                 relatedTarget: innerElem
@@ -7020,10 +7121,11 @@ module.exports = function() {
             this._deactivate(active, innerElem);
             this._activate(innerElem, active);
         }
+        // Private
         _activate(element, relatedElem) {
             if (!element) return;
             element.classList.add(CLASS_NAME_ACTIVE);
-            this._activate(getElementFromSelector(element)); // Search and activate/show the proper section
+            this._activate(SelectorEngine.getElementFromSelector(element)); // Search and activate/show the proper section
             const complete = ()=>{
                 if (element.getAttribute("role") !== "tab") {
                     element.classList.add(CLASS_NAME_SHOW$1);
@@ -7042,7 +7144,7 @@ module.exports = function() {
             if (!element) return;
             element.classList.remove(CLASS_NAME_ACTIVE);
             element.blur();
-            this._deactivate(getElementFromSelector(element)); // Search and deactivate the shown section too
+            this._deactivate(SelectorEngine.getElementFromSelector(element)); // Search and deactivate the shown section too
             const complete = ()=>{
                 if (element.getAttribute("role") !== "tab") {
                     element.classList.remove(CLASS_NAME_SHOW$1);
@@ -7062,15 +7164,25 @@ module.exports = function() {
                 ARROW_LEFT_KEY,
                 ARROW_RIGHT_KEY,
                 ARROW_UP_KEY,
-                ARROW_DOWN_KEY
+                ARROW_DOWN_KEY,
+                HOME_KEY,
+                END_KEY
             ].includes(event.key)) return;
             event.stopPropagation(); // stopPropagation/preventDefault both added to support up/down keys without scrolling the page
             event.preventDefault();
-            const isNext = [
-                ARROW_RIGHT_KEY,
-                ARROW_DOWN_KEY
-            ].includes(event.key);
-            const nextActiveElement = getNextActiveElement(this._getChildren().filter((element)=>!isDisabled(element)), event.target, isNext, true);
+            const children = this._getChildren().filter((element)=>!isDisabled(element));
+            let nextActiveElement;
+            if ([
+                HOME_KEY,
+                END_KEY
+            ].includes(event.key)) nextActiveElement = children[event.key === HOME_KEY ? 0 : children.length - 1];
+            else {
+                const isNext = [
+                    ARROW_RIGHT_KEY,
+                    ARROW_DOWN_KEY
+                ].includes(event.key);
+                nextActiveElement = getNextActiveElement(children, event.target, isNext, true);
+            }
             if (nextActiveElement) {
                 nextActiveElement.focus({
                     preventScroll: true
@@ -7096,14 +7208,15 @@ module.exports = function() {
             child.setAttribute("aria-selected", isActive);
             if (outerElem !== child) this._setAttributeIfNotExists(outerElem, "role", "presentation");
             if (!isActive) child.setAttribute("tabindex", "-1");
-            this._setAttributeIfNotExists(child, "role", "tab"); // set attributes to the related panel too
+            this._setAttributeIfNotExists(child, "role", "tab");
+            // set attributes to the related panel too
             this._setInitialAttributesOnTargetPanel(child);
         }
         _setInitialAttributesOnTargetPanel(child) {
-            const target = getElementFromSelector(child);
+            const target = SelectorEngine.getElementFromSelector(child);
             if (!target) return;
             this._setAttributeIfNotExists(target, "role", "tabpanel");
-            if (child.id) this._setAttributeIfNotExists(target, "aria-labelledby", `#${child.id}`);
+            if (child.id) this._setAttributeIfNotExists(target, "aria-labelledby", `${child.id}`);
         }
         _toggleDropDown(element, open) {
             const outerElem = this._getOuterElement(element);
@@ -7122,12 +7235,15 @@ module.exports = function() {
         _elemIsActive(elem) {
             return elem.classList.contains(CLASS_NAME_ACTIVE);
         }
+        // Try to get the inner element (usually the .nav-link)
         _getInnerElement(elem) {
             return elem.matches(SELECTOR_INNER_ELEM) ? elem : SelectorEngine.findOne(SELECTOR_INNER_ELEM, elem);
         }
+        // Try to get the outer element (usually the .nav-item)
         _getOuterElement(elem) {
             return elem.closest(SELECTOR_OUTER) || elem;
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Tab.getOrCreateInstance(this);
@@ -7157,7 +7273,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Tab);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): toast.js
+   * Bootstrap toast.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ /**
@@ -7197,6 +7313,7 @@ module.exports = function() {
             this._hasKeyboardInteraction = false;
             this._setListeners();
         }
+        // Getters
         static get Default() {
             return Default;
         }
@@ -7206,6 +7323,7 @@ module.exports = function() {
         static get NAME() {
             return NAME;
         }
+        // Public
         show() {
             const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
             if (showEvent.defaultPrevented) return;
@@ -7241,6 +7359,7 @@ module.exports = function() {
         isShown() {
             return this._element.classList.contains(CLASS_NAME_SHOW);
         }
+        // Private
         _maybeScheduleHide() {
             if (!this._config.autohide) return;
             if (this._hasMouseInteraction || this._hasKeyboardInteraction) return;
@@ -7277,6 +7396,7 @@ module.exports = function() {
             clearTimeout(this._timeout);
             this._timeout = null;
         }
+        // Static
         static jQueryInterface(config) {
             return this.each(function() {
                 const data = Toast.getOrCreateInstance(this, config);
@@ -7295,7 +7415,7 @@ module.exports = function() {
    */ defineJQueryPlugin(Toast);
     /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v5.2.3): index.umd.js
+   * Bootstrap index.umd.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */ const index_umd = {
@@ -7315,7 +7435,7 @@ module.exports = function() {
     return index_umd;
 });
 
-},{"9903f0d4ad4b017e":"b1U7B"}],"b1U7B":[function(require,module,exports) {
+},{"1b763573dc3dcc9e":"4bydE"}],"4bydE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "popperGenerator", ()=>(0, _createPopperJs.popperGenerator)) // eslint-disable-next-line import/no-unused-modules
@@ -7333,7 +7453,7 @@ var _createPopperJs = require("./createPopper.js");
 var _popperJs = require("./popper.js");
 var _popperLiteJs = require("./popper-lite.js");
 
-},{"./enums.js":"c0BvP","./modifiers/index.js":"gBilF","./createPopper.js":"hknU9","./popper.js":"2AAJy","./popper-lite.js":"9enU1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c0BvP":[function(require,module,exports) {
+},{"./enums.js":"8wuCO","./modifiers/index.js":"35HkQ","./createPopper.js":"fQWm9","./popper.js":"98etQ","./popper-lite.js":"2JVNd","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"8wuCO":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "top", ()=>top);
@@ -7413,7 +7533,7 @@ var modifierPhases = [
     afterWrite
 ];
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"8SRrZ":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -7443,7 +7563,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"gBilF":[function(require,module,exports) {
+},{}],"35HkQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "applyStyles", ()=>(0, _applyStylesJsDefault.default));
@@ -7474,7 +7594,7 @@ var _popperOffsetsJsDefault = parcelHelpers.interopDefault(_popperOffsetsJs);
 var _preventOverflowJs = require("./preventOverflow.js");
 var _preventOverflowJsDefault = parcelHelpers.interopDefault(_preventOverflowJs);
 
-},{"./applyStyles.js":"l7mPr","./arrow.js":"2nUvW","./computeStyles.js":"htHTM","./eventListeners.js":"dSiYx","./flip.js":"1gss0","./hide.js":"esvaR","./offset.js":"fxxlx","./popperOffsets.js":"9bL0F","./preventOverflow.js":"j0HtR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l7mPr":[function(require,module,exports) {
+},{"./applyStyles.js":"4rlz4","./arrow.js":"jLigw","./computeStyles.js":"9gAMs","./eventListeners.js":"kPSHl","./flip.js":"6hrCc","./hide.js":"d1fVw","./offset.js":"3uOJx","./popperOffsets.js":"LMYKT","./preventOverflow.js":"1zHjM","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"4rlz4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _getNodeNameJs = require("../dom-utils/getNodeName.js");
@@ -7544,7 +7664,7 @@ exports.default = {
     ]
 };
 
-},{"../dom-utils/getNodeName.js":"gMkyy","../dom-utils/instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gMkyy":[function(require,module,exports) {
+},{"../dom-utils/getNodeName.js":"fT5FL","../dom-utils/instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"fT5FL":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getNodeName);
@@ -7552,7 +7672,7 @@ function getNodeName(element) {
     return element ? (element.nodeName || "").toLowerCase() : null;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5dW0f":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"iDnts":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isElement", ()=>isElement);
@@ -7575,7 +7695,7 @@ function isShadowRoot(node) {
     return node instanceof OwnElement || node instanceof ShadowRoot;
 }
 
-},{"./getWindow.js":"c569m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c569m":[function(require,module,exports) {
+},{"./getWindow.js":"kzpuH","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"kzpuH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getWindow);
@@ -7588,7 +7708,7 @@ function getWindow(node) {
     return node;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2nUvW":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"jLigw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _getBasePlacementJs = require("../utils/getBasePlacement.js");
@@ -7606,8 +7726,7 @@ var _mergePaddingObjectJs = require("../utils/mergePaddingObject.js");
 var _mergePaddingObjectJsDefault = parcelHelpers.interopDefault(_mergePaddingObjectJs);
 var _expandToHashMapJs = require("../utils/expandToHashMap.js");
 var _expandToHashMapJsDefault = parcelHelpers.interopDefault(_expandToHashMapJs);
-var _enumsJs = require("../enums.js");
-var _instanceOfJs = require("../dom-utils/instanceOf.js"); // eslint-disable-next-line import/no-unused-modules
+var _enumsJs = require("../enums.js"); // eslint-disable-next-line import/no-unused-modules
 var toPaddingObject = function toPaddingObject(padding, state) {
     padding = typeof padding === "function" ? padding(Object.assign({}, state.rects, {
         placement: state.placement
@@ -7653,18 +7772,7 @@ function effect(_ref2) {
         arrowElement = state.elements.popper.querySelector(arrowElement);
         if (!arrowElement) return;
     }
-    if (!(0, _instanceOfJs.isHTMLElement)(arrowElement)) console.error([
-        'Popper: "arrow" element must be an HTMLElement (not an SVGElement).',
-        "To use an SVG arrow, wrap it in an HTMLElement that will be used as",
-        "the arrow."
-    ].join(" "));
-    if (!(0, _containsJsDefault.default)(state.elements.popper, arrowElement)) {
-        console.error([
-            'Popper: "arrow" modifier\'s `element` must be a child of the popper',
-            "element."
-        ].join(" "));
-        return;
-    }
+    if (!(0, _containsJsDefault.default)(state.elements.popper, arrowElement)) return;
     state.elements.arrow = arrowElement;
 } // eslint-disable-next-line import/no-unused-modules
 exports.default = {
@@ -7681,7 +7789,7 @@ exports.default = {
     ]
 };
 
-},{"../utils/getBasePlacement.js":"3t5jQ","../dom-utils/getLayoutRect.js":"hSLFK","../dom-utils/contains.js":"3PNO3","../dom-utils/getOffsetParent.js":"8agDs","../utils/getMainAxisFromPlacement.js":"30jsy","../utils/within.js":"6vndv","../utils/mergePaddingObject.js":"2QiSr","../utils/expandToHashMap.js":"2ni2c","../enums.js":"c0BvP","../dom-utils/instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3t5jQ":[function(require,module,exports) {
+},{"../utils/getBasePlacement.js":"eAF24","../dom-utils/getLayoutRect.js":"2VBWJ","../dom-utils/contains.js":"cwLeM","../dom-utils/getOffsetParent.js":"9m8SH","../utils/getMainAxisFromPlacement.js":"fjRVh","../utils/within.js":"5D2bA","../utils/mergePaddingObject.js":"gF9sq","../utils/expandToHashMap.js":"4RHkE","../enums.js":"8wuCO","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"eAF24":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getBasePlacement);
@@ -7690,7 +7798,7 @@ function getBasePlacement(placement) {
     return placement.split("-")[0];
 }
 
-},{"../enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hSLFK":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"2VBWJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getLayoutRect);
@@ -7711,7 +7819,7 @@ function getLayoutRect(element) {
     };
 }
 
-},{"./getBoundingClientRect.js":"hJwKb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hJwKb":[function(require,module,exports) {
+},{"./getBoundingClientRect.js":"1XNcQ","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"1XNcQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getBoundingClientRect);
@@ -7749,7 +7857,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
     };
 }
 
-},{"./instanceOf.js":"5dW0f","../utils/math.js":"4CSuX","./getWindow.js":"c569m","./isLayoutViewport.js":"kWUbV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4CSuX":[function(require,module,exports) {
+},{"./instanceOf.js":"iDnts","../utils/math.js":"faMTY","./getWindow.js":"kzpuH","./isLayoutViewport.js":"8IQxE","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"faMTY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "max", ()=>max);
@@ -7759,7 +7867,7 @@ var max = Math.max;
 var min = Math.min;
 var round = Math.round;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kWUbV":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"8IQxE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isLayoutViewport);
@@ -7769,7 +7877,7 @@ function isLayoutViewport() {
     return !/^((?!chrome|android).)*safari/i.test((0, _userAgentJsDefault.default)());
 }
 
-},{"../utils/userAgent.js":"4mwfm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4mwfm":[function(require,module,exports) {
+},{"../utils/userAgent.js":"avB9W","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"avB9W":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getUAString);
@@ -7781,7 +7889,7 @@ function getUAString() {
     return navigator.userAgent;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3PNO3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"cwLeM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>contains);
@@ -7800,7 +7908,7 @@ function contains(parent, child) {
     return false;
 }
 
-},{"./instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8agDs":[function(require,module,exports) {
+},{"./instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"9m8SH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getOffsetParent);
@@ -7856,7 +7964,7 @@ function getOffsetParent(element) {
     return offsetParent || getContainingBlock(element) || window;
 }
 
-},{"./getWindow.js":"c569m","./getNodeName.js":"gMkyy","./getComputedStyle.js":"7hA4x","./instanceOf.js":"5dW0f","./isTableElement.js":"7fbAb","./getParentNode.js":"1H8tB","../utils/userAgent.js":"4mwfm","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7hA4x":[function(require,module,exports) {
+},{"./getWindow.js":"kzpuH","./getNodeName.js":"fT5FL","./getComputedStyle.js":"aXZlQ","./instanceOf.js":"iDnts","./isTableElement.js":"aqmJ3","./getParentNode.js":"1RipI","../utils/userAgent.js":"avB9W","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"aXZlQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getComputedStyle);
@@ -7866,7 +7974,7 @@ function getComputedStyle(element) {
     return (0, _getWindowJsDefault.default)(element).getComputedStyle(element);
 }
 
-},{"./getWindow.js":"c569m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7fbAb":[function(require,module,exports) {
+},{"./getWindow.js":"kzpuH","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"aqmJ3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isTableElement);
@@ -7880,7 +7988,7 @@ function isTableElement(element) {
     ].indexOf((0, _getNodeNameJsDefault.default)(element)) >= 0;
 }
 
-},{"./getNodeName.js":"gMkyy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1H8tB":[function(require,module,exports) {
+},{"./getNodeName.js":"fT5FL","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"1RipI":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getParentNode);
@@ -7900,7 +8008,7 @@ function getParentNode(element) {
     );
 }
 
-},{"./getNodeName.js":"gMkyy","./getDocumentElement.js":"eSWlm","./instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eSWlm":[function(require,module,exports) {
+},{"./getNodeName.js":"fT5FL","./getDocumentElement.js":"77cUP","./instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"77cUP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getDocumentElement);
@@ -7910,7 +8018,7 @@ function getDocumentElement(element) {
     return (((0, _instanceOfJs.isElement)(element) ? element.ownerDocument : element.document) || window.document).documentElement;
 }
 
-},{"./instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"30jsy":[function(require,module,exports) {
+},{"./instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"fjRVh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getMainAxisFromPlacement);
@@ -7921,7 +8029,7 @@ function getMainAxisFromPlacement(placement) {
     ].indexOf(placement) >= 0 ? "x" : "y";
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6vndv":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"5D2bA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "within", ()=>within);
@@ -7935,7 +8043,7 @@ function withinMaxClamp(min, value, max) {
     return v > max ? max : v;
 }
 
-},{"./math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2QiSr":[function(require,module,exports) {
+},{"./math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"gF9sq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>mergePaddingObject);
@@ -7945,7 +8053,7 @@ function mergePaddingObject(paddingObject) {
     return Object.assign({}, (0, _getFreshSideObjectJsDefault.default)(), paddingObject);
 }
 
-},{"./getFreshSideObject.js":"8du42","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8du42":[function(require,module,exports) {
+},{"./getFreshSideObject.js":"f0CfM","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"f0CfM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getFreshSideObject);
@@ -7958,7 +8066,7 @@ function getFreshSideObject() {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2ni2c":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"4RHkE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>expandToHashMap);
@@ -7969,7 +8077,7 @@ function expandToHashMap(value, keys) {
     }, {});
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"htHTM":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"9gAMs":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "mapToStyles", ()=>mapToStyles);
@@ -8067,27 +8175,6 @@ function mapToStyles(_ref2) {
 function computeStyles(_ref5) {
     var state = _ref5.state, options = _ref5.options;
     var _options$gpuAccelerat = options.gpuAcceleration, gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat, _options$adaptive = options.adaptive, adaptive = _options$adaptive === void 0 ? true : _options$adaptive, _options$roundOffsets = options.roundOffsets, roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
-    var transitionProperty = (0, _getComputedStyleJsDefault.default)(state.elements.popper).transitionProperty || "";
-    if (adaptive && [
-        "transform",
-        "top",
-        "right",
-        "bottom",
-        "left"
-    ].some(function(property) {
-        return transitionProperty.indexOf(property) >= 0;
-    })) console.warn([
-        "Popper: Detected CSS transitions on at least one of the following",
-        'CSS properties: "transform", "top", "right", "bottom", "left".',
-        "\n\n",
-        'Disable the "computeStyles" modifier\'s `adaptive` option to allow',
-        "for smooth transitions, or remove these properties from the CSS",
-        "transition declaration on the popper element if only transitioning",
-        "opacity or background-color for example.",
-        "\n\n",
-        "We recommend using the popper element as a wrapper around an inner",
-        "element that can have any CSS property transitioned for animations."
-    ].join(" "));
     var commonStyles = {
         placement: (0, _getBasePlacementJsDefault.default)(state.placement),
         variation: (0, _getVariationJsDefault.default)(state.placement),
@@ -8120,7 +8207,7 @@ exports.default = {
     data: {}
 };
 
-},{"../enums.js":"c0BvP","../dom-utils/getOffsetParent.js":"8agDs","../dom-utils/getWindow.js":"c569m","../dom-utils/getDocumentElement.js":"eSWlm","../dom-utils/getComputedStyle.js":"7hA4x","../utils/getBasePlacement.js":"3t5jQ","../utils/getVariation.js":"gtRMS","../utils/math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gtRMS":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","../dom-utils/getOffsetParent.js":"9m8SH","../dom-utils/getWindow.js":"kzpuH","../dom-utils/getDocumentElement.js":"77cUP","../dom-utils/getComputedStyle.js":"aXZlQ","../utils/getBasePlacement.js":"eAF24","../utils/getVariation.js":"aBQjc","../utils/math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"aBQjc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getVariation);
@@ -8128,7 +8215,7 @@ function getVariation(placement) {
     return placement.split("-")[1];
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dSiYx":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"kPSHl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _getWindowJs = require("../dom-utils/getWindow.js"); // eslint-disable-next-line import/no-unused-modules
@@ -8161,7 +8248,7 @@ exports.default = {
     data: {}
 };
 
-},{"../dom-utils/getWindow.js":"c569m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1gss0":[function(require,module,exports) {
+},{"../dom-utils/getWindow.js":"kzpuH","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"6hrCc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _getOppositePlacementJs = require("../utils/getOppositePlacement.js");
@@ -8283,7 +8370,7 @@ exports.default = {
     }
 };
 
-},{"../utils/getOppositePlacement.js":"h7V1y","../utils/getBasePlacement.js":"3t5jQ","../utils/getOppositeVariationPlacement.js":"kiVlg","../utils/detectOverflow.js":"lfasJ","../utils/computeAutoPlacement.js":"airss","../enums.js":"c0BvP","../utils/getVariation.js":"gtRMS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h7V1y":[function(require,module,exports) {
+},{"../utils/getOppositePlacement.js":"bRZeQ","../utils/getBasePlacement.js":"eAF24","../utils/getOppositeVariationPlacement.js":"k8jYj","../utils/detectOverflow.js":"fL4sp","../utils/computeAutoPlacement.js":"4WwM8","../enums.js":"8wuCO","../utils/getVariation.js":"aBQjc","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"bRZeQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getOppositePlacement);
@@ -8299,7 +8386,7 @@ function getOppositePlacement(placement) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kiVlg":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"k8jYj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getOppositeVariationPlacement);
@@ -8313,7 +8400,7 @@ function getOppositeVariationPlacement(placement) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lfasJ":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"fL4sp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>detectOverflow);
@@ -8375,7 +8462,7 @@ function detectOverflow(state, options) {
     return overflowOffsets;
 }
 
-},{"../dom-utils/getClippingRect.js":"8weoI","../dom-utils/getDocumentElement.js":"eSWlm","../dom-utils/getBoundingClientRect.js":"hJwKb","./computeOffsets.js":"8MTaU","./rectToClientRect.js":"dshsd","../enums.js":"c0BvP","../dom-utils/instanceOf.js":"5dW0f","./mergePaddingObject.js":"2QiSr","./expandToHashMap.js":"2ni2c","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8weoI":[function(require,module,exports) {
+},{"../dom-utils/getClippingRect.js":"a39Gk","../dom-utils/getDocumentElement.js":"77cUP","../dom-utils/getBoundingClientRect.js":"1XNcQ","./computeOffsets.js":"43Cxx","./rectToClientRect.js":"2IjvV","../enums.js":"8wuCO","../dom-utils/instanceOf.js":"iDnts","./mergePaddingObject.js":"gF9sq","./expandToHashMap.js":"4RHkE","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"a39Gk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getClippingRect);
@@ -8455,7 +8542,7 @@ function getClippingRect(element, boundary, rootBoundary, strategy) {
     return clippingRect;
 }
 
-},{"../enums.js":"c0BvP","./getViewportRect.js":"iowEN","./getDocumentRect.js":"90UfD","./listScrollParents.js":"GaztP","./getOffsetParent.js":"8agDs","./getDocumentElement.js":"eSWlm","./getComputedStyle.js":"7hA4x","./instanceOf.js":"5dW0f","./getBoundingClientRect.js":"hJwKb","./getParentNode.js":"1H8tB","./contains.js":"3PNO3","./getNodeName.js":"gMkyy","../utils/rectToClientRect.js":"dshsd","../utils/math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iowEN":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","./getViewportRect.js":"bRQiE","./getDocumentRect.js":"5N10C","./listScrollParents.js":"lM5Sk","./getOffsetParent.js":"9m8SH","./getDocumentElement.js":"77cUP","./getComputedStyle.js":"aXZlQ","./instanceOf.js":"iDnts","./getBoundingClientRect.js":"1XNcQ","./getParentNode.js":"1RipI","./contains.js":"cwLeM","./getNodeName.js":"fT5FL","../utils/rectToClientRect.js":"2IjvV","../utils/math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"bRQiE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getViewportRect);
@@ -8492,7 +8579,7 @@ function getViewportRect(element, strategy) {
     };
 }
 
-},{"./getWindow.js":"c569m","./getDocumentElement.js":"eSWlm","./getWindowScrollBarX.js":"cnFHp","./isLayoutViewport.js":"kWUbV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cnFHp":[function(require,module,exports) {
+},{"./getWindow.js":"kzpuH","./getDocumentElement.js":"77cUP","./getWindowScrollBarX.js":"g6SYW","./isLayoutViewport.js":"8IQxE","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"g6SYW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getWindowScrollBarX);
@@ -8513,7 +8600,7 @@ function getWindowScrollBarX(element) {
     return (0, _getBoundingClientRectJsDefault.default)((0, _getDocumentElementJsDefault.default)(element)).left + (0, _getWindowScrollJsDefault.default)(element).scrollLeft;
 }
 
-},{"./getBoundingClientRect.js":"hJwKb","./getDocumentElement.js":"eSWlm","./getWindowScroll.js":"dKsMb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dKsMb":[function(require,module,exports) {
+},{"./getBoundingClientRect.js":"1XNcQ","./getDocumentElement.js":"77cUP","./getWindowScroll.js":"eg9EY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"eg9EY":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getWindowScroll);
@@ -8529,7 +8616,7 @@ function getWindowScroll(node) {
     };
 }
 
-},{"./getWindow.js":"c569m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"90UfD":[function(require,module,exports) {
+},{"./getWindow.js":"kzpuH","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"5N10C":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getDocumentRect);
@@ -8560,7 +8647,7 @@ function getDocumentRect(element) {
     };
 }
 
-},{"./getDocumentElement.js":"eSWlm","./getComputedStyle.js":"7hA4x","./getWindowScrollBarX.js":"cnFHp","./getWindowScroll.js":"dKsMb","../utils/math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"GaztP":[function(require,module,exports) {
+},{"./getDocumentElement.js":"77cUP","./getComputedStyle.js":"aXZlQ","./getWindowScrollBarX.js":"g6SYW","./getWindowScroll.js":"eg9EY","../utils/math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"lM5Sk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>listScrollParents);
@@ -8585,7 +8672,7 @@ function listScrollParents(element, list) {
     return isBody ? updatedList : updatedList.concat(listScrollParents((0, _getParentNodeJsDefault.default)(target)));
 }
 
-},{"./getScrollParent.js":"4Olum","./getParentNode.js":"1H8tB","./getWindow.js":"c569m","./isScrollParent.js":"cP1KO","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Olum":[function(require,module,exports) {
+},{"./getScrollParent.js":"9tnaj","./getParentNode.js":"1RipI","./getWindow.js":"kzpuH","./isScrollParent.js":"gEfuk","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"9tnaj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getScrollParent);
@@ -8607,7 +8694,7 @@ function getScrollParent(node) {
     return getScrollParent((0, _getParentNodeJsDefault.default)(node));
 }
 
-},{"./getParentNode.js":"1H8tB","./isScrollParent.js":"cP1KO","./getNodeName.js":"gMkyy","./instanceOf.js":"5dW0f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cP1KO":[function(require,module,exports) {
+},{"./getParentNode.js":"1RipI","./isScrollParent.js":"gEfuk","./getNodeName.js":"fT5FL","./instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"gEfuk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>isScrollParent);
@@ -8619,7 +8706,7 @@ function isScrollParent(element) {
     return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
 
-},{"./getComputedStyle.js":"7hA4x","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dshsd":[function(require,module,exports) {
+},{"./getComputedStyle.js":"aXZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"2IjvV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>rectToClientRect);
@@ -8632,7 +8719,7 @@ function rectToClientRect(rect) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MTaU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"43Cxx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>computeOffsets);
@@ -8697,7 +8784,7 @@ function computeOffsets(_ref) {
     return offsets;
 }
 
-},{"./getBasePlacement.js":"3t5jQ","./getVariation.js":"gtRMS","./getMainAxisFromPlacement.js":"30jsy","../enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"airss":[function(require,module,exports) {
+},{"./getBasePlacement.js":"eAF24","./getVariation.js":"aBQjc","./getMainAxisFromPlacement.js":"fjRVh","../enums.js":"8wuCO","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"4WwM8":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>computeAutoPlacement);
@@ -8718,16 +8805,8 @@ function computeAutoPlacement(state, options) {
     var allowedPlacements = placements.filter(function(placement) {
         return allowedAutoPlacements.indexOf(placement) >= 0;
     });
-    if (allowedPlacements.length === 0) {
-        allowedPlacements = placements;
-        console.error([
-            "Popper: The `allowedAutoPlacements` option did not allow any",
-            "placements. Ensure the `placement` option matches the variation",
-            "of the allowed placements.",
-            'For example, "auto" cannot be used to allow "bottom-start".',
-            'Use "auto-start" instead.'
-        ].join(" "));
-    } // $FlowFixMe[incompatible-type]: Flow seems to have problems with two array unions...
+    if (allowedPlacements.length === 0) allowedPlacements = placements;
+     // $FlowFixMe[incompatible-type]: Flow seems to have problems with two array unions...
     var overflows = allowedPlacements.reduce(function(acc, placement) {
         acc[placement] = (0, _detectOverflowJsDefault.default)(state, {
             placement: placement,
@@ -8742,7 +8821,7 @@ function computeAutoPlacement(state, options) {
     });
 }
 
-},{"./getVariation.js":"gtRMS","../enums.js":"c0BvP","./detectOverflow.js":"lfasJ","./getBasePlacement.js":"3t5jQ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"esvaR":[function(require,module,exports) {
+},{"./getVariation.js":"aBQjc","../enums.js":"8wuCO","./detectOverflow.js":"fL4sp","./getBasePlacement.js":"eAF24","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"d1fVw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _enumsJs = require("../enums.js");
@@ -8806,7 +8885,7 @@ exports.default = {
     fn: hide
 };
 
-},{"../enums.js":"c0BvP","../utils/detectOverflow.js":"lfasJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fxxlx":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","../utils/detectOverflow.js":"fL4sp","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"3uOJx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "distanceAndSkiddingToXY", ()=>distanceAndSkiddingToXY);
@@ -8862,7 +8941,7 @@ exports.default = {
     fn: offset
 };
 
-},{"../utils/getBasePlacement.js":"3t5jQ","../enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9bL0F":[function(require,module,exports) {
+},{"../utils/getBasePlacement.js":"eAF24","../enums.js":"8wuCO","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"LMYKT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _computeOffsetsJs = require("../utils/computeOffsets.js");
@@ -8888,7 +8967,7 @@ exports.default = {
     data: {}
 };
 
-},{"../utils/computeOffsets.js":"8MTaU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j0HtR":[function(require,module,exports) {
+},{"../utils/computeOffsets.js":"43Cxx","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"1zHjM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _enumsJs = require("../enums.js");
@@ -9010,7 +9089,7 @@ exports.default = {
     ]
 };
 
-},{"../enums.js":"c0BvP","../utils/getBasePlacement.js":"3t5jQ","../utils/getMainAxisFromPlacement.js":"30jsy","../utils/getAltAxis.js":"5Zh65","../utils/within.js":"6vndv","../dom-utils/getLayoutRect.js":"hSLFK","../dom-utils/getOffsetParent.js":"8agDs","../utils/detectOverflow.js":"lfasJ","../utils/getVariation.js":"gtRMS","../utils/getFreshSideObject.js":"8du42","../utils/math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Zh65":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","../utils/getBasePlacement.js":"eAF24","../utils/getMainAxisFromPlacement.js":"fjRVh","../utils/getAltAxis.js":"8hCau","../utils/within.js":"5D2bA","../dom-utils/getLayoutRect.js":"2VBWJ","../dom-utils/getOffsetParent.js":"9m8SH","../utils/detectOverflow.js":"fL4sp","../utils/getVariation.js":"aBQjc","../utils/getFreshSideObject.js":"f0CfM","../utils/math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"8hCau":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getAltAxis);
@@ -9018,7 +9097,7 @@ function getAltAxis(axis) {
     return axis === "x" ? "y" : "x";
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hknU9":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"fQWm9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "popperGenerator", ()=>popperGenerator);
@@ -9032,26 +9111,15 @@ var _listScrollParentsJs = require("./dom-utils/listScrollParents.js");
 var _listScrollParentsJsDefault = parcelHelpers.interopDefault(_listScrollParentsJs);
 var _getOffsetParentJs = require("./dom-utils/getOffsetParent.js");
 var _getOffsetParentJsDefault = parcelHelpers.interopDefault(_getOffsetParentJs);
-var _getComputedStyleJs = require("./dom-utils/getComputedStyle.js");
-var _getComputedStyleJsDefault = parcelHelpers.interopDefault(_getComputedStyleJs);
 var _orderModifiersJs = require("./utils/orderModifiers.js");
 var _orderModifiersJsDefault = parcelHelpers.interopDefault(_orderModifiersJs);
 var _debounceJs = require("./utils/debounce.js");
 var _debounceJsDefault = parcelHelpers.interopDefault(_debounceJs);
-var _validateModifiersJs = require("./utils/validateModifiers.js");
-var _validateModifiersJsDefault = parcelHelpers.interopDefault(_validateModifiersJs);
-var _uniqueByJs = require("./utils/uniqueBy.js");
-var _uniqueByJsDefault = parcelHelpers.interopDefault(_uniqueByJs);
-var _getBasePlacementJs = require("./utils/getBasePlacement.js");
-var _getBasePlacementJsDefault = parcelHelpers.interopDefault(_getBasePlacementJs);
 var _mergeByNameJs = require("./utils/mergeByName.js");
 var _mergeByNameJsDefault = parcelHelpers.interopDefault(_mergeByNameJs);
 var _detectOverflowJs = require("./utils/detectOverflow.js");
 var _detectOverflowJsDefault = parcelHelpers.interopDefault(_detectOverflowJs);
 var _instanceOfJs = require("./dom-utils/instanceOf.js");
-var _enumsJs = require("./enums.js");
-var INVALID_ELEMENT_ERROR = "Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.";
-var INFINITE_LOOP_ERROR = "Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.";
 var DEFAULT_OPTIONS = {
     placement: "bottom",
     modifiers: [],
@@ -9096,38 +9164,7 @@ function popperGenerator(generatorOptions) {
                 var orderedModifiers = (0, _orderModifiersJsDefault.default)((0, _mergeByNameJsDefault.default)([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
                 state.orderedModifiers = orderedModifiers.filter(function(m) {
                     return m.enabled;
-                }); // Validate the provided modifiers so that the consumer will get warned
-                var modifiers = (0, _uniqueByJsDefault.default)([].concat(orderedModifiers, state.options.modifiers), function(_ref) {
-                    var name = _ref.name;
-                    return name;
                 });
-                (0, _validateModifiersJsDefault.default)(modifiers);
-                if ((0, _getBasePlacementJsDefault.default)(state.options.placement) === (0, _enumsJs.auto)) {
-                    var flipModifier = state.orderedModifiers.find(function(_ref2) {
-                        var name = _ref2.name;
-                        return name === "flip";
-                    });
-                    if (!flipModifier) console.error([
-                        'Popper: "auto" placements require the "flip" modifier be',
-                        "present and enabled to work."
-                    ].join(" "));
-                }
-                var _getComputedStyle = (0, _getComputedStyleJsDefault.default)(popper), marginTop = _getComputedStyle.marginTop, marginRight = _getComputedStyle.marginRight, marginBottom = _getComputedStyle.marginBottom, marginLeft = _getComputedStyle.marginLeft; // We no longer take into account `margins` on the popper, and it can
-                // cause bugs with positioning, so we'll warn the consumer
-                if ([
-                    marginTop,
-                    marginRight,
-                    marginBottom,
-                    marginLeft
-                ].some(function(margin) {
-                    return parseFloat(margin);
-                })) console.warn([
-                    'Popper: CSS "margin" styles cannot be used to apply padding',
-                    "between the popper and its reference element or boundary.",
-                    "To replicate margin, use the `offset` modifier, as well as",
-                    "the `padding` option in the `preventOverflow` and `flip`",
-                    "modifiers."
-                ].join(" "));
                 runModifierEffects();
                 return instance.update();
             },
@@ -9140,10 +9177,8 @@ function popperGenerator(generatorOptions) {
                 if (isDestroyed) return;
                 var _state$elements = state.elements, reference = _state$elements.reference, popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
                 // anymore
-                if (!areValidElements(reference, popper)) {
-                    console.error(INVALID_ELEMENT_ERROR);
-                    return;
-                } // Store the reference and popper rects to be read by modifiers
+                if (!areValidElements(reference, popper)) return;
+                 // Store the reference and popper rects to be read by modifiers
                 state.rects = {
                     reference: (0, _getCompositeRectJsDefault.default)(reference, (0, _getOffsetParentJsDefault.default)(popper), state.options.strategy === "fixed"),
                     popper: (0, _getLayoutRectJsDefault.default)(popper)
@@ -9160,13 +9195,7 @@ function popperGenerator(generatorOptions) {
                 state.orderedModifiers.forEach(function(modifier) {
                     return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
                 });
-                var __debug_loops__ = 0;
                 for(var index = 0; index < state.orderedModifiers.length; index++){
-                    __debug_loops__ += 1;
-                    if (__debug_loops__ > 100) {
-                        console.error(INFINITE_LOOP_ERROR);
-                        break;
-                    }
                     if (state.reset === true) {
                         state.reset = false;
                         index = -1;
@@ -9194,10 +9223,7 @@ function popperGenerator(generatorOptions) {
                 isDestroyed = true;
             }
         };
-        if (!areValidElements(reference, popper)) {
-            console.error(INVALID_ELEMENT_ERROR);
-            return instance;
-        }
+        if (!areValidElements(reference, popper)) return instance;
         instance.setOptions(options).then(function(state) {
             if (!isDestroyed && options.onFirstUpdate) options.onFirstUpdate(state);
         }); // Modifiers have the ability to execute arbitrary code before the first
@@ -9206,8 +9232,8 @@ function popperGenerator(generatorOptions) {
         // other modifiers need to use, but the modifier is run after the dependent
         // one.
         function runModifierEffects() {
-            state.orderedModifiers.forEach(function(_ref3) {
-                var name = _ref3.name, _ref3$options = _ref3.options, options = _ref3$options === void 0 ? {} : _ref3$options, effect = _ref3.effect;
+            state.orderedModifiers.forEach(function(_ref) {
+                var name = _ref.name, _ref$options = _ref.options, options = _ref$options === void 0 ? {} : _ref$options, effect = _ref.effect;
                 if (typeof effect === "function") {
                     var cleanupFn = effect({
                         state: state,
@@ -9231,7 +9257,7 @@ function popperGenerator(generatorOptions) {
 }
 var createPopper = /*#__PURE__*/ popperGenerator(); // eslint-disable-next-line import/no-unused-modules
 
-},{"./dom-utils/getCompositeRect.js":"aecsH","./dom-utils/getLayoutRect.js":"hSLFK","./dom-utils/listScrollParents.js":"GaztP","./dom-utils/getOffsetParent.js":"8agDs","./dom-utils/getComputedStyle.js":"7hA4x","./utils/orderModifiers.js":"6NrMU","./utils/debounce.js":"feqIu","./utils/validateModifiers.js":"nMxET","./utils/uniqueBy.js":"9GU6c","./utils/getBasePlacement.js":"3t5jQ","./utils/mergeByName.js":"htZWP","./utils/detectOverflow.js":"lfasJ","./dom-utils/instanceOf.js":"5dW0f","./enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aecsH":[function(require,module,exports) {
+},{"./dom-utils/getCompositeRect.js":"2jKiW","./dom-utils/getLayoutRect.js":"2VBWJ","./dom-utils/listScrollParents.js":"lM5Sk","./dom-utils/getOffsetParent.js":"9m8SH","./utils/orderModifiers.js":"9LDh3","./utils/debounce.js":"76vkr","./utils/mergeByName.js":"4RPJJ","./utils/detectOverflow.js":"fL4sp","./dom-utils/instanceOf.js":"iDnts","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"2jKiW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getCompositeRect);
@@ -9286,7 +9312,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     };
 }
 
-},{"./getBoundingClientRect.js":"hJwKb","./getNodeScroll.js":"lFded","./getNodeName.js":"gMkyy","./instanceOf.js":"5dW0f","./getWindowScrollBarX.js":"cnFHp","./getDocumentElement.js":"eSWlm","./isScrollParent.js":"cP1KO","../utils/math.js":"4CSuX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lFded":[function(require,module,exports) {
+},{"./getBoundingClientRect.js":"1XNcQ","./getNodeScroll.js":"cdMN5","./getNodeName.js":"fT5FL","./instanceOf.js":"iDnts","./getWindowScrollBarX.js":"g6SYW","./getDocumentElement.js":"77cUP","./isScrollParent.js":"gEfuk","../utils/math.js":"faMTY","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"cdMN5":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getNodeScroll);
@@ -9302,7 +9328,7 @@ function getNodeScroll(node) {
     else return (0, _getHTMLElementScrollJsDefault.default)(node);
 }
 
-},{"./getWindowScroll.js":"dKsMb","./getWindow.js":"c569m","./instanceOf.js":"5dW0f","./getHTMLElementScroll.js":"1h4iP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1h4iP":[function(require,module,exports) {
+},{"./getWindowScroll.js":"eg9EY","./getWindow.js":"kzpuH","./instanceOf.js":"iDnts","./getHTMLElementScroll.js":"j2v35","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"j2v35":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>getHTMLElementScroll);
@@ -9313,7 +9339,7 @@ function getHTMLElementScroll(element) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6NrMU":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"9LDh3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>orderModifiers);
@@ -9352,7 +9378,7 @@ function orderModifiers(modifiers) {
     }, []);
 }
 
-},{"../enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"feqIu":[function(require,module,exports) {
+},{"../enums.js":"8wuCO","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"76vkr":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>debounce);
@@ -9369,96 +9395,7 @@ function debounce(fn) {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"nMxET":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>validateModifiers);
-var _formatJs = require("./format.js");
-var _formatJsDefault = parcelHelpers.interopDefault(_formatJs);
-var _enumsJs = require("../enums.js");
-var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
-var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
-var VALID_PROPERTIES = [
-    "name",
-    "enabled",
-    "phase",
-    "fn",
-    "effect",
-    "requires",
-    "options"
-];
-function validateModifiers(modifiers) {
-    modifiers.forEach(function(modifier) {
-        [].concat(Object.keys(modifier), VALID_PROPERTIES) // IE11-compatible replacement for `new Set(iterable)`
-        .filter(function(value, index, self) {
-            return self.indexOf(value) === index;
-        }).forEach(function(key) {
-            switch(key){
-                case "name":
-                    if (typeof modifier.name !== "string") console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', '"' + String(modifier.name) + '"'));
-                    break;
-                case "enabled":
-                    if (typeof modifier.enabled !== "boolean") console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', '"' + String(modifier.enabled) + '"'));
-                    break;
-                case "phase":
-                    if ((0, _enumsJs.modifierPhases).indexOf(modifier.phase) < 0) console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + (0, _enumsJs.modifierPhases).join(", "), '"' + String(modifier.phase) + '"'));
-                    break;
-                case "fn":
-                    if (typeof modifier.fn !== "function") console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', '"' + String(modifier.fn) + '"'));
-                    break;
-                case "effect":
-                    if (modifier.effect != null && typeof modifier.effect !== "function") console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', '"' + String(modifier.fn) + '"'));
-                    break;
-                case "requires":
-                    if (modifier.requires != null && !Array.isArray(modifier.requires)) console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', '"' + String(modifier.requires) + '"'));
-                    break;
-                case "requiresIfExists":
-                    if (!Array.isArray(modifier.requiresIfExists)) console.error((0, _formatJsDefault.default)(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', '"' + String(modifier.requiresIfExists) + '"'));
-                    break;
-                case "options":
-                case "data":
-                    break;
-                default:
-                    console.error('PopperJS: an invalid property has been provided to the "' + modifier.name + '" modifier, valid properties are ' + VALID_PROPERTIES.map(function(s) {
-                        return '"' + s + '"';
-                    }).join(", ") + '; but "' + key + '" was provided.');
-            }
-            modifier.requires && modifier.requires.forEach(function(requirement) {
-                if (modifiers.find(function(mod) {
-                    return mod.name === requirement;
-                }) == null) console.error((0, _formatJsDefault.default)(MISSING_DEPENDENCY_ERROR, String(modifier.name), requirement, requirement));
-            });
-        });
-    });
-}
-
-},{"./format.js":"1hpyT","../enums.js":"c0BvP","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1hpyT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>format);
-function format(str) {
-    for(var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)args[_key - 1] = arguments[_key];
-    return [].concat(args).reduce(function(p, c) {
-        return p.replace(/%s/, c);
-    }, str);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9GU6c":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>uniqueBy);
-function uniqueBy(arr, fn) {
-    var identifiers = new Set();
-    return arr.filter(function(item) {
-        var identifier = fn(item);
-        if (!identifiers.has(identifier)) {
-            identifiers.add(identifier);
-            return true;
-        }
-    });
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"htZWP":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"4RPJJ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>mergeByName);
@@ -9476,7 +9413,7 @@ function mergeByName(modifiers) {
     });
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2AAJy":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"98etQ":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createPopperLite", ()=>(0, _popperLiteJs.createPopper)) // eslint-disable-next-line import/no-unused-modules
@@ -9523,7 +9460,7 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":"hknU9","./modifiers/eventListeners.js":"dSiYx","./modifiers/popperOffsets.js":"9bL0F","./modifiers/computeStyles.js":"htHTM","./modifiers/applyStyles.js":"l7mPr","./modifiers/offset.js":"fxxlx","./modifiers/flip.js":"1gss0","./modifiers/preventOverflow.js":"j0HtR","./modifiers/arrow.js":"2nUvW","./modifiers/hide.js":"esvaR","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9enU1":[function(require,module,exports) {
+},{"./createPopper.js":"fQWm9","./modifiers/eventListeners.js":"kPSHl","./modifiers/popperOffsets.js":"LMYKT","./modifiers/computeStyles.js":"9gAMs","./modifiers/applyStyles.js":"4rlz4","./modifiers/offset.js":"3uOJx","./modifiers/flip.js":"6hrCc","./modifiers/preventOverflow.js":"1zHjM","./modifiers/arrow.js":"jLigw","./modifiers/hide.js":"d1fVw","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"2JVNd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "createPopper", ()=>createPopper);
@@ -9549,7 +9486,7 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":"hknU9","./modifiers/eventListeners.js":"dSiYx","./modifiers/popperOffsets.js":"9bL0F","./modifiers/computeStyles.js":"htHTM","./modifiers/applyStyles.js":"l7mPr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a2c3U":[function() {},{}],"ijsBi":[function() {},{}],"arm6m":[function(require,module,exports) {
+},{"./createPopper.js":"fQWm9","./modifiers/eventListeners.js":"kPSHl","./modifiers/popperOffsets.js":"LMYKT","./modifiers/computeStyles.js":"9gAMs","./modifiers/applyStyles.js":"4rlz4","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"58ieE":[function() {},{}],"eC8bt":[function() {},{}],"6mZ1F":[function(require,module,exports) {
 (function(root, factory) {
     if (typeof define === "function" && define.amd) define(factory);
     else module.exports = factory();
@@ -9871,59 +9808,58 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     return NProgress;
 });
 
-},{}],"jcT59":[function(require,module,exports) {
+},{}],"eQfa1":[function(require,module,exports) {
 // Copyright (C) Digital Jetty Konrad Gadzinowski - All Rights Reserved
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PagesCtrl", ()=>PagesCtrl);
 class PagesCtrl {
-    pages = new Array();
-    currentPage;
     constructor(){
         this.pages = new Array();
-    }
-    addPage = (page)=>{
-        this.pages.push(page);
-    };
-    getCurrentPageId = ()=>{
-        if (!this.currentPage) return "";
-        return this.currentPage.getPageId();
-    };
-    setupPage = ()=>{
-        this.closePage();
-        let page = this.executeCurrentPageLogic();
-        if (page) this.currentPage = page;
-    };
-    closePage = ()=>{
-        if (this.currentPage) {
-            this.currentPage.onPageClose();
-            this.currentPage = null;
-        }
-    };
-    executeCurrentPageLogic = ()=>{
-        const pageIdElement = document.querySelector("#pageId");
-        if (!pageIdElement) return;
-        const pageId = pageIdElement.innerText;
-        pageIdElement.parentNode.removeChild(pageIdElement);
-        if (!pageId || pageId.length === 0) return;
-        for(let i = 0; i < this.pages.length; i++){
-            let page = this.pages[i];
-            if (pageId == page.getPageId()) {
-                page.execute();
-                return page;
+        this.addPage = (page)=>{
+            this.pages.push(page);
+        };
+        this.getCurrentPageId = ()=>{
+            if (!this.currentPage) return "";
+            return this.currentPage.getPageId();
+        };
+        this.setupPage = ()=>{
+            this.closePage();
+            let page = this.executeCurrentPageLogic();
+            if (page) this.currentPage = page;
+        };
+        this.closePage = ()=>{
+            if (this.currentPage) {
+                this.currentPage.onPageClose();
+                this.currentPage = null;
             }
-        }
-        return null;
-    };
+        };
+        this.executeCurrentPageLogic = ()=>{
+            const pageIdElement = document.querySelector("#pageId");
+            if (!pageIdElement) return;
+            const pageId = pageIdElement.innerText;
+            pageIdElement.parentNode.removeChild(pageIdElement);
+            if (!pageId || pageId.length === 0) return;
+            for(let i = 0; i < this.pages.length; i++){
+                let page = this.pages[i];
+                if (pageId == page.getPageId()) {
+                    page.execute();
+                    return page;
+                }
+            }
+            return null;
+        };
+        this.pages = new Array();
+    }
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gCcLc":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"i9hfR":[function(require,module,exports) {
 // Copyright (C) Digital Jetty Konrad Gadzinowski - All Rights Reserved
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Form", ()=>Form);
 class Form {
-    static setupForms = ()=>{
+    static #_ = this.setupForms = ()=>{
         // Validate forms
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.querySelectorAll(".needs-validation");
@@ -9962,7 +9898,7 @@ class Form {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kNC6N":[function() {},{}],"362eY":[function() {},{}],"lt3ul":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"hoSdK":[function() {},{}],"5WWcA":[function() {},{}],"kW15U":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PageEditPost", ()=>PageEditPost);
@@ -9971,16 +9907,18 @@ var _mediumEditorMinJsDefault = parcelHelpers.interopDefault(_mediumEditorMinJs)
 var _mediumEditorMinCss = require("../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css");
 var _beagleMinCss = require("../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css");
 class PageEditPost {
-    getPageId = ()=>"edit-post";
-    execute = ()=>{
-        new (0, _mediumEditorMinJsDefault.default)('textarea[name="description"]', {});
-        new (0, _mediumEditorMinJsDefault.default)('textarea[name="content"]', {});
-    };
-    onPageClose = ()=>{};
+    constructor(){
+        this.getPageId = ()=>"edit-post";
+        this.execute = ()=>{
+            new (0, _mediumEditorMinJsDefault.default)('textarea[name="description"]', {});
+            new (0, _mediumEditorMinJsDefault.default)('textarea[name="content"]', {});
+        };
+        this.onPageClose = ()=>{};
+    }
 }
 
-},{"../client-libs/node_modules/medium-editor/dist/js/medium-editor.min.js":"9AwUM","../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css":"2tK7o","../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css":"9FQq2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9AwUM":[function(require,module,exports) {
-var process = require("17859caaba74acba");
+},{"../client-libs/node_modules/medium-editor/dist/js/medium-editor.min.js":"bv8m7","../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css":"7r9Di","../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css":"iLfYb","@parcel/transformer-js/src/esmodule-helpers.js":"8SRrZ"}],"bv8m7":[function(require,module,exports) {
+var process = require("194f515e369f1bc9");
 "classList" in document.createElement("_") || !function(a) {
     "use strict";
     if ("Element" in a) {
@@ -12912,6 +12850,6 @@ var process = require("17859caaba74acba");
     }, a.version = a.parseVersionString.call(this, "5.23.3"), a;
 }());
 
-},{"17859caaba74acba":"d5jf4"}],"2tK7o":[function() {},{}],"9FQq2":[function() {},{}],"5NKOb":[function() {},{}]},["lFifw","1xC6H","846Bb"], "846Bb", "parcelRequire9ae1")
+},{"194f515e369f1bc9":"jgCMb"}],"7r9Di":[function() {},{}],"iLfYb":[function() {},{}],"3M6ub":[function() {},{}]},["ihZL7","b0WHo","76U4L"], "76U4L", "parcelRequire94c2")
 
 //# sourceMappingURL=App.js.map
