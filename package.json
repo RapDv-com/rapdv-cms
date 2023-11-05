@@ -5,7 +5,7 @@
   "author": "Digital Jetty Konrad Gadzinowski",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run start-dev\" \"npx parcel client/App.tsx\"",
+    "start": "concurrently \"npm run start-dev\" \"npx parcel watch client/App.tsx\"",
     "start-dev": "cross-env NODE_ENV=development \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
     "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
     "build-prod": "npx parcel build client/App.tsx",
