@@ -58,6 +58,7 @@
     "nodemailer": "*",
     "nodemon": "*",
     "npm": "*",
+    "parcel": "*",
     "passport": "*",
     "passport-local": "*",
     "prettier": "*",

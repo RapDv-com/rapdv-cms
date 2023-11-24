@@ -21,7 +21,7 @@ export class EditPostPage {
       return (
         <>
           <PageId>edit-post</PageId>
-          <ProfileForm title={`${!entry ? "Publish" : "Edit"} Article`} name="edit" submitText={`${!entry ? "Publish" : "Save"}`}>
+          <ProfileForm title={`${isNew ? "Publish" : "Edit"} Article`} name="edit" submitText={`${isNew ? "Publish" : "Save"}`}>
             <Input type="text" name="title" value={entry?.title} req={req} required />
             <Textarea id="description" name="description" value={entry?.description} req={req} required />
             <Textarea id="content" name="content" value={entry?.content} req={req} required />
