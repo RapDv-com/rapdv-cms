@@ -1,7 +1,7 @@
-import MediumEditor from "../client-libs/node_modules/medium-editor/dist/js/medium-editor.min.js"
-import { ClientPage } from "../submodules/rapdv/client/elements/PagesCtrl.js"
-import "../client-libs/node_modules/medium-editor/dist/css/medium-editor.min.css"
-import "../client-libs/node_modules/medium-editor/dist/css/themes/beagle.min.css"
+import MediumEditor from "medium-editor/dist/js/medium-editor.min.js"
+import { ClientPage } from "../submodules/rapdv/client/elements/PagesCtrl"
+import "medium-editor/dist/css/medium-editor.min.css"
+import "medium-editor/dist/css/themes/beagle.min.css"
 
 export class PageEditPost implements ClientPage {
   getPageId = (): string => "edit-post"
