@@ -5,9 +5,9 @@ import { Input } from "../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../submodules/rapdv/server/form/Form"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
 import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
-import { EmailService } from "../../submodules/rapdv/server/mailer/EmailService"
 import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
 import { Link } from "../../submodules/rapdv/server/ui/Link"
+import { Mailer } from "../../submodules/rapdv/server/mailer/Mailer"
 
 export class ResetPasswordPage {
   public static renderForgot = async (req: Request): Promise<ReactNode> => {
@@ -24,7 +24,7 @@ export class ResetPasswordPage {
     )
   }
 
-  public static remind = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, emailService: EmailService): Promise<ReactNode> => {
+  public static remind = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
     const { success, form } = await Form.getParams(req, ResetPasswordPage.renderForgot(req))
 
     if (!success) {
@@ -33,7 +33,8 @@ export class ResetPasswordPage {
 
     try {
       const email = form.inputs["email"].value
-      const user = await AuthEmail.remindPassword(email, emailService)
+      const appBasicInfo = app.getBasicInfo()
+      const user = await AuthEmail.remindPassword(email, appBasicInfo, mailer)
       req.flash(FlashType.Success, `An e-mail has been sent to ${user.email} with further instructions.`)
     } catch (error) {
       req.flash(FlashType.Errors, error)
@@ -57,7 +58,7 @@ export class ResetPasswordPage {
     )
   }
 
-  public static reset = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, emailService: EmailService): Promise<ReactNode> => {
+  public static reset = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
     const { success, form } = await Form.getParams(req, ResetPasswordPage.renderReset())
 
     if (!success) {
@@ -67,7 +68,8 @@ export class ResetPasswordPage {
     try {
       const token = req.params.token
       const password = form.inputs["password"].value
-      await AuthEmail.resetPassword(req, password, token, emailService)
+      const appBasicInfo = app.getBasicInfo()
+      await AuthEmail.resetPassword(req, password, token, appBasicInfo, mailer)
       req.flash(FlashType.Success, "Success! Your password has been changed.")
     } catch (error) {
       req.flash(FlashType.Errors, error)

@@ -6,12 +6,12 @@ import { Input } from "../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../submodules/rapdv/server/form/Form"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
 import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
-import { EmailService } from "../../submodules/rapdv/server/mailer/EmailService"
 import { Auth } from "../../submodules/rapdv/server/auth/Auth"
 import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
 import { UserRole } from "../../submodules/rapdv/server/database/CollectionUser"
 import { Link } from "../../submodules/rapdv/server/ui/Link"
 import { PageId } from "../../submodules/rapdv/server/pages/PageId"
+import { Mailer } from "../../submodules/rapdv/server/mailer/Mailer"
 
 export class CreateAccountPage {
   public static render = async (req: Request): Promise<ReactNode> => {
@@ -31,7 +31,7 @@ export class CreateAccountPage {
     )
   }
 
-  public static register = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, emailService: EmailService): Promise<ReactNode> => {
+  public static register = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
     const { success, form } = await Form.getParams(req, CreateAccountPage.render(req))
 
     if (!success) {
@@ -41,7 +41,9 @@ export class CreateAccountPage {
     try {
       const email = form.inputs["email"].value
       const password = form.inputs["password"].value
-      await AuthEmail.createAccount(req, email, password, "", "", UserRole.User, emailService)
+      const appBasicInfo = app.getBasicInfo()
+
+      await AuthEmail.createAccount(req, email, password, "", "", UserRole.User, appBasicInfo, mailer)
     } catch (error) {
       req.flash(FlashType.Errors, error)
       return CreateAccountPage.render(req)
@@ -56,7 +58,7 @@ export class CreateAccountPage {
     res: Response,
     next: NextFunction,
     app: RapDvApp,
-    emailService: EmailService
+    mailer: Mailer
   ): Promise<ReactNode> => {
     await check("token").notEmpty().run(req)
     const redirectTo = !!req.user ? "/" : "/log-in"

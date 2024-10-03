@@ -7,6 +7,7 @@ import { FlashType, Request } from "../../submodules/rapdv/server/server/Request
 import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
 import { Link } from "../../submodules/rapdv/server/ui/Link"
 import { PageId } from "../../submodules/rapdv/server/pages/PageId"
+import { Auth } from "../../submodules/rapdv/server/auth/Auth"
 
 export class LogInPage {
   public static render = async (req: Request): Promise<ReactNode> => {
@@ -44,7 +45,7 @@ export class LogInPage {
   }
 
   public static logout = async (req: Request, res: Response): Promise<void> => {
-    await AuthEmail.logout(req)
+    await Auth.logout(req)
     req.flash(FlashType.Success, "You are logged out.")
     res.redirect("/log-in")
   }
