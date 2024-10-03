@@ -24,20 +24,23 @@ import { Footer } from "../submodules/rapdv/server/ui/Footer"
 import { Link } from "../submodules/rapdv/server/ui/Link"
 import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
 import { Request } from "../submodules/rapdv/server/server/Request"
-import { EmailService } from "../submodules/rapdv/server/mailer/EmailService"
+import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
 
 export class App extends RapDvApp {
   constructor() {
     super()
   }
 
-  setBasicInfo = () => ({
+  getBasicInfo = () => ({
     name: "RapDv Blog",
     description: "RapDv Blog - Create apps quickly",
     themeColor: "#000000"
   })
 
-  setPages = async () => {
+  public initAuth: () => Promise<void> = async () => {
+  }
+
+  getPages = async () => {
     this.addRoute(
       "/",
       ReqType.Get,
@@ -104,7 +107,7 @@ export class App extends RapDvApp {
     this.addEndpoint("/v1/rss", ReqType.Get, RssFeed.get)
   }
 
-  setLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
+  getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
     const year = new Date().getFullYear()
     return (
       <>
@@ -143,9 +146,9 @@ export class App extends RapDvApp {
     )
   }
 
-  setRoles = () => ["Writer"]
+  getRoles = () => ["Writer"]
 
-  setStorage = async () => {
+  getStorage = async () => {
     this.addCollection(
       "Post",
       {
@@ -168,7 +171,7 @@ export class App extends RapDvApp {
     await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => {})
   }
 
-  public startRecurringTasks = async (emailService: EmailService): Promise<void> => {
+  public startRecurringTasks = async (mailer: Mailer): Promise<void> => {
     // Place for starting recurring tasks
   }
 }

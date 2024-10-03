@@ -7,7 +7,7 @@ import { Collection } from "../../submodules/rapdv/server/database/Collection"
 
 export class RssFeed {
   public static get = async (req: Request, res: Response, next: NextFunction, app: RapDvApp) => {
-    const appInfo: AppBasicInfo = app.setBasicInfo()
+    const appInfo: AppBasicInfo = app.getBasicInfo()
     const postsModel = Collection.get("Post")
     const FROM = 0
     const MAX = 50
