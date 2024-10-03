@@ -2,7 +2,7 @@
   "name": "rapdv-blog",
   "version": "1.0.0",
   "description": "RapDv - Low code platform - Blog Example",
-  "author": "Digital Jetty Konrad Gadzinowski",
+  "author": "Konrad Gadzinowski <konrad@digitaljetty.com>",
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"npm run start-dev\" \"npx parcel watch client/App.tsx\"",
