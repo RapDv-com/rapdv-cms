@@ -3,7 +3,7 @@
 The quickest way to deploy your own blog! It's an example application that uses RapDv - Rapid Development Framework.
 
 ## Demo
-[https://blog.rapdv.com](https://blog.rapdv.com)  
+[https://cms.rapdv.com](https://cms.rapdv.com)  
   
 ## Before running it
 - Install RapDv submodule: `git submodule update --init --recursive`.

@@ -1,7 +1,7 @@
 {
-  "name": "rapdv-blog",
+  "name": "rapdv-cms",
   "version": "1.0.0",
-  "description": "RapDv - Low code platform - Blog Example",
+  "description": "RapDv - Rapid Development Framework - CMS App",
   "author": "Konrad Gadzinowski <konrad@digitaljetty.com>",
   "license": "MIT",
   "scripts": {
