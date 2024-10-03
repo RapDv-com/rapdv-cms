@@ -1,6 +1,6 @@
 # RapDv - Blog
 
-The quickest way to deploy your own blog! It's an example application that uses RapDv - framework for low-code web development.
+The quickest way to deploy your own blog! It's an example application that uses RapDv - Rapid Development Framework.
 
 ## Demo
 [https://blog.rapdv.com](https://blog.rapdv.com)  

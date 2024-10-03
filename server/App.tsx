@@ -46,7 +46,7 @@ export class App extends RapDvApp {
       ReqType.Get,
       PostsPage.renderList,
       "RapDv Blog - Create apps quickly",
-      "RapDv is a low-code framework for quickly creating any web application."
+      "RapDv is a rapid development framework for quickly creating any web application."
     )
     this.addRoute("/terms", ReqType.Get, PageTerms.render, "Terms and Conditions", "Our terms and conditions")
     this.addRoute("/privacy", ReqType.Get, PagePrivacy.render, "Privacy Policy", "Our privacy policy")
