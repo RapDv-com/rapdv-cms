@@ -104,7 +104,7 @@ export class App extends RapDvApp {
     this.addRoute("/user/:email", ReqType.Get, UsersPage.renderUser, "Edit user", "Edit user", [UserRole.Admin])
     this.addRoute("/user/:email", ReqType.Post, UsersPage.updateUser, "Edit user", "Edit user", [UserRole.Admin])
 
-    this.addEndpoint("/v1/rss", ReqType.Get, RssFeed.get)
+    this.addEndpoint("/feed", ReqType.Get, RssFeed.get)
   }
 
   getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
@@ -113,6 +113,8 @@ export class App extends RapDvApp {
       <>
         <header>
           <Nav appName={appInfo.name}>
+            <ul className="navbar-nav me-auto">
+            </ul>
             <ul className="navbar-nav ms-auto">
               <NavLink href="/log-in" icon="bi bi-box-arrow-in-left" req={req} restrictions={[Role.Guest]}>
                 Log In
@@ -130,6 +132,9 @@ export class App extends RapDvApp {
                 <NavDropdownItem href="/profile">Profile</NavDropdownItem>
                 <NavDropdownItem href="/log-out">Log out</NavDropdownItem>
               </NavDropdown>
+              <NavLink href="/feed" target="_blank" icon="bi bi-rss" req={req}>
+                <span className="d-lg-none">RSS Feed</span>
+              </NavLink>
             </ul>
           </Nav>
         </header>
