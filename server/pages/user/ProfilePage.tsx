@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react"
 import styled from "styled-components"
-import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
-import { Input } from "../../submodules/rapdv/server/ui/Input"
-import { Form } from "../../submodules/rapdv/server/form/Form"
-import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
-import { Link } from "../../submodules/rapdv/server/ui/Link"
-import { Images } from "../../submodules/rapdv/server/files/Images"
-import { FileStorageType } from "../../submodules/rapdv/server/database/CollectionFile"
+import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
+import { Link } from "../../../submodules/rapdv/server/ui/Link"
+import { Images } from "../../../submodules/rapdv/server/files/Images"
+import { FileStorageType } from "../../../submodules/rapdv/server/database/CollectionFile"
 
 export class ProfilePage {
   public static render = async (req: Request): Promise<ReactNode> => {

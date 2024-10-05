@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react"
-import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
-import { Input } from "../../submodules/rapdv/server/ui/Input"
-import { Form } from "../../submodules/rapdv/server/form/Form"
-import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
-import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
+import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
+import { AuthEmail } from "../../../submodules/rapdv/server/auth/AuthEmail"
 
 export class ChangePasswordPage {
   public static render = async (): Promise<ReactNode> => {

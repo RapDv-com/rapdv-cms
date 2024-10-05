@@ -2937,14 +2937,14 @@ process.umask = function() {
 
 },{}],"846Bb":[function(require,module,exports) {
 var _appClient = require("../submodules/rapdv/client/app/AppClient");
-var _pageEditPost = require("./PageEditPost");
+var _pageEditPost = require("./pages/PageEditPost");
 var _styleScss = require("./styles/style.scss");
 const pages = [];
 pages.push(new (0, _pageEditPost.PageEditPost)());
 const app = new (0, _appClient.AppClient)();
 app.start(pages);
 
-},{"../submodules/rapdv/client/app/AppClient":"7SZo4","./PageEditPost":"lt3ul","./styles/style.scss":"5NKOb"}],"7SZo4":[function(require,module,exports) {
+},{"../submodules/rapdv/client/app/AppClient":"7SZo4","./styles/style.scss":"5NKOb","./pages/PageEditPost":"a7dli"}],"7SZo4":[function(require,module,exports) {
 // Copyright (C) Digital Jetty Konrad Gadzinowski - All Rights Reserved
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -9905,7 +9905,7 @@ class Form {
     };
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kNC6N":[function() {},{}],"362eY":[function() {},{}],"lt3ul":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kNC6N":[function() {},{}],"362eY":[function() {},{}],"5NKOb":[function() {},{}],"a7dli":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PageEditPost", ()=>PageEditPost);
@@ -12857,6 +12857,6 @@ var process = require("23048dfa5b63f62d");
     }, a.version = a.parseVersionString.call(this, "5.23.3"), a;
 }());
 
-},{"23048dfa5b63f62d":"d5jf4"}],"8VANX":[function() {},{}],"hEPkU":[function() {},{}],"5NKOb":[function() {},{}]},["4vsWu","1xC6H","846Bb"], "846Bb", "parcelRequireef69")
+},{"23048dfa5b63f62d":"d5jf4"}],"8VANX":[function() {},{}],"hEPkU":[function() {},{}]},["4vsWu","1xC6H","846Bb"], "846Bb", "parcelRequireef69")
 
 //# sourceMappingURL=App.js.map

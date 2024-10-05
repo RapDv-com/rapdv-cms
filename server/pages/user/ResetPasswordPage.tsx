@@ -1,13 +1,13 @@
 import React, { ReactNode } from "react"
 import { NextFunction, Response } from "express"
-import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
-import { Input } from "../../submodules/rapdv/server/ui/Input"
-import { Form } from "../../submodules/rapdv/server/form/Form"
-import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
-import { AuthEmail } from "../../submodules/rapdv/server/auth/AuthEmail"
-import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
-import { Link } from "../../submodules/rapdv/server/ui/Link"
-import { Mailer } from "../../submodules/rapdv/server/mailer/Mailer"
+import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
+import { Input } from "../../../submodules/rapdv/server/ui/Input"
+import { Form } from "../../../submodules/rapdv/server/form/Form"
+import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
+import { AuthEmail } from "../../../submodules/rapdv/server/auth/AuthEmail"
+import { RapDvApp } from "../../../submodules/rapdv/server/RapDvApp"
+import { Link } from "../../../submodules/rapdv/server/ui/Link"
+import { Mailer } from "../../../submodules/rapdv/server/mailer/Mailer"
 
 export class ResetPasswordPage {
   public static renderForgot = async (req: Request): Promise<ReactNode> => {
