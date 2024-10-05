@@ -12857,6 +12857,6 @@ var process = require("23048dfa5b63f62d");
     }, a.version = a.parseVersionString.call(this, "5.23.3"), a;
 }());
 
-},{"23048dfa5b63f62d":"d5jf4"}],"8VANX":[function() {},{}],"hEPkU":[function() {},{}],"5NKOb":[function() {},{}]},["4vsWu","1xC6H","846Bb"], "846Bb", "parcelRequire9ae1")
+},{"23048dfa5b63f62d":"d5jf4"}],"8VANX":[function() {},{}],"hEPkU":[function() {},{}],"5NKOb":[function() {},{}]},["4vsWu","1xC6H","846Bb"], "846Bb", "parcelRequireef69")
 
 //# sourceMappingURL=App.js.map
