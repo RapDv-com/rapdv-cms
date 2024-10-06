@@ -1,6 +1,6 @@
 import { Response } from "express"
 import React, { ReactNode } from "react"
-import { PostsPage } from "./../admin/PostsPage"
+import { PostsPage } from "../PostsPage"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
 import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
 import { HttpStatus } from "../../../submodules/rapdv/server/network/HttpStatus"
