@@ -27,9 +27,6 @@ export class ProfilePage {
             </div>
           </div>
         </SubmitForm>
-        <div>
-          <Link href="/change-password">Change password</Link>
-        </div>
       </div>
     )
   }
