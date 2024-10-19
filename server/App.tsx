@@ -1,15 +1,12 @@
 import React, { ReactNode } from "react"
 import { RssFeed } from "./api/RssFeed"
-import { ChangePasswordPage } from "./pages/user/ChangePasswordPage"
 import { EditCommentPage } from "./pages/user/EditCommentPage"
-import { CreateAccountPage } from "./pages/CreateAccountPage"
 import { EditPostPage } from "./pages/admin/EditPostPage"
 import { LogInPage } from "./pages/LogInPage"
 import { PostsPage } from "./pages/PostsPage"
 import { ProfilePage } from "./pages/user/ProfilePage"
 import { PageTerms } from "./pages/PageTerms"
 import { PagePrivacy } from "./pages/PagePrivacy"
-import { ResetPasswordPage } from "./pages/user/ResetPasswordPage"
 import { Schema } from "mongoose"
 import { UsersPage } from "./pages/admin/UsersPage"
 import { AppBasicInfo, RapDvApp } from "../submodules/rapdv/server/RapDvApp"
@@ -25,7 +22,7 @@ import { Link } from "../submodules/rapdv/server/ui/Link"
 import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
 import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
-import { AuthEmail } from "../submodules/rapdv/server/auth/AuthEmail"
+import { VerifyEmailPage } from "./pages/VerifyEmailPage"
 
 export class App extends RapDvApp {
   constructor() {
@@ -39,7 +36,6 @@ export class App extends RapDvApp {
   })
 
   public initAuth: () => Promise<void> = async () => {
-    AuthEmail.configure()
   }
 
   getPages = async () => {
@@ -56,39 +52,39 @@ export class App extends RapDvApp {
     this.addRoute("/log-in", ReqType.Get, LogInPage.render, "Log in", "Log in to our blog", [Role.Guest])
     this.addRoute("/log-in", ReqType.Post, LogInPage.login, "Log in", "Log in to our blog", [Role.Guest])
 
-    this.addRoute(
-      "/forgot-password",
-      ReqType.Get,
-      ResetPasswordPage.renderForgot,
-      "I forgot password",
-      "We can reset your password, if you forgot it",
-      [Role.Guest]
-    )
-    this.addRoute("/forgot-password", ReqType.Post, ResetPasswordPage.remind, "I forgot password", "We can reset your password, if you forgot it", [
-      Role.Guest
-    ])
-
-    this.addRoute("/reset-password/:token", ReqType.Get, ResetPasswordPage.renderReset, "Reset password", "Reset your password", [Role.Guest], true)
-    this.addRoute("/reset-password/:token", ReqType.Post, ResetPasswordPage.reset, "Reset password", "Reset your password", [Role.Guest], true)
-
-    this.addGenericRoute("/log-out", ReqType.Get, LogInPage.logout, [Role.LoggedIn])
-    this.addGenericRoute("/log-out", ReqType.Post, LogInPage.logout, [Role.LoggedIn])
-
-    this.addRoute("/create-account", ReqType.Get, CreateAccountPage.render, "Create Account", "Create account on our blog", [Role.Guest])
-    this.addRoute("/create-account", ReqType.Post, CreateAccountPage.register, "Create Account", "Create account on our blog", [Role.Guest])
+    this.addEndpoint("/log-in/google", ReqType.Get, LogInPage.loginWithGoogle, [Role.Guest])
+    this.addEndpoint("/log-in/google/callback", ReqType.Get, LogInPage.loginWithGoogleCallback)
 
     this.addRoute(
-      "/verify-email/:token",
+      "/verify-email/:email",
       ReqType.Get,
-      CreateAccountPage.verifyEmail,
+      VerifyEmailPage.render,
       "Verify your email",
-      "Verify your email to use the app.",
-      [],
+      "Verify your email",
+      [Role.Guest],
+      true
+    )
+    this.addRoute(
+      "/verify-email/:email/:code",
+      ReqType.Get,
+      VerifyEmailPage.render,
+      "Verify your email",
+      "Verify your email",
+      [Role.Guest],
+      true
+    )
+    this.addRoute(
+      "/verify-email/:email",
+      ReqType.Post,
+      VerifyEmailPage.verifyEmail,
+      "Verify your email",
+      "Verify your email",
+      [Role.Guest],
       true
     )
 
-    this.addRoute("/change-password", ReqType.Get, ChangePasswordPage.render, "Change password", "Change your password", [Role.LoggedIn])
-    this.addRoute("/change-password", ReqType.Post, ChangePasswordPage.changePassword, "Change password", "Change your password", [Role.LoggedIn])
+    this.addGenericRoute("/log-out", ReqType.Get, LogInPage.logout, [Role.LoggedIn])
+    this.addGenericRoute("/log-out", ReqType.Post, LogInPage.logout, [Role.LoggedIn])
 
     this.addRoute("/profile", ReqType.Get, ProfilePage.render, "Profile", "Edit your profile", [Role.LoggedIn])
     this.addRoute("/profile", ReqType.Post, ProfilePage.edit, "Profile", "Edit your profile", [Role.LoggedIn], false, true)
