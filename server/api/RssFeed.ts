@@ -11,7 +11,7 @@ export class RssFeed {
     const postsModel = Collection.get("Post")
     const FROM = 0
     const MAX = 50
-    const posts = await postsModel.findAll(undefined, FROM, MAX)
+    const posts = await postsModel.findAll(undefined, FROM, MAX, [], { publishedDate: -1 })
     const lastPublishedDate = posts[0]?.publishedDate ?? new Date()
 
     res.header("Content-Type", "application/xml")
@@ -22,7 +22,7 @@ export class RssFeed {
         <link>${process.env.BASE_URL}</link>
         <description>${appInfo.description}</description>
         <language>en-us</language>
-        <atom:link href="${process.env.BASE_URL}/v1/rss" rel="self" type="application/rss+xml" />
+        <atom:link href="${process.env.BASE_URL}/feed" rel="self" type="application/rss+xml" />
         <pubDate>${lastPublishedDate.toUTCString()}</pubDate>
         <lastBuildDate>${lastPublishedDate.toUTCString()}</lastBuildDate>
         <generator>RapDv</generator>

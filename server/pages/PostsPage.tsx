@@ -20,7 +20,7 @@ export class PostsPage {
     const count = await postsModel.count()
     const from = Paginator.getFromPosition(req, count)
     const collectionComment = Collection.get("Comment")
-    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE)
+    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE, [], { publishedDate: -1 })
     posts = await Promise.all(
       posts.map(async (post, index) => {
         const commentsCount = await collectionComment.count({ post: post._id })
