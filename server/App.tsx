@@ -117,9 +117,6 @@ export class App extends RapDvApp {
               <NavLink href="/log-in" icon="bi bi-box-arrow-in-left" req={req} restrictions={[Role.Guest]}>
                 Log In
               </NavLink>
-              <NavLink href="/create-account" icon="bi bi-person-plus-fill" req={req} restrictions={[Role.Guest]}>
-                Create Account
-              </NavLink>
               <NavLink href="/publish" req={req} restrictions={[UserRole.Admin, "Writer"]}>
                 Publish
               </NavLink>
