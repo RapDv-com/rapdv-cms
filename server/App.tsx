@@ -110,7 +110,7 @@ export class App extends RapDvApp {
     return (
       <>
         <header>
-          <Nav appName={appInfo.name}>
+          <Nav appName={appInfo.name} className="navbar-dark bg-dark">
             <ul className="navbar-nav me-auto">
             </ul>
             <ul className="navbar-nav ms-auto">
