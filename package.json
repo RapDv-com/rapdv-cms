@@ -64,6 +64,7 @@
     "nprogress": "*",
     "parcel": "*",
     "passport": "*",
+    "passport-google-oauth20": "*",
     "passport-local": "*",
     "pjax": "*",
     "prettier": "*",

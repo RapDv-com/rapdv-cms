@@ -23,6 +23,7 @@ import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
 import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
 import { VerifyEmailPage } from "./pages/VerifyEmailPage"
+import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
 
 export class App extends RapDvApp {
   constructor() {
@@ -36,6 +37,7 @@ export class App extends RapDvApp {
   })
 
   public initAuth: () => Promise<void> = async () => {
+    AuthGoogle.configure()
   }
 
   getPages = async () => {
