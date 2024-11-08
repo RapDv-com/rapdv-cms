@@ -89,14 +89,14 @@ export class LogInPage {
   ): Promise<ReactNode> => {
     await new Promise<void>((resolve, reject) => {
       passport.authenticate("google", { failureRedirect: "/log-in" })(req, res, async () => {
-        let redirectTo = "/docs"
+        let redirectTo = "/"
 
         if (req?.user?._id) {
           const user = !!req?.user ? await CollectionUser.findUserById(req.user._id) : undefined
           redirectTo = await LogInPage.getUrlOnSuccessfulLogin(user)
+          req.flash(FlashType.Success, "Welcome! It's great to see you!")
         }
 
-        req.flash(FlashType.Success, "Welcome! It's great to see you!")
         res.redirect(redirectTo)
         resolve()
       })
