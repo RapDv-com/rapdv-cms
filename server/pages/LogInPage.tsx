@@ -12,6 +12,8 @@ import { RapDvApp } from "../../submodules/rapdv/server/RapDvApp"
 import { Mailer } from "../../submodules/rapdv/server/mailer/Mailer"
 import { CollectionUser, UserRole } from "../../submodules/rapdv/server/database/CollectionUser"
 import passport from "passport"
+import { CloudflareTurnstileServer } from "../../submodules/rapdv/server/cloudflare/turnslide/CloudflareTurnstileServer"
+import { TextUtils } from "../../submodules/rapdv/server/text/TextUtils"
 
 export class LogInPage {
   public static render = async (req: Request): Promise<ReactNode> => {
@@ -21,6 +23,7 @@ export class LogInPage {
           <PageId>login</PageId>
           <SubmitForm title="Log In" submitText="Log in">
             <Input type="email" name="email" req={req} required />
+            <div id="cloudFlareTurnslide" className="mb-3" style={{ overflow: "hidden" }}></div>
           </SubmitForm>
           <div className="mt-3">
             <Link href="/log-in/google" icon="bi-google" className="btn btn-md btn-outline-danger noPjax">
@@ -44,6 +47,7 @@ export class LogInPage {
             </div>
           </div>
         </div>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
       </>
     )
   }
@@ -57,6 +61,15 @@ export class LogInPage {
 
     const email = form.inputs["email"]?.value
     try {
+
+      if (!TextUtils.isEmpty(process.env.CLOUDFLARE_TURNSLIDE_KEY_SERVER)) {
+        const isHuman = await CloudflareTurnstileServer.isRequestValidated(req)
+        if (!isHuman) {
+          req.flash(FlashType.Errors, "Please verify that you are not a robot 🤖")
+          return LogInPage.render(req)
+        }
+      }
+
       // Create user
       const user = await AuthEmailCodes.initLogIn(req, email, app.getBasicInfo(), mailer, "", "", UserRole.User)
 
