@@ -57,13 +57,11 @@ export class VerifyEmailPage {
   }
 
   public static verifyEmailCode = async (req: Request, res: Response, email: string, code: string): Promise<ReactNode> => {
-    let isFirstLogin = false
     let redirectTo = "/"
 
     try {
       const collectionUser = Collection.get("User") as CollectionUser
       const user = await collectionUser.findOne({ email })
-      isFirstLogin = !user?.emailVerified
 
       redirectTo = await LogInPage.getUrlOnSuccessfulLogin(user)
 
