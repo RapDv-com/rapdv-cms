@@ -107,6 +107,8 @@ export class App extends RapDvApp {
     this.addEndpoint("/feed", ReqType.Get, RssFeed.get)
   }
 
+  getHeadTags = async () => ""
+
   getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
     const year = new Date().getFullYear()
     return (
