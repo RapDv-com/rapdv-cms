@@ -171,8 +171,6 @@ export class App extends RapDvApp {
       author: { type: Schema.Types.ObjectId, ref: "User" },
       publishedDate: Date
     })
-
-    await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => {})
   }
 
   public startRecurringTasks = async (mailer: Mailer): Promise<void> => {
@@ -181,5 +179,6 @@ export class App extends RapDvApp {
 
   public addDatabaseEvolutions = async () => {
     // Place for adding database evolutions
+    await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => {})
   }
 }
