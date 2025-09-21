@@ -1,10 +1,9 @@
 import { AppClient } from "../submodules/rapdv/client/app/AppClient"
-import { ClientPage } from "../submodules/rapdv/client/elements/PagesCtrl"
 import { PageEditPost } from "./pages/PageEditPost"
 import { PageLogin } from "./pages/PageLogin"
-import "./styles/style.scss"
+import "./styles/style.css"
 
-const pages: Array<ClientPage> = []
+const pages = []
 pages.push(new PageEditPost())
 pages.push(new PageLogin())
 

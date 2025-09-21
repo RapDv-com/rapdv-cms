@@ -1,12 +1,12 @@
 import { CloudflareTurnstileClient } from "../../submodules/rapdv/client/elements/CloudflareTurnstileClient"
 import { ClientPage } from "../../submodules/rapdv/client/elements/PagesCtrl"
 
-export class PageLogin implements ClientPage {
-  getPageId = (): string => "login"
+export class PageLogin extends ClientPage {
+  getPageId = () => "login"
 
-  execute = (): void => {
+  execute = () => {
     CloudflareTurnstileClient.init()
   }
 
-  onPageClose = (): void => {}
+  onPageClose = () => {}
 }
