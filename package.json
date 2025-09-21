@@ -5,13 +5,11 @@
   "author": "Konrad Gadzinowski <konrad@digitaljetty.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run start-dev\" \"npx parcel watch client/App.tsx\"",
+    "start": "concurrently \"npm run start-dev\"",
     "start-dev": "cross-env NODE_ENV=development nodemon --watch ./submodules/rapdv/server --watch ./server --ext ts,tsx --exec \"ts-node\" ./submodules/rapdv/server/Boot.tsx",
     "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
-    "build-prod": "npx parcel build client/App.tsx --no-cache",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
-    "test-server": "mocha -r ts-node/register server/**/*.test.tsx",
-    "clear": "rm -rf .parcel-cache/ && rm -rf dist"
+    "test-server": "mocha -r ts-node/register server/**/*.test.tsx"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
