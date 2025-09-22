@@ -1,19 +1,31 @@
 import { html } from "../../../submodules/rapdv/server/html/Html"
 
-export const ViewLayout = () => {
+type Props = {
+  title: string
+  description: string
+  canonicalUrl: string
+  disableIndexing?: boolean
+  isProduction?: boolean
+  body: any
+  styles: any
+  scripts: any
+  headAdditionalTags: any
+}
+
+export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, body, isProduction, styles, scripts, headAdditionalTags }: Props) => {
   return html`
   <!DOCTYPE html>
   <html lang="en">
     <head>
 
     <meta charset="utf-8" />
-    <title>{{title}}</title>
+    <title>${title}</title>
 
-    <meta name="description" content="{{description}}" />
+    <meta name="description" content="${description}" />
 
-    {{#if disableIndexing}}
+    ${disableIndexing && html`
       <meta name="robots" content="noindex,nofollow" />
-    {{/if}}
+    `}
 
     <!-- Common metadata -->
     <meta name="author" content="Konrad Gadzinowski <konrad@digitaljetty.com>" />
@@ -21,7 +33,7 @@ export const ViewLayout = () => {
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, minimal-ui" />
-    <link rel="canonical" href={{canonicalUrl}}>
+    <link rel="canonical" href="${canonicalUrl}">
 
     <!-- Make app fullscreen -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,18 +54,18 @@ export const ViewLayout = () => {
     <link rel="apple-touch-icon-precomposed" href="/assets/icons/57.png">
     <link rel="icon" href="/client/assets/favicon.svg">
 
-    {{> styles}}
-    {{styleTags}}
-    {{headAdditionalTags}}
+    ${styles}
+    ${headAdditionalTags}
 
     </head>
-    <body id='body' {{#if theme}}class="{{theme}}"{{/if}}>
-      {{{body}}}
-      {{> scripts}}
+    <body id='body'>
+      ${body}
+      ${scripts}
 
-      {{#unless isProduction}}
+      ${!isProduction && html`
         <script src="/reload/reload.js"></script>
-      {{/unless}}
+      `}
+
     </body>
   </html>
   `
