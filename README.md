@@ -23,6 +23,6 @@ The quickest way to deploy your own blog! It's an example application that uses 
 
 TODO: 
 - Remove react
-- Remove hbs
-- Remove SafeString
+- Remove res.render
+- Remove .layout
 - Update views to HTML
