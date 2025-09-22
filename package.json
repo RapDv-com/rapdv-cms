@@ -40,8 +40,6 @@
     "express-session": "*",
     "express-validator": "*",
     "file-loader": "*",
-    "hbs": "*",
-    "html-react-parser": "*",
     "i": "*",
     "jasmine-core": "*",
     "jsdom": "*",
@@ -66,8 +64,6 @@
     "passport-local": "*",
     "pjax": "*",
     "prettier": "*",
-    "react": "*",
-    "react-dom": "*",
     "reload": "*",
     "request": "*",
     "sass": "*",
@@ -86,5 +82,9 @@
     "mime": "^3.0.0",
     "parcel": "^2.10.2",
     "process": "^0.11.10"
+  },
+  "dependencies": {
+    "htm": "^3.1.1",
+    "preact": "^10.27.2"
   }
 }
