@@ -110,42 +110,10 @@ export class App extends RapDvApp {
   getHeadTags = async () => ""
 
   getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
-    const year = new Date().getFullYear()
+    // TODO: Return here ViewLayout
     return (
       <>
-        <header>
-          <Nav appName={appInfo.name} className="navbar-dark bg-dark">
-            <ul className="navbar-nav me-auto">
-            </ul>
-            <ul className="navbar-nav ms-auto">
-              <NavLink href="/log-in" icon="bi bi-box-arrow-in-left" req={req} restrictions={[Role.Guest]}>
-                Log In
-              </NavLink>
-              <NavLink href="/publish" req={req} restrictions={[UserRole.Admin, "Writer"]}>
-                Publish
-              </NavLink>
-              <NavLink href="/users" req={req} restrictions={[UserRole.Admin]}>
-                Users
-              </NavLink>
-              <NavDropdown title={req?.user?.email} icon={await req?.user?.getPhotoSrc()} req={req} restrictions={[Role.LoggedIn]}>
-                <NavDropdownItem href="/profile">Profile</NavDropdownItem>
-                <NavDropdownItem href="/log-out">Log out</NavDropdownItem>
-              </NavDropdown>
-              <NavLink href="/feed" target="_blank" icon="bi bi-rss" req={req}>
-                <span className="d-lg-none">RSS Feed</span>
-              </NavLink>
-            </ul>
-          </Nav>
-        </header>
-        <main>
-          <FlashMessages req={req} />
-          {content}
-        </main>
-        <Footer>
-          Company Inc ©{year}
-          <Link href="/terms">Terms and Conditions</Link>
-          <Link href="/privacy">Privacy Policy</Link>
-        </Footer>
+        
       </>
     )
   }
