@@ -1,4 +1,4 @@
-import { html } from "../../submodules/rapdv/server/html/Html"
+import { html } from "../../../submodules/rapdv/server/html/Html"
 
 export const ViewScripts = () => {
   return html`

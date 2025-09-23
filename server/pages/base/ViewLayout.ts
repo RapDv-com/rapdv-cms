@@ -1,4 +1,6 @@
 import { html } from "../../../submodules/rapdv/server/html/Html"
+import { ViewScripts } from "./ViewScripts"
+import { ViewStyles } from "./ViewStyles"
 
 type Props = {
   title: string
@@ -7,12 +9,10 @@ type Props = {
   disableIndexing?: boolean
   isProduction?: boolean
   body: any
-  styles: any
-  scripts: any
   headAdditionalTags: any
 }
 
-export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, body, isProduction, styles, scripts, headAdditionalTags }: Props) => {
+export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, body, isProduction, headAdditionalTags }: Props) => {
   return html`
   <!DOCTYPE html>
   <html lang="en">
@@ -54,13 +54,13 @@ export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, 
     <link rel="apple-touch-icon-precomposed" href="/assets/icons/57.png">
     <link rel="icon" href="/client/assets/favicon.svg">
 
-    ${styles}
+    ${ViewStyles()}
     ${headAdditionalTags}
 
     </head>
     <body id='body'>
       ${body}
-      ${scripts}
+      ${ViewScripts()}
 
       ${!isProduction && html`
         <script src="/reload/reload.js"></script>
