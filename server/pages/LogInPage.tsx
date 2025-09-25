@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react"
 import { NextFunction, Response } from "express"
 import { SubmitForm } from "../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../submodules/rapdv/server/ui/Input"
@@ -14,45 +13,48 @@ import { CollectionUser, UserRole } from "../../submodules/rapdv/server/database
 import passport from "passport"
 import { CloudflareTurnstileServer } from "../../submodules/rapdv/server/cloudflare/turnslide/CloudflareTurnstileServer"
 import { TextUtils } from "../../submodules/rapdv/server/text/TextUtils"
+import { html } from "../../submodules/rapdv/server/html/Html"
 
 export class LogInPage {
-  public static render = async (req: Request): Promise<ReactNode> => {
-    return (
-      <>
-        <div className="container-max-xsm">
-          <PageId>login</PageId>
-          <SubmitForm title="Log In" submitText="Log in">
-            <Input type="email" name="email" req={req} required />
-            <div id="cloudFlareTurnslide" className="mb-3" style={{ overflow: "hidden" }}></div>
-          </SubmitForm>
-          <div className="mt-3">
-            <Link href="/log-in/google" icon="bi-google" className="btn btn-md btn-outline-danger noPjax">
-              Log in With Google
-            </Link>
-          </div>
-          <div className="mt-5">
-            No need to create an account. <br />
-            Just log in with your email.
-          </div>
-          <div className="mt-5">
-            <div>
-              By logging in, you accept
-              <a href="/terms" target="_blank">
-                terms and conditions
-              </a>
-              and
-              <a href="/privacy" target="_blank">
-                privacy policy
-              </a>
-            </div>
-          </div>
+  public static render = async (req: Request): Promise<any> => {
+    return html`
+    <div class="container-max-xsm">
+      <${PageId}>login<//>
+      <${SubmitForm} title="Log In" submitText="Log in">
+        <${Input} type="email" name="email" req=${req} required />
+        <div id="cloudFlareTurnslide" class="mb-3" style=${{ overflow: "hidden" }}></div>
+      <//>
+      <div class="mt-3">
+        <${Link}
+          href="/log-in/google"
+          icon="bi-google"
+          class="btn btn-md btn-outline-danger noPjax"
+        >
+          Log in With Google
+        <//>
+      </div>
+      <div class="mt-5">
+        No need to create an account. <br />
+        Just log in with your email.
+      </div>
+      <div class="mt-5">
+        <div>
+          By logging in, you accept
+          <a href="/terms" target="_blank">terms and conditions</a>
+          and
+          <a href="/privacy" target="_blank">privacy policy</a>
         </div>
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
-      </>
-    )
+      </div>
+    </div>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+      async
+      defer
+    ></script>
+  `
   }
 
-  public static login = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
+  public static login = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<any> => {
     const { success, form } = await Form.getParams(req, LogInPage.render(req))
 
     if (!success) {
@@ -86,7 +88,7 @@ export class LogInPage {
     res.redirect("/log-in")
   }
 
-  public static loginWithGoogle = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
+  public static loginWithGoogle = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<any> => {
     await new Promise((resolve, reject) => {
       passport.authenticate("google", { scope: ["email", "profile"] })(req, res, resolve)
     })
@@ -99,7 +101,7 @@ export class LogInPage {
     next: NextFunction,
     app: RapDvApp,
     mailer: Mailer
-  ): Promise<ReactNode> => {
+  ): Promise<any> => {
     await new Promise<void>((resolve, reject) => {
       passport.authenticate("google", { failureRedirect: "/log-in" })(req, res, async () => {
         let redirectTo = "/"
