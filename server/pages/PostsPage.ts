@@ -80,7 +80,7 @@ export class PostsPage {
     const areComments = allComments.length > 0
     const isUserLoggedIn = !!req.user
 
-    html`
+    return html`
     <div>
       <div>
         <h1>${post.title}</h1>
