@@ -9,5 +9,3 @@ pages.push(new PageLogin())
 
 const app = new AppClient()
 app.start(pages)
-
-alert("Client App started")
