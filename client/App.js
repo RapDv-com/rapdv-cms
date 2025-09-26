@@ -1,7 +1,6 @@
-import { AppClient } from "../submodules/rapdv/client/app/AppClient.js"
-import { PageEditPost } from "./pages/PageEditPost.js"
-import { PageLogin } from "./pages/PageLogin.js"
-import "./styles/style.css"
+import { AppClient } from "app/AppClient"
+import { PageEditPost } from "pages/PageEditPost"
+import { PageLogin } from "pages/PageLogin"
 
 const pages = []
 pages.push(new PageEditPost())
