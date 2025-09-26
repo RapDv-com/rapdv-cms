@@ -120,15 +120,18 @@ export class App extends RapDvApp {
     clientFilesId: string,
     otherOptions?: any
     ): Promise<VNode> => {
-    // TODO: Return here ViewLayout
+    const userPhotoSrc = await req?.user?.getPhotoSrc()
     return (
       html`<${ViewLayout} 
         title=${title} 
         description=${description} 
         canonicalUrl=${canonicalUrl}
         disableIndexing=${disableIndexing}
+        appInfo=${appInfo}
+        req=${req}
         isProduction=${RapDvApp.isProduction()}
         clientFilesId=${clientFilesId}
+        userPhotoSrc=${userPhotoSrc}
         >
       ${content}
       <//${ViewLayout}>`

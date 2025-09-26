@@ -1,4 +1,8 @@
+import { UserRole } from "../../../submodules/rapdv/server/database/CollectionUser"
 import { html } from "../../../submodules/rapdv/server/html/Html"
+import { AppBasicInfo } from "../../../submodules/rapdv/server/RapDvApp"
+import { Role } from "../../../submodules/rapdv/server/Role"
+import { Request } from "../../../submodules/rapdv/server/server/Request"
 import { FlashMessages } from "../../../submodules/rapdv/server/ui/FlashMessages"
 import { NavDropdown } from "../../../submodules/rapdv/server/ui/NavDropdown"
 import { NavDropdownItem } from "../../../submodules/rapdv/server/ui/NavDropdownItem"
@@ -11,12 +15,15 @@ type Props = {
   description: string
   canonicalUrl: string
   disableIndexing?: boolean
+  appInfo: AppBasicInfo
+  req: Request
   isProduction?: boolean
   clientFilesId: string
   children: any
+  userPhotoSrc: string
 }
 
-export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, children, isProduction, clientFilesId }: Props) => {
+export const ViewLayout = ({ title, description, canonicalUrl, appInfo, req, disableIndexing, children, userPhotoSrc, isProduction, clientFilesId }: Props) => {
   const year = new Date().getFullYear()
 
   return html`
@@ -61,37 +68,37 @@ export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, 
       <link rel="icon" href="/client/assets/favicon.svg">
 
       <${ViewStyles}
-        clientFilesId=(clientFilesId)
+        clientFilesId=${clientFilesId}
       />
 
       </head>
       <body id='body'>
         <header>
-          <Nav appName={appInfo.name} className="navbar-dark bg-dark">
+          <Nav appName=${appInfo.name} className="navbar-dark bg-dark">
             <ul className="navbar-nav me-auto">
             </ul>
             <ul className="navbar-nav ms-auto">
-              <${NavLink} href="/log-in" icon="bi bi-box-arrow-in-left" req={req} restrictions={[Role.Guest]}>
+              <${NavLink} href="/log-in" icon="bi bi-box-arrow-in-left" req=${req} restrictions=${[Role.Guest]}>
                 Log In
               <//>
-              <${NavLink} href="/publish" req={req} restrictions={[UserRole.Admin, "Writer"]}>
+              <${NavLink} href="/publish" req=${req} restrictions=${[UserRole.Admin, "Writer"]}>
                 Publish
               <//>
-              <${NavLink} href="/users" req={req} restrictions={[UserRole.Admin]}>
+              <${NavLink} href="/users" req=${req} restrictions=${[UserRole.Admin]}>
                 Users
               <//>
-              <${NavDropdown} title={req?.user?.email} icon={await req?.user?.getPhotoSrc()} req={req} restrictions={[Role.LoggedIn]}>
+              <${NavDropdown} title=${req?.user?.email} icon=${userPhotoSrc} req=${req} restrictions=${[Role.LoggedIn]}>
                 <${NavDropdownItem} href="/profile">Profile<//>
                 <${NavDropdownItem} href="/log-out">Log out<//>
               <//>
-              <${NavLink} href="/feed" target="_blank" icon="bi bi-rss" req={req}>
+              <${NavLink} href="/feed" target="_blank" icon="bi bi-rss" req=${req}>
                 <span className="d-lg-none">RSS Feed</span>
               <//>
             </ul>
           </Nav>
         </header>
         <main>
-          <${FlashMessages} req={req} />
+          <${FlashMessages} req=${req} />
           ${children}
         </main>
         <Footer>
@@ -100,7 +107,7 @@ export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, 
           <Link href="/privacy">Privacy Policy<//>
         </Footer>
         <${ViewScripts}
-          clientFilesId=(clientFilesId)
+          clientFilesId=${clientFilesId}
         />
 
         ${!isProduction && html`

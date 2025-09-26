@@ -20,8 +20,3 @@ The quickest way to deploy your own blog! It's an example application that uses 
 ## Application structure
 - Back-end code is in `server` folder
 - Front-end code is in `client` folder. After modifying client code, you need to run `npm run build-prod` to rebuild it.
-
-TODO: 
-- Remove res.render
-- Remove .layout
-- Update views to HTML
