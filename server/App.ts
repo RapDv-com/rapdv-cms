@@ -11,13 +11,6 @@ import { UsersPage } from "./pages/admin/UsersPage"
 import { AppBasicInfo, RapDvApp } from "../submodules/rapdv/server/RapDvApp"
 import { ReqType } from "../submodules/rapdv/server/ReqType"
 import { Role } from "../submodules/rapdv/server/Role"
-import { NavLink } from "../submodules/rapdv/server/ui/NavLink"
-import { Nav } from "../submodules/rapdv/server/ui/Nav"
-import { NavDropdownItem } from "../submodules/rapdv/server/ui/NavDropdownItem"
-import { NavDropdown } from "../submodules/rapdv/server/ui/NavDropdown"
-import { FlashMessages } from "../submodules/rapdv/server/ui/FlashMessages"
-import { Footer } from "../submodules/rapdv/server/ui/Footer"
-import { Link } from "../submodules/rapdv/server/ui/Link"
 import { UserRole } from "../submodules/rapdv/server/database/CollectionUser"
 import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
@@ -26,6 +19,7 @@ import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
 import { html } from "../submodules/rapdv/server/html/Html"
 import { ViewLayout } from "./pages/base/ViewLayout"
 import { VNode } from "preact"
+import { ViewError } from "./pages/base/ViewError"
 
 export class App extends RapDvApp {
   constructor() {
@@ -136,6 +130,12 @@ export class App extends RapDvApp {
       ${content}
       <//${ViewLayout}>`
     )
+  }
+
+  getErrorView = async (error: any): Promise<VNode> => {
+    return html`<${ViewError} 
+      error=${error}
+    />`
   }
 
   getRoles = () => ["Writer"]
