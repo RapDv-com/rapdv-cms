@@ -22,7 +22,6 @@ The quickest way to deploy your own blog! It's an example application that uses 
 - Front-end code is in `client` folder. After modifying client code, you need to run `npm run build-prod` to rebuild it.
 
 TODO: 
-- Remove react
 - Remove res.render
 - Remove .layout
 - Update views to HTML

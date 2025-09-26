@@ -1,8 +1,8 @@
-import React, { ReactNode } from "react"
+import { html } from "../../submodules/rapdv/server/html/Html"
 
 export class PageTerms {
-  public static render = async (): Promise<ReactNode> => (
-    <>
+  public static render = async (): Promise<any> => (
+    html`
       <h1>Terms and Conditions</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis lectus
@@ -52,6 +52,6 @@ export class PageTerms {
         ullamcorper malesuada proin libero nunc consequat interdum varius sit. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus
         mauris.
       </p>
-    </>
+    `
   )
 }

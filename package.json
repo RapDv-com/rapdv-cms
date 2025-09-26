@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "start": "concurrently \"npm run start-dev\"",
-    "start-dev": "cross-env NODE_ENV=development nodemon --watch ./submodules/rapdv/server --watch ./server --ext ts,tsx --exec \"ts-node\" ./submodules/rapdv/server/Boot.tsx",
-    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./submodules/rapdv/server/Boot.tsx\"",
+    "start-dev": "cross-env NODE_ENV=development nodemon --watch ./submodules/rapdv/server --watch ./server --ext ts,tsx --exec \"ts-node\" ./submodules/rapdv/server/Boot.ts",
+    "start-prod": "cross-env NODE_ENV=production \"ts-node\" \"./submodules/rapdv/server/Boot.ts\"",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
-    "test-server": "mocha -r ts-node/register server/**/*.test.tsx"
+    "test-server": "mocha -r ts-node/register server/**/*.test.ts"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
@@ -71,7 +71,6 @@
     "sharp": "*",
     "spacetime": "*",
     "style-loader": "*",
-    "styled-components": "*",
     "ts-loader": "*",
     "ts-node": "*",
     "typescript": "*",
@@ -85,6 +84,7 @@
   },
   "dependencies": {
     "htm": "^3.1.1",
-    "preact": "^10.27.2"
+    "preact": "^10.27.2",
+    "preact-render-to-string": "^6.6.1"
   }
 }

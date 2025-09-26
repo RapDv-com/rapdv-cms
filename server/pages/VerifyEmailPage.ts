@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react"
 import { NextFunction, Response } from "express"
 import { check } from "express-validator"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
@@ -12,9 +11,11 @@ import { Auth } from "../../submodules/rapdv/server/auth/Auth"
 import { Mailer } from "../../submodules/rapdv/server/mailer/Mailer"
 import { AuthEmailCodes } from "../../submodules/rapdv/server/auth/AuthEmailCodes"
 import { LogInPage } from "./LogInPage"
+import { VNode } from "preact"
+import { html } from "../../submodules/rapdv/server/html/Html"
 
 export class VerifyEmailPage {
-  public static render = async (req: Request, res: Response): Promise<ReactNode> => {
+  public static render = async (req: Request, res: Response): Promise<VNode> => {
     await check("email").notEmpty().run(req)
 
     if (!Auth.areParamsValid(req, res, "/log-in")) return
@@ -26,20 +27,20 @@ export class VerifyEmailPage {
       return VerifyEmailPage.verifyEmailCode(req, res, email, code)
     }
 
-    return (
-      <div className="container-max-sm">
-        <SubmitForm title={`Verify Email ${email}`} submitText="Log In">
-          <Input type="text" name="code" required />
-        </SubmitForm>
-        <div>
-          <p>You should receive an email with verification code.</p>
-          <p>If you didn't receive it, please check your spam folder.</p>
+    return html`
+        <div class="container-max-sm">
+          <${SubmitForm} title=${`Verify Email ${email}`} submitText="Log In">
+            <${Input} type="text" name="code" required />
+          <//>
+          <div>
+            <p>You should receive an email with verification code.</p>
+            <p>If you didn't receive it, please check your spam folder.</p>
+          </div>
         </div>
-      </div>
-    )
+      `
   }
 
-  public static verifyEmail = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<ReactNode> => {
+  public static verifyEmail = async (req: Request, res: Response, next: NextFunction, app: RapDvApp, mailer: Mailer): Promise<VNode> => {
     await check("email").notEmpty().run(req)
 
     const { success, form } = await Form.getParams(req, VerifyEmailPage.render(req, res))
@@ -56,7 +57,7 @@ export class VerifyEmailPage {
     return VerifyEmailPage.verifyEmailCode(req, res, email, code)
   }
 
-  public static verifyEmailCode = async (req: Request, res: Response, email: string, code: string): Promise<ReactNode> => {
+  public static verifyEmailCode = async (req: Request, res: Response, email: string, code: string): Promise<VNode> => {
     let redirectTo = "/"
 
     try {

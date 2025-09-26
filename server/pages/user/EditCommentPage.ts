@@ -1,13 +1,13 @@
 import { Response } from "express"
-import React, { ReactNode } from "react"
 import { PostsPage } from "../PostsPage"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
 import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
 import { HttpStatus } from "../../../submodules/rapdv/server/network/HttpStatus"
 import { Collection } from "../../../submodules/rapdv/server/database/Collection"
+import { VNode } from "preact"
 
 export class EditCommentPage {
-  public static publishComment = async (req: Request, res: Response): Promise<ReactNode> => {
+  public static publishComment = async (req: Request, res: Response): Promise<VNode> => {
 
     if (process.env.DISABLE_POSTING_COMMENTS === "true") {
       req.flash(FlashType.Errors, "Posting comments is disabled")
@@ -40,7 +40,7 @@ export class EditCommentPage {
     res.redirect(HttpStatus.SEE_OTHER, `/article/${req.params.key}`)
   }
 
-  public static deleteComment = async (req: Request, res: Response): Promise<ReactNode> => {
+  public static deleteComment = async (req: Request, res: Response): Promise<VNode> => {
     const commentId = req.body.commentId
     const collectionComment = Collection.get("Comment")
     const comment = await collectionComment.findById(commentId)

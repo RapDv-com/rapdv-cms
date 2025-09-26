@@ -1,37 +1,37 @@
-import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
 import { FlashType, Request } from "../../../submodules/rapdv/server/server/Request"
-import { Link } from "../../../submodules/rapdv/server/ui/Link"
 import { Images } from "../../../submodules/rapdv/server/files/Images"
 import { FileStorageType } from "../../../submodules/rapdv/server/database/CollectionFile"
+import { html } from "../../../submodules/rapdv/server/html/Html"
+import { VNode } from "preact"
 
 export class ProfilePage {
-  public static render = async (req: Request): Promise<ReactNode> => {
+  public static render = async (req: Request): Promise<VNode> => {
     const user = req.user
     const photoUrl = await user.getPhotoSrc()
-    return (
+    return html`
       <div>
-        <SubmitForm title="Profile" submitText="Save">
-          <div className="row">
-            <div className="col">
-              <Photo src={photoUrl} />
-              <Input type="file" accept="image/*" name="photo" />
+        <${SubmitForm} title="Profile" submitText="Save">
+          <div class="row">
+            <div class="col">
+              <${Photo} src=${photoUrl} />
+              <${Input} type="file" accept="image/*" name="photo" />
             </div>
-            <div className="col">
-              <Input type="email" name="email" value={user.email} readOnly />
-              <Input type="text" name="firstName" value={user.firstName} required />
-              <Input type="text" name="lastName" value={user.lastName} required />
+            <div class="col">
+              <${Input} type="email" name="email" value=${user.email} readOnly />
+              <${Input} type="text" name="firstName" value=${user.firstName} required />
+              <${Input} type="text" name="lastName" value=${user.lastName} required />
             </div>
           </div>
-        </SubmitForm>
+        <//>
       </div>
-    )
+    `
   }
 
-  public static edit = async (req: Request): Promise<ReactNode> => {
+  public static edit = async (req: Request): Promise<VNode> => {
     const { success, form } = await Form.getParams(req, ProfilePage.render(req))
 
     if (!success) {
