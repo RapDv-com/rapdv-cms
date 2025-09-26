@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
@@ -62,11 +61,17 @@ export class ProfilePage {
   }
 }
 
-const Photo = styled.img`
-  width: 200px;
-  height: 205px;
-  margin-bottom: 1rem;
-  object-fit: contain;
-  user-select: none;
-  user-drag: none;
+export const Photo = (props) => html`
+  <img
+    ...${props}
+    style=${{
+      width: "200px",
+      height: "205px",
+      marginBottom: "1rem",
+      objectFit: "contain",
+      userSelect: "none",
+      userDrag: "none",
+      ...(props.style || {}), // allow overrides
+    }}
+  />
 `

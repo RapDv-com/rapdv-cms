@@ -21,7 +21,6 @@
     "@types/mongoose": "*",
     "@types/node": "*",
     "@types/sharp": "*",
-    "@types/styled-components": "*",
     "babel-loader": "*",
     "bcrypt-nodejs": "*",
     "body-parser": "*",

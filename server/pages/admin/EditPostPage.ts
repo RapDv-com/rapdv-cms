@@ -1,6 +1,5 @@
 import { Response } from "express"
 import moment from "moment-timezone"
-import styled from "styled-components"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../../submodules/rapdv/server/form/Form"

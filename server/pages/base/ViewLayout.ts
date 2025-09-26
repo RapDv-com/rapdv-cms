@@ -1,4 +1,8 @@
 import { html } from "../../../submodules/rapdv/server/html/Html"
+import { FlashMessages } from "../../../submodules/rapdv/server/ui/FlashMessages"
+import { NavDropdown } from "../../../submodules/rapdv/server/ui/NavDropdown"
+import { NavDropdownItem } from "../../../submodules/rapdv/server/ui/NavDropdownItem"
+import { NavLink } from "../../../submodules/rapdv/server/ui/NavLink"
 import { ViewScripts } from "./ViewScripts"
 import { ViewStyles } from "./ViewStyles"
 
@@ -8,11 +12,11 @@ type Props = {
   canonicalUrl: string
   disableIndexing?: boolean
   isProduction?: boolean
+  clientFilesId: string
   children: any
-  headAdditionalTags: any
 }
 
-export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, children, isProduction, headAdditionalTags }: Props) => {
+export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, children, isProduction, clientFilesId }: Props) => {
   const year = new Date().getFullYear()
 
   return html`
@@ -56,8 +60,9 @@ export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, 
       <link rel="apple-touch-icon-precomposed" href="/assets/icons/57.png">
       <link rel="icon" href="/client/assets/favicon.svg">
 
-      ${ViewStyles()}
-      ${headAdditionalTags}
+      <${ViewStyles}
+        clientFilesId=(clientFilesId)
+      />
 
       </head>
       <body id='body'>
@@ -94,7 +99,9 @@ export const ViewLayout = ({ title, description, canonicalUrl, disableIndexing, 
           <Link href="/terms">Terms and Conditions<//>
           <Link href="/privacy">Privacy Policy<//>
         </Footer>
-        ${ViewScripts()}
+        <${ViewScripts}
+          clientFilesId=(clientFilesId)
+        />
 
         ${!isProduction && html`
           <script src="/reload/reload.js"></script>

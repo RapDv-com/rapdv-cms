@@ -1,4 +1,3 @@
-import React, { ReactNode } from "react"
 import { RssFeed } from "./api/RssFeed"
 import { EditCommentPage } from "./pages/user/EditCommentPage"
 import { EditPostPage } from "./pages/admin/EditPostPage"
@@ -24,6 +23,9 @@ import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
 import { VerifyEmailPage } from "./pages/VerifyEmailPage"
 import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
+import { html } from "../submodules/rapdv/server/html/Html"
+import { ViewLayout } from "./pages/base/ViewLayout"
+import { VNode } from "preact"
 
 export class App extends RapDvApp {
   constructor() {
@@ -107,14 +109,29 @@ export class App extends RapDvApp {
     this.addEndpoint("/feed", ReqType.Get, RssFeed.get)
   }
 
-  getHeadTags = async () => ""
-
-  getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
+  getLayout = async (
+    req: Request, 
+    appInfo: AppBasicInfo, 
+    canonicalUrl: string,
+    title: string, 
+    description: string, 
+    content: VNode | string, 
+    disableIndexing: boolean,
+    clientFilesId: string,
+    otherOptions?: any
+    ): Promise<VNode> => {
     // TODO: Return here ViewLayout
     return (
-      <>
-        
-      </>
+      html`<${ViewLayout} 
+        title=${title} 
+        description=${description} 
+        canonicalUrl=${canonicalUrl}
+        disableIndexing=${disableIndexing}
+        isProduction=${RapDvApp.isProduction()}
+        clientFilesId=${clientFilesId}
+        >
+      ${content}
+      <//${ViewLayout}>`
     )
   }
 

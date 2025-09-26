@@ -1,5 +1,4 @@
 import { NextFunction, Response } from "express"
-import styled from "styled-components"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
