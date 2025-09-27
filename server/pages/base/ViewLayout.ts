@@ -4,6 +4,7 @@ import { AppBasicInfo } from "../../../submodules/rapdv/server/RapDvApp"
 import { Role } from "../../../submodules/rapdv/server/Role"
 import { Request } from "../../../submodules/rapdv/server/server/Request"
 import { FlashMessages } from "../../../submodules/rapdv/server/ui/FlashMessages"
+import { Nav } from "../../../submodules/rapdv/server/ui/Nav"
 import { NavDropdown } from "../../../submodules/rapdv/server/ui/NavDropdown"
 import { NavDropdownItem } from "../../../submodules/rapdv/server/ui/NavDropdownItem"
 import { NavLink } from "../../../submodules/rapdv/server/ui/NavLink"
@@ -74,7 +75,7 @@ export const ViewLayout = ({ title, description, canonicalUrl, appInfo, req, dis
       </head>
       <body id='body'>
         <header>
-          <Nav appName=${appInfo.name} className="navbar-dark bg-dark">
+          <${Nav} appName=${appInfo.name} className="navbar-dark bg-dark">
             <ul className="navbar-nav me-auto">
             </ul>
             <ul className="navbar-nav ms-auto">
@@ -95,7 +96,7 @@ export const ViewLayout = ({ title, description, canonicalUrl, appInfo, req, dis
                 <span className="d-lg-none">RSS Feed</span>
               <//>
             </ul>
-          </Nav>
+          <//>
         </header>
         <main>
           <${FlashMessages} req=${req} />

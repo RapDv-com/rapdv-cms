@@ -15,7 +15,7 @@ export const ViewScripts = ({ clientFilesId }) => {
         }
       }
     <//>
-    <script src="/client/node_modules/bootstrap/dist/js/bootstrap.js?id=${clientFilesId}"></script>
+    <script src="/client/node_modules/bootstrap/dist/js/bootstrap.bundle.js?id=${clientFilesId}"></script>
     <script src="/client/node_modules/nprogress/nprogress.js?id=${clientFilesId}"></script>
     <script src="/client/node_modules/medium-editor/dist/js/medium-editor.min.js?id=${clientFilesId}"></script>
     <script src="/client/node_modules/pjax/pjax.js?id=${clientFilesId}"></script>
