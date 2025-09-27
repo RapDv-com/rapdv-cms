@@ -10,5 +10,8 @@
     "medium-editor": "^5.23.3",
     "pjax": "*",
     "reload": "*"
+  },
+  "dependencies": {
+    "nprogress": "^0.2.0"
   }
 }

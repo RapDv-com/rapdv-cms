@@ -53,7 +53,6 @@
     "nodemailer": "*",
     "nodemon": "*",
     "npm": "*",
-    "nprogress": "*",
     "parcel": "*",
     "passport": "*",
     "passport-google-oauth20": "*",

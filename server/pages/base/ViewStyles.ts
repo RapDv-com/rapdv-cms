@@ -7,5 +7,8 @@ export const ViewStyles = ({clientFilesId}) => {
     <link rel="stylesheet" href="/client/node_modules/bootstrap/dist/css/bootstrap.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/client/node_modules/medium-editor/dist/css/medium-editor.min.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/client/node_modules/medium-editor/dist/css/themes/beagle.min.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/rapdv/app/styles/main.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/rapdv/app/styles/sizing.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/client/node_modules/nprogress/nprogress.css?id=${clientFilesId}" rel="stylesheet" type="text/css" />
     `
 }

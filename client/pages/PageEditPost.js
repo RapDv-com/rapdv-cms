@@ -1,5 +1,4 @@
-import MediumEditor from "medium-editor";
-import { ClientPage } from "elements/PagesCtrl";
+import { ClientPage } from "rapdv/elements/PagesCtrl";
 
 export class PageEditPost extends ClientPage {
   getPageId = () => "edit-post"

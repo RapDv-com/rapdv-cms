@@ -6,16 +6,18 @@ export const ViewScripts = ({ clientFilesId }) => {
     <${ImportMap}>
       {
         "imports": {
-          "app/AppClient": "/rapdv/app/AppClient.js?id=${clientFilesId}",
-          "pages/PageEditPost": "/client/pages/PageEditPost.js?id=${clientFilesId}",
-          "pages/PageLogin": "/client/pages/PageLogin.js?id=${clientFilesId}",
           "elements/CloudflareTurnstileClient": "/rapdv/elements/CloudflareTurnstileClient.js?id=${clientFilesId}",
-          "elements/PagesCtrl": "/rapdv/elements/PagesCtrl.js?id=${clientFilesId}",
-          "medium-editor": "/client/node_modules/medium-editor/dist/js/medium-editor.min.js?id=${clientFilesId}"
+          "rapdv/app/AppClient": "/rapdv/app/AppClient.js?id=${clientFilesId}",
+          "rapdv/elements/PagesCtrl": "/rapdv/elements/PagesCtrl.js?id=${clientFilesId}",
+          "pages/PageEditPost": "/client/pages/PageEditPost.js?id=${clientFilesId}",
+          "pages/PageLogin": "/client/pages/PageLogin.js?id=${clientFilesId}"
         }
       }
     <//>
     <script src="/client/node_modules/bootstrap/dist/js/bootstrap.js?id=${clientFilesId}"></script>
+    <script src="/client/node_modules/nprogress/nprogress.js?id=${clientFilesId}"></script>
+    <script src="/client/node_modules/medium-editor/dist/js/medium-editor.min.js?id=${clientFilesId}"></script>
+    <script src="/client/node_modules/pjax/pjax.js?id=${clientFilesId}"></script>
     <script src="/client/App.js?id=${clientFilesId}" type="module"></script>
   `
 }
