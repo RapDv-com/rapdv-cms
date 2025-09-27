@@ -1,7 +1,5 @@
-import MediumEditor from "medium-editor/dist/js/medium-editor.min.js"
-import "medium-editor/dist/css/medium-editor.min.css"
-import "medium-editor/dist/css/themes/beagle.min.css"
-import { ClientPage } from "../../submodules/rapdv/client/elements/PagesCtrl"
+import MediumEditor from "medium-editor";
+import { ClientPage } from "elements/PagesCtrl";
 
 export class PageEditPost extends ClientPage {
   getPageId = () => "edit-post"

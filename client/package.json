@@ -1,0 +1,14 @@
+{
+  "name": "rapdv-cms",
+  "version": "1.0.0",
+  "description": "RapDv - Rapid Development Framework - CMS App",
+  "author": "Konrad Gadzinowski <konrad@digitaljetty.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "bootstrap": "^5.2.2",
+    "bootstrap-icons": "^1.11.3",
+    "medium-editor": "^5.23.3",
+    "pjax": "*",
+    "reload": "*"
+  }
+}
