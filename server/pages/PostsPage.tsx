@@ -1,7 +1,6 @@
 import { Response } from "express"
 import React, { ReactNode } from "react"
 import parse from "html-react-parser"
-import moment from "moment-timezone"
 import { Collection } from "../../submodules/rapdv/server/database/Collection"
 import { Paginator } from "../../submodules/rapdv/server/ui/Paginator"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
@@ -13,6 +12,7 @@ import { Input } from "../../submodules/rapdv/server/ui/Input"
 import { ButtonAjax } from "../../submodules/rapdv/server/ui/ButtonAjax"
 import { ReqType } from "../../submodules/rapdv/server/ReqType"
 import { SetText } from "../../submodules/rapdv/server/RapDvApp"
+import spacetime from "spacetime"
 
 export class PostsPage {
   public static renderList = async (req: Request): Promise<ReactNode> => {
@@ -46,7 +46,7 @@ export class PostsPage {
             <a key={index} href={`/article/${post.key}`} className="list-group-item list-group-item-action" aria-current="true">
               <div className="d-flex w-100 justify-content-between">
                 <h5 className="mb-1">{parse(post?.title ?? "")}</h5>
-                <small className="ps-4">{moment(post?.publishedDate).fromNow()}</small>
+                <small className="ps-4">{spacetime.now().since(spacetime(post?.publishedDate))}</small>
               </div>
               <p className="mb-1">{parse(post?.description ?? "")}</p>
               <small>{showCommentsCount(post)}</small>
@@ -80,7 +80,7 @@ export class PostsPage {
         <div>
           <h1>{parse(post.title)}</h1>
           <div className="d-flex">
-            <div className="flex-grow-1">{moment(post.publishedDate).format("DD MMM YYYY")}</div>
+            <div className="flex-grow-1">{spacetime(post.publishedDate).unixFmt("DD MMM YYYY")}</div>
             {canEdit && (
               <div>
                 <Link href={`/publish/${key}`}>Edit</Link>
@@ -108,7 +108,7 @@ export class PostsPage {
                       </>
                     )
                   },
-                  { key: "publishedDate", custom: (entry) => <>{moment(entry.publishedDate).format("DD MMM YYYY HH:mm")}</> },
+                  { key: "publishedDate", custom: (entry) => <>{spacetime(entry.publishedDate).unixFmt("DD MMM YYYY HH:mm")}</> },
                   {
                     key: "",
                     custom: (entry) => {

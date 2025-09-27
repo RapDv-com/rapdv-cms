@@ -1,5 +1,4 @@
 import { Response } from "express"
-import moment from "moment-timezone"
 import React, { ReactNode } from "react"
 import styled from "styled-components"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
@@ -11,6 +10,7 @@ import { Textarea } from "../../../submodules/rapdv/server/ui/Textarea"
 import { ReqType } from "../../../submodules/rapdv/server/ReqType"
 import { Collection } from "../../../submodules/rapdv/server/database/Collection"
 import { HttpStatus } from "../../../submodules/rapdv/server/network/HttpStatus"
+import spacetime from "spacetime"
 
 export class EditPostPage {
   public static render = async (req: Request): Promise<ReactNode> => {
@@ -25,7 +25,7 @@ export class EditPostPage {
             <Input type="text" name="title" value={entry?.title} req={req} required />
             <Textarea id="description" name="description" value={entry?.description} req={req} required />
             <Textarea id="content" name="content" value={entry?.content} req={req} required />
-            <Input type="date" name="publishedDate" value={moment(entry?.publishedDate).format("YYYY-MM-DD")} req={req} required />
+            <Input type="date" name="publishedDate" value={spacetime(entry?.publishedDate).unixFmt("YYYY-MM-DD")} req={req} required />
           </ProfileForm>
           {!isNew && !!entry && (
             <ProfileForm method={ReqType.Delete} name="delete" submitText="Delete" submitBtnClass="btn-danger">
