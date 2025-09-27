@@ -131,11 +131,11 @@ export class App extends RapDvApp {
         canonicalUrl={canonicalUrl}
         disableIndexing={disableIndexing}
         styles={styleTags}
-        scripts={<></>}
         isProduction={isProduction}
         appName={appName}
         req={req}
         photoSrc={photoSrc}
+        clientFilesId={clientFilesId}
       >
         {content}
       </ViewLayout>

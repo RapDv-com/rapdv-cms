@@ -19,16 +19,16 @@ type Props = {
   disableIndexing?: boolean
   children?: ReactNode
   styles?: ReactNode
-  scripts?: ReactNode
   isProduction?: boolean
   appName: string
   req: Request
   photoSrc: string
+  clientFilesId: string
 }
 
 export class ViewLayout extends React.Component<Props> {
   render(): ReactNode | string {
-    const { title, description, canonicalUrl, disableIndexing, children, styles, scripts, isProduction, appName, req, photoSrc } = this.props
+    const { title, description, canonicalUrl, disableIndexing, children, styles, isProduction, appName, req, photoSrc, clientFilesId } = this.props
     const year = new Date().getFullYear()
     
     return <>
@@ -69,8 +69,8 @@ export class ViewLayout extends React.Component<Props> {
           <link rel="apple-touch-icon-precomposed" href="/assets/icons/57.png" />
           <link rel="icon" href="/client/assets/favicon.svg" />
 
+          <link rel="stylesheet" href={`/dist/App.css?id=${clientFilesId}`} type="text/css" />
           {styles}
-
         </head>
         <body id='body'>
           <header>
@@ -106,7 +106,7 @@ export class ViewLayout extends React.Component<Props> {
             <Link href="/terms">Terms and Conditions</Link>
             <Link href="/privacy">Privacy Policy</Link>
           </Footer>
-          {scripts}
+          <script src={`/dist/App.js?id=${clientFilesId}`}></script>
           {!isProduction && <script src="/reload/reload.js"></script>}
         </body>
       </html>
