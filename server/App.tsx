@@ -24,6 +24,7 @@ import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
 import { VerifyEmailPage } from "./pages/VerifyEmailPage"
 import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
+import { ViewError } from "./pages/base/ViewError"
 
 export class App extends RapDvApp {
   constructor() {
@@ -107,9 +108,17 @@ export class App extends RapDvApp {
     this.addEndpoint("/feed", ReqType.Get, RssFeed.get)
   }
 
-  getHeadTags = async () => ""
-
-  getLayout = async (req: Request, content: ReactNode, appInfo: AppBasicInfo): Promise<ReactNode> => {
+  getLayout = async (
+    req: Request,
+    canonicalUrl: string,
+    title: string,
+    description: string,
+    content: ReactNode | string,
+    styleTags: ReactNode,
+    disableIndexing: boolean,
+    clientFilesId: string,
+    otherOptions?: any
+  ): Promise<ReactNode> => {
     const year = new Date().getFullYear()
     return (
       <>
@@ -150,6 +159,12 @@ export class App extends RapDvApp {
     )
   }
 
+  getErrorView = async (error) => ({
+    title: "Error | RapDv CMS",
+    description: "Something went wrong",
+    content: <ViewError error={error} />
+  })
+
   getRoles = () => ["Writer"]
 
   getStorage = async () => {
@@ -162,7 +177,7 @@ export class App extends RapDvApp {
         content: String,
         publishedDate: Date
       },
-      []
+      {}
     )
 
     this.addCollection("Comment", {
