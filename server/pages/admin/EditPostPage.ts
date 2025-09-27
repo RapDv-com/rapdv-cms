@@ -1,5 +1,4 @@
 import { Response } from "express"
-import moment from "moment-timezone"
 import { SubmitForm } from "../../../submodules/rapdv/server/ui/SubmitForm"
 import { Input } from "../../../submodules/rapdv/server/ui/Input"
 import { Form } from "../../../submodules/rapdv/server/form/Form"
@@ -11,6 +10,7 @@ import { Collection } from "../../../submodules/rapdv/server/database/Collection
 import { HttpStatus } from "../../../submodules/rapdv/server/network/HttpStatus"
 import { VNode } from "preact"
 import { html } from "../../../submodules/rapdv/server/html/Html"
+import spacetime from "spacetime"
 
 export class EditPostPage {
   public static render = async (req: Request): Promise<VNode> => {
@@ -32,7 +32,7 @@ export class EditPostPage {
         <${Input}
           type="date"
           name="publishedDate"
-          value=${moment(entry?.publishedDate).format("YYYY-MM-DD")}
+          value=${spacetime(entry?.publishedDate).unixFmt("YYYY-MM-DD")}
           req=${req}
           required
         />

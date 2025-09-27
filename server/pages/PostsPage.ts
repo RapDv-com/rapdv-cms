@@ -1,5 +1,4 @@
 import { Response } from "express"
-import moment from "moment-timezone"
 import { Collection } from "../../submodules/rapdv/server/database/Collection"
 import { Paginator } from "../../submodules/rapdv/server/ui/Paginator"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
@@ -13,6 +12,7 @@ import { ReqType } from "../../submodules/rapdv/server/ReqType"
 import { SetText } from "../../submodules/rapdv/server/RapDvApp"
 import { VNode } from "preact"
 import { html } from "../../submodules/rapdv/server/html/Html"
+import spacetime from "spacetime"
 
 export class PostsPage {
   public static renderList = async (req: Request): Promise<VNode> => {
@@ -51,7 +51,7 @@ export class PostsPage {
           >
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">${post?.title ?? ""}</h5>
-              <small class="ps-4">${moment(post?.publishedDate).fromNow()}</small>
+              <small class="ps-4">${spacetime.now().since(spacetime(post?.publishedDate))}</small>
             </div>
             <p class="mb-1">${post?.description ?? ""}</p>
             <small>${showCommentsCount(post)}</small>
@@ -86,7 +86,7 @@ export class PostsPage {
         <h1>${post.title}</h1>
         <div class="d-flex">
           <div class="flex-grow-1">
-            ${moment(post.publishedDate).format("DD MMM YYYY")}
+            ${spacetime(post.publishedDate).unixFmt("DD MMM YYYY")}
           </div>
           ${canEdit &&
           html`
@@ -115,7 +115,7 @@ export class PostsPage {
               {
                 key: "publishedDate",
                 custom: (entry) =>
-                  html`${moment(entry.publishedDate).format("DD MMM YYYY HH:mm")}`
+                  html`${spacetime(entry.publishedDate).unixFmt("DD MMM YYYY HH:mm")}`
               },
               {
                 key: "",

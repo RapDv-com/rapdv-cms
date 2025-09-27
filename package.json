@@ -45,8 +45,6 @@
     "mini-css-extract-plugin": "*",
     "mocha": "*",
     "mockgoose": "*",
-    "moment": "*",
-    "moment-timezone": "*",
     "mongoose": "*",
     "morgan": "*",
     "multer": "*",

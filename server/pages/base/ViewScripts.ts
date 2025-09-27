@@ -9,6 +9,7 @@ export const ViewScripts = ({ clientFilesId }) => {
           "elements/CloudflareTurnstileClient": "/rapdv/elements/CloudflareTurnstileClient.js?id=${clientFilesId}",
           "rapdv/app/AppClient": "/rapdv/app/AppClient.js?id=${clientFilesId}",
           "rapdv/elements/PagesCtrl": "/rapdv/elements/PagesCtrl.js?id=${clientFilesId}",
+          "rapdv/elements/Form": "/rapdv/elements/Form.js?id=${clientFilesId}",
           "pages/PageEditPost": "/client/pages/PageEditPost.js?id=${clientFilesId}",
           "pages/PageLogin": "/client/pages/PageLogin.js?id=${clientFilesId}"
         }
