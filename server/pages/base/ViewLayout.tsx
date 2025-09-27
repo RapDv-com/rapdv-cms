@@ -32,7 +32,6 @@ export class ViewLayout extends React.Component<Props> {
     const year = new Date().getFullYear()
     
     return <>
-      {"<!DOCTYPE html>"}
       <html lang="en">
         <head>
 

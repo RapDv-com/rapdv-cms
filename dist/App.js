@@ -2947,7 +2947,7 @@ const app = new (0, _appClient.AppClient)();
 app.start(pages);
 
 },{"../submodules/rapdv/client/app/AppClient":"7SZo4","./styles/style.scss":"5NKOb","./pages/PageEditPost":"a7dli","./pages/PageLogin":"iKTAJ"}],"7SZo4":[function(require,module,exports) {
-// Copyright (C) Digital Jetty Konrad Gadzinowski
+// Copyright (C) Konrad Gadzinowski
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "AppClient", ()=>AppClient);
@@ -2981,6 +2981,7 @@ class AppClient {
                         "title",
                         "header",
                         "main",
+                        "footer",
                         "style"
                     ],
                     cacheBust: false
@@ -9815,7 +9816,7 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
 });
 
 },{}],"jcT59":[function(require,module,exports) {
-// Copyright (C) Digital Jetty Konrad Gadzinowski
+// Copyright (C) Konrad Gadzinowski
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PagesCtrl", ()=>PagesCtrl);
@@ -9863,7 +9864,7 @@ class PagesCtrl {
 }
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gCcLc":[function(require,module,exports) {
-// Copyright (C) Digital Jetty Konrad Gadzinowski
+// Copyright (C) Konrad Gadzinowski
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Form", ()=>Form);
