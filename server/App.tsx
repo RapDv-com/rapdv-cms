@@ -118,7 +118,7 @@ export class App extends RapDvApp {
     const photoSrc = await req?.user?.getPhotoSrc()
     const isProduction = RapDvApp.isProduction()
     return (
-      <ViewLayout 
+      <ViewLayout
         title={title}
         description={description}
         canonicalUrl={canonicalUrl}
@@ -153,7 +153,7 @@ export class App extends RapDvApp {
         content: String,
         publishedDate: Date
       },
-      {}
+      []
     )
 
     this.addCollection("Comment", {
@@ -170,6 +170,6 @@ export class App extends RapDvApp {
 
   public addDatabaseEvolutions = async () => {
     // Place for adding database evolutions
-    await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => {})
+    await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => { })
   }
 }
