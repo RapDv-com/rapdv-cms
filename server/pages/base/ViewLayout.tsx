@@ -18,7 +18,6 @@ type Props = {
   canonicalUrl: string
   disableIndexing?: boolean
   children?: ReactNode
-  styles?: ReactNode
   isProduction?: boolean
   appName: string
   req: Request
@@ -28,7 +27,7 @@ type Props = {
 
 export class ViewLayout extends React.Component<Props> {
   render(): ReactNode | string {
-    const { title, description, canonicalUrl, disableIndexing, children, styles, isProduction, appName, req, photoSrc, clientFilesId } = this.props
+    const { title, description, canonicalUrl, disableIndexing, children, isProduction, appName, req, photoSrc, clientFilesId } = this.props
     const year = new Date().getFullYear()
     
     return <>
@@ -70,7 +69,7 @@ export class ViewLayout extends React.Component<Props> {
           <link rel="icon" href="/client/assets/favicon.svg" />
 
           <link rel="stylesheet" href={`/dist/App.css?id=${clientFilesId}`} type="text/css" />
-          {styles}
+          {"<!-- REACT_STYLES -->"}
         </head>
         <body id='body'>
           <header>

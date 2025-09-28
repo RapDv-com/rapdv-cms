@@ -108,7 +108,6 @@ export class App extends RapDvApp {
     title: string,
     description: string,
     content: ReactNode | string,
-    styleTags: ReactNode,
     disableIndexing: boolean,
     clientFilesId: string,
     otherOptions?: any
@@ -123,7 +122,6 @@ export class App extends RapDvApp {
         description={description}
         canonicalUrl={canonicalUrl}
         disableIndexing={disableIndexing}
-        styles={styleTags}
         isProduction={isProduction}
         appName={appName}
         req={req}
