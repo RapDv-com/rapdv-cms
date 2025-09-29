@@ -11,6 +11,7 @@ import { FlashMessages } from "../../../submodules/rapdv/server/ui/FlashMessages
 import { Footer } from "../../../submodules/rapdv/server/ui/Footer"
 import { Link } from "../../../submodules/rapdv/server/ui/Link"
 import { Request } from "../../../submodules/rapdv/server/server/Request"
+import { ReactCustomStyles } from "../../../submodules/rapdv/server/html/ReactCustomStyles"
 
 type Props = {
   title: string
@@ -69,7 +70,7 @@ export class ViewLayout extends React.Component<Props> {
           <link rel="icon" href="/client/assets/favicon.svg" />
 
           <link rel="stylesheet" href={`/dist/App.css?id=${clientFilesId}`} type="text/css" />
-          {"<!-- REACT_STYLES -->"}
+          <ReactCustomStyles />
         </head>
         <body id='body'>
           <header>
