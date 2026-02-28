@@ -49,7 +49,7 @@ export class UsersPage {
     }
     const photoUrl = await entry.getPhotoSrc()
     const statuses = Object.keys(UserStatus).map((key) => UserStatus[key])
-    const allRoles = [...Object.values(UserRole), ...app.getRoles()]
+    const allRoles = [...Object.values(UserRole), ...app.setRoles()]
 
     const allAdmins = await CollectionUser.findAllValidAdmins()
     const areMultipleAdmins = allAdmins.length > 1

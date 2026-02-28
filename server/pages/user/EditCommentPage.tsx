@@ -23,14 +23,14 @@ export class EditCommentPage {
     try {
       const content = form.inputs["comment"].value
       const collectionComment = Collection.get("Comment")
-      const comment = new collectionComment.model()
+      const comment = collectionComment.create()
 
       comment.content = content
-      comment.post = postId
-      comment.author = req.user._id
+      comment.postId = postId
+      comment.authorId = req.user._id
       comment.publishedDate = new Date()
 
-      await comment.save()
+      await collectionComment.repository.save(comment)
 
       req.flash(FlashType.Success, "Posted comment.")
     } catch (error) {
@@ -48,11 +48,11 @@ export class EditCommentPage {
     if (!comment) {
       req.flash(FlashType.Errors, "Can't find comment.")
     } else {
-      const isAuthor = Collection.areEntriesSame(comment.author, req.user)
+      const isAuthor = Collection.areEntriesSame(comment.authorId, req.user)
       if (!req?.user?.isAdmin() && !isAuthor) {
         req.flash(FlashType.Errors, "You can't remove it.")
       } else {
-        await comment.delete()
+        await collectionComment.repository.remove(comment)
         req.flash(FlashType.Success, "Removed comment.")
       }
     }

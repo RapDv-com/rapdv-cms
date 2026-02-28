@@ -5,6 +5,7 @@
 logs
 *.log
 test/results.html
+.claude
 
 # IDEs
 .idea

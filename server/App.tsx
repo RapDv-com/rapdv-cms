@@ -7,7 +7,6 @@ import { PostsPage } from "./pages/PostsPage"
 import { ProfilePage } from "./pages/user/ProfilePage"
 import { PageTerms } from "./pages/PageTerms"
 import { PagePrivacy } from "./pages/PagePrivacy"
-import { Schema } from "mongoose"
 import { UsersPage } from "./pages/admin/UsersPage"
 import { RapDvApp } from "../submodules/rapdv/server/RapDvApp"
 import { ReqType } from "../submodules/rapdv/server/ReqType"
@@ -19,6 +18,8 @@ import { VerifyEmailPage } from "./pages/VerifyEmailPage"
 import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
 import { ViewError } from "./pages/base/ViewError"
 import { ViewLayout } from "./pages/base/ViewLayout"
+import { Post } from "./entities/Post"
+import { Comment } from "./entities/Comment"
 
 export class App extends RapDvApp {
   constructor() {
@@ -142,25 +143,11 @@ export class App extends RapDvApp {
   getRoles = () => ["Writer"]
 
   getStorage = async () => {
-    this.addCollection(
-      "Post",
-      {
-        key: { type: String, unique: true },
-        title: String,
-        description: String,
-        content: String,
-        publishedDate: Date
-      },
-      []
-    )
-
-    this.addCollection("Comment", {
-      content: String,
-      post: { type: Schema.Types.ObjectId, ref: "Post" },
-      author: { type: Schema.Types.ObjectId, ref: "User" },
-      publishedDate: Date
-    })
+    this.addCollection("Post", Post)
+    this.addCollection("Comment", Comment)
   }
+
+  public getEntities = async () => [Post, Comment]
 
   public startRecurringTasks = async (mailer: Mailer): Promise<void> => {
     // Place for starting recurring tasks
