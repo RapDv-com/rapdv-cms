@@ -7,12 +7,12 @@ The quickest way to deploy your own blog! It's an example application that uses 
   
 ## Before running it
 - Install RapDv submodule: `git submodule update --init --recursive`.
-- Install all dependencies: `npm install`  
-- Start MongoDB
-- Copy `.env.example` to `.env`, and set correct values in `.env files`
+- Install all dependencies: `npm install`
+- Start PostgreSQL (see below)
+- Copy `.env.example` to `.env`, and set correct values in `.env` file
 
 ### To start PostgreSQL database locally in dev mode
-`docker run -d --name db-rapdv-cms-dev -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`  
+`docker run -d --name db-rapdv-cms-dev -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`
 
 Run migrations
 ```
