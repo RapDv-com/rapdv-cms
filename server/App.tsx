@@ -155,8 +155,4 @@ export class App extends RapDvApp {
     // Place for starting recurring tasks
   }
 
-  public addDatabaseEvolutions = async () => {
-    // Place for adding database evolutions
-    await this.addDbEvolution(1, "Initial database version", async (currentVersion: number) => { })
-  }
 }

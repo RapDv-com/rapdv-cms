@@ -30,3 +30,7 @@ npm run migration:run
 ## Application structure
 - Back-end code is in `server` folder
 - Front-end code is in `client` folder. After modifying client code, you need to run `npm run build-prod` to rebuild it.
+
+### Coding style
+- Every file needs to have name in PascalCase and be a class
+- All code should be writted in an object-oriented way, and all functions should be methods of a class

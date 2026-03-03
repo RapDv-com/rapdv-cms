@@ -12,9 +12,7 @@
     "build-prod": "npx parcel build client/App.tsx --no-cache",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
     "test-server": "mocha -r ts-node/register server/**/*.test.tsx",
-    "clear": "rm -rf .parcel-cache/ && rm -rf dist",
-    "migration:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate migrations/migration -d data-source.ts",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run -d data-source.ts"
+    "clear": "rm -rf .parcel-cache/ && rm -rf dist"
   },
   "peerDependencies": {
     "@aws-sdk/client-s3": "*",
