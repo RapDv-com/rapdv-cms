@@ -80,7 +80,7 @@ export class PostsPage {
         <div>
           <h1>{parse(post.title)}</h1>
           <div className="d-flex">
-            <div className="flex-grow-1">{spacetime(post.publishedDate).unixFmt("DD MMM YYYY")}</div>
+            <div className="flex-grow-1">{spacetime(post.publishedDate).unixFmt("dd MMM YYYY")}</div>
             {canEdit && (
               <div>
                 <Link href={`/publish/${key}`}>Edit</Link>
@@ -108,7 +108,7 @@ export class PostsPage {
                       </>
                     )
                   },
-                  { key: "publishedDate", custom: (entry) => <>{spacetime(entry.publishedDate).unixFmt("DD MMM YYYY HH:mm")}</> },
+                  { key: "publishedDate", custom: (entry) => <>{spacetime(entry.publishedDate).unixFmt("dd MMM YYYY HH:mm")}</> },
                   {
                     key: "",
                     custom: (entry) => {

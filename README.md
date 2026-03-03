@@ -12,11 +12,11 @@ The quickest way to deploy your own blog! It's an example application that uses 
 - Copy `.env.example` to `.env`, and set correct values in `.env files`
 
 ### To start PostgreSQL database locally in dev mode
-`docker run -d --name rapdv-cms-dev -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`  
+`docker run -d --name db-rapdv-cms-dev -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`  
 
 Run migrations
 ```
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rapdv-cms-de
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rapdv-cms-dev
 npm run migration:generate
 npm run migration:run
 ```

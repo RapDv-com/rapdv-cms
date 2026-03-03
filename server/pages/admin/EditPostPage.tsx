@@ -25,7 +25,7 @@ export class EditPostPage {
             <Input type="text" name="title" value={entry?.title} req={req} required />
             <Textarea id="description" name="description" value={entry?.description} req={req} required />
             <Textarea id="content" name="content" value={entry?.content} req={req} required />
-            <Input type="date" name="publishedDate" value={spacetime(entry?.publishedDate).unixFmt("YYYY-MM-DD")} req={req} required />
+            <Input type="date" name="publishedDate" value={spacetime(entry?.publishedDate).unixFmt("YYYY-MM-dd")} req={req} required />
           </ProfileForm>
           {!isNew && !!entry && (
             <ProfileForm method={ReqType.Delete} name="delete" submitText="Delete" submitBtnClass="btn-danger">
