@@ -1,0 +1,17 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.parcel-cache": true,
+    "**/dist": true,
+    "**/build": true,
+    "package-lock.json": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.parcel-cache": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.parcel-cache/**": true
+  }
+}
