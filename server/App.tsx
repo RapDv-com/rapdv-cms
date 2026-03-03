@@ -20,6 +20,7 @@ import { ViewError } from "./pages/base/ViewError"
 import { ViewLayout } from "./pages/base/ViewLayout"
 import { Post } from "./entities/Post"
 import { Comment } from "./entities/Comment"
+import { Response } from "express"
 
 export class App extends RapDvApp {
   constructor() {
@@ -105,6 +106,7 @@ export class App extends RapDvApp {
 
   getLayout = async (
     req: Request,
+    res: Response,
     canonicalUrl: string,
     title: string,
     description: string,
