@@ -15,6 +15,7 @@
     "migration:new": "ts-node submodules/rapdv/server/database/migrations/CreateMigration.ts",
     "migration:generate": "ts-node submodules/rapdv/server/database/migrations/GenerateMigration.ts",
     "migration:run": "ts-node submodules/rapdv/server/database/migrations/RunMigration.ts",
+    "migration:rollback": "ts-node submodules/rapdv/server/database/migrations/RollbackMigration.ts",
     "clear": "rm -rf .parcel-cache/ && rm -rf dist"
   },
   "peerDependencies": {
