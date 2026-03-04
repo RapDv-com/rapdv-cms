@@ -149,8 +149,6 @@ export class App extends RapDvApp {
     this.addCollection("Comment", Comment)
   }
 
-  public getEntities = async () => [Post, Comment]
-
   public startRecurringTasks = async (mailer: Mailer): Promise<void> => {
     // Place for starting recurring tasks
   }
