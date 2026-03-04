@@ -1,28 +1,30 @@
 // Copyright (C) Konrad Gadzinowski
 
 import 'reflect-metadata'
-import { Column, Entity, ManyToOne } from 'typeorm'
+import { BelongsTo, Column, DataType, ForeignKey, Table } from 'sequelize-typescript'
 import { RapDvBaseEntity } from '../../submodules/rapdv/server/database/RapDvBaseEntity'
 import { Post } from './Post'
 import { User } from '../../submodules/rapdv/server/database/CollectionUser'
 
-@Entity('comments')
+@Table({ tableName: 'comments', timestamps: true })
 export class Comment extends RapDvBaseEntity {
-  @Column({ nullable: true, type: 'text' })
+  @Column({ allowNull: true, type: DataType.TEXT })
   content: string
 
-  @ManyToOne(() => Post, { nullable: true })
-  post: Post
-
-  @Column({ nullable: true })
+  @ForeignKey(() => Post)
+  @Column({ allowNull: true, type: DataType.UUID })
   postId: string
 
-  @ManyToOne(() => User, { nullable: true })
-  author: User
+  @BelongsTo(() => Post)
+  post: Post
 
-  @Column({ nullable: true })
+  @ForeignKey(() => User)
+  @Column({ allowNull: true, type: DataType.UUID })
   authorId: string
 
-  @Column({ nullable: true, type: 'timestamptz' })
+  @BelongsTo(() => User)
+  author: User
+
+  @Column({ allowNull: true, type: DataType.DATE })
   publishedDate: Date
 }

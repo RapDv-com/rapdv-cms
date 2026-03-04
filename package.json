@@ -12,6 +12,7 @@
     "build-prod": "npx parcel build client/App.tsx --no-cache",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
     "test-server": "mocha -r ts-node/register server/**/*.test.tsx",
+    "migration:generate": "ts-node scripts/generate-migration.ts",
     "clear": "rm -rf .parcel-cache/ && rm -rf dist"
   },
   "peerDependencies": {
@@ -72,13 +73,14 @@
     "request": "*",
     "sass": "*",
     "sass-loader": "*",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
     "sharp": "*",
     "spacetime": "*",
     "style-loader": "*",
     "styled-components": "*",
     "ts-loader": "*",
     "ts-node": "*",
-    "typeorm": "^0.3.28",
     "typescript": "*",
     "validator": "*"
   },
