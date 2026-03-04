@@ -12,7 +12,7 @@ The quickest way to deploy your own blog! It's an example application that uses 
 - Copy `.env.example` to `.env`, and set correct values in `.env` file
 
 ### To start PostgreSQL database locally in dev mode
-`docker run -d --name db-rapdv-cms-dev -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`
+`docker run -d --name postgres -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -p 5432:5432 postgres`
 
 Run migrations
 ```
@@ -36,4 +36,3 @@ npm run migration:run
 - All code should be writted in an object-oriented way, and all functions should be methods of a class
 - Don't use variables with single letter names, except for loop counters. Use descriptive names for variables and functions.
 - Don't use magic numbers, use constants with descriptive names instead.
-- 
