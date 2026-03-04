@@ -12,8 +12,8 @@
     "build-prod": "npx parcel build client/App.tsx --no-cache",
     "format-code": "prettier --config .prettierrc --ignore-path .prettierignore \"{server/**/*,client/**/*}.{ts,tsx,css,less,scss,js,jsx}\" --write",
     "test-server": "mocha -r ts-node/register server/**/*.test.tsx",
-    "migration:generate": "ts-node scripts/GenerateMigration.ts",
-    "migration:run": "ts-node scripts/RunMigration.ts",
+    "migration:generate": "ts-node submodules/rapdv/server/database/migrations/GenerateMigration.ts",
+    "migration:run": "ts-node submodules/rapdv/server/database/migrations/RunMigration.ts",
     "clear": "rm -rf .parcel-cache/ && rm -rf dist"
   },
   "peerDependencies": {
