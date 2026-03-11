@@ -8,15 +8,15 @@ The quickest way to deploy your own blog! It's an example application that uses 
 ## Before running it
 - Install RapDv submodule: `git submodule update --init --recursive`.
 - Install all dependencies: `npm install`
-- Start PostgreSQL (see below)
+- Start MariaDB (see below)
 - Copy `.env.example` to `.env`, and set correct values in `.env` file
 
-### To start PostgreSQL database locally in dev mode
-`docker run -d --name postgres -e POSTGRES_DB=rapdv-cms-dev -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password -p 5432:5432 postgres`
+### To start MariaDB database locally in dev mode
+`docker run -d --name mariadb -e MARIADB_DATABASE=rapdv-cms-dev -e MARIADB_ROOT_PASSWORD=password -p 3306:3306 mariadb`
 
 Run migrations
 ```
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/rapdv-cms-dev
+export DATABASE_URL=mariadb://root:password@localhost:3306/rapdv-cms-dev
 npm run migration:generate
 npm run migration:run
 ```
