@@ -4,6 +4,7 @@ import { Request } from "../../submodules/rapdv/server/server/Request"
 import { HttpStatus } from "../../submodules/rapdv/server/network/HttpStatus"
 import { HtmlUtils } from "../../submodules/rapdv/server/html/HtmlUtils"
 import { Collection } from "../../submodules/rapdv/server/database/Collection"
+import { Database } from "../../submodules/rapdv/server/database/Database"
 
 export class RssFeed {
   public static get = async (req: Request, res: Response, next: NextFunction, app: RapDvApp) => {
@@ -11,7 +12,7 @@ export class RssFeed {
     const postsModel = Collection.get("Post")
     const FROM = 0
     const MAX = 50
-    const posts = await postsModel.findAll(undefined, FROM, MAX, [], { publishedDate: -1 })
+    const posts = await postsModel.findAll(undefined, FROM, MAX, [], { publishedDate: Database.DESC })
     const lastPublishedDate = posts[0]?.publishedDate ?? new Date()
 
     res.header("Content-Type", "application/xml")

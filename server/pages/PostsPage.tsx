@@ -2,6 +2,7 @@ import { Response } from "express"
 import React, { ReactNode } from "react"
 import parse from "html-react-parser"
 import { Collection } from "../../submodules/rapdv/server/database/Collection"
+import { Database } from "../../submodules/rapdv/server/database/Database"
 import { Paginator } from "../../submodules/rapdv/server/ui/Paginator"
 import { FlashType, Request } from "../../submodules/rapdv/server/server/Request"
 import { UserRole } from "../../submodules/rapdv/server/database/CollectionUser"
@@ -20,7 +21,7 @@ export class PostsPage {
     const count = await postsModel.count()
     const from = Paginator.getFromPosition(req, count)
     const collectionComment = Collection.get("Comment")
-    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE, [], { publishedDate: -1 })
+    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE, [], { publishedDate: Database.DESC })
     posts = await Promise.all(
       posts.map(async (post, index) => {
         const commentsCount = await collectionComment.count({ post: post._id })
@@ -71,7 +72,7 @@ export class PostsPage {
 
     const canEdit = [UserRole.Admin, "Writer"].includes(req?.user?.role)
     const collectionComment = Collection.get("Comment")
-    const allComments = await collectionComment.findAll({ post: post._id }, undefined, undefined, ["author"])
+    const allComments = await collectionComment.findAll({ post: post._id }, undefined, undefined, ["author"], { publishedDate: Database.DESC })
     const areComments = allComments.length > 0
     const isUserLoggedIn = !!req.user
 
