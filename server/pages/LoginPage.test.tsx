@@ -4,10 +4,10 @@ import { LogInPage } from "./LogInPage"
 import ReactDOMServer from "react-dom/server"
 
 describe("Login page", () => {
-  it("renders email and password fields", async () => {
+  it("renders log in fields", async () => {
     const renderedPage = await LogInPage.render(undefined)
     const html = ReactDOMServer.renderToStaticMarkup(renderedPage)
-    expect(html).includes('<input id="floatingemail" class="form-control" type="email" required="" name="email" placeholder="Email"/>')
-    expect(html).includes('<input id="floatingpassword" class="form-control" type="password" required="" name="password" placeholder="Password"/>')
+    expect(html).includes('Log in With Google')
+    expect(html).includes('Just log in with your email.')
   })
 })
