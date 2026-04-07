@@ -21835,6 +21835,14 @@ footer {
   height: 1px;
 }
 
+.verify-email-hint {
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: .82rem;
+}
+
 .login-terms {
   color: #9ca3af;
   text-align: center;
@@ -22051,6 +22059,64 @@ footer {
 .post-list-item-comments {
   color: #8a94a6;
   font-size: .78rem;
+}
+
+.profile-card {
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 32px;
+  padding: 40px 36px;
+  box-shadow: 0 4px 24px #0000000f;
+}
+
+.profile-title {
+  color: #1a1a2e;
+  margin-bottom: 28px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.profile-layout {
+  align-items: flex-start;
+  gap: 32px;
+  display: flex;
+}
+
+@media (width <= 520px) {
+  .profile-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.profile-photo-col {
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  display: flex;
+}
+
+.profile-photo-wrap {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.profile-photo-hint {
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: .78rem;
+}
+
+.profile-fields-col {
+  flex: 1;
+  min-width: 0;
 }
 
 .medium-editor-anchor-preview, .medium-editor-toolbar {

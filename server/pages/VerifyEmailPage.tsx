@@ -27,14 +27,16 @@ export class VerifyEmailPage {
     }
 
     return (
-      <div className="container-max-sm">
-        <SubmitForm title={`Verify Email ${email}`} submitText="Log In">
+      <div className="login-card">
+        <h1 className="login-title">Check your email</h1>
+        <p className="login-subtitle">We sent a verification code to:<br/> <strong>{email}</strong>. 
+        <br/><br/>
+          Enter it below to log in.
+        </p>
+        <SubmitForm title="" submitBtnClass="btn-primary w-100" submitBtnIcon="bi-arrow-right" submitText="Log In">
           <Input type="text" name="code" required />
         </SubmitForm>
-        <div>
-          <p>You should receive an email with verification code.</p>
-          <p>If you didn't receive it, please check your spam folder.</p>
-        </div>
+        <p className="verify-email-hint">Didn't receive it? Check your spam folder.</p>
       </div>
     )
   }

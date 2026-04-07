@@ -108,6 +108,14 @@ footer {
   }
 }
 
+.verify-email-hint {
+  font-size: 0.82rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
 .login-terms {
   font-size: 0.78rem;
   color: #9ca3af;
@@ -326,4 +334,61 @@ footer {
 .post-list-item-comments {
   font-size: 0.78rem;
   color: #8a94a6;
+}
+
+// Profile page
+.profile-card {
+  width: 100%;
+  max-width: 640px;
+  padding: 40px 36px;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  margin-top: 32px;
+}
+
+.profile-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 28px;
+}
+
+.profile-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+
+  @media (max-width: 520px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.profile-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.profile-photo-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.profile-photo-hint {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.profile-fields-col {
+  flex: 1;
+  min-width: 0;
 }

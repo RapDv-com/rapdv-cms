@@ -13,14 +13,18 @@ export class ProfilePage {
     const user = req.user
     const photoUrl = await user.getPhotoSrc()
     return (
-      <div>
-        <SubmitForm title="Profile" submitText="Save">
-          <div className="row">
-            <div className="col">
-              <Photo src={photoUrl} />
+      <div className="profile-card">
+        <h1 className="profile-title">Profile</h1>
+        <SubmitForm title="" submitText="Save changes" submitBtnClass="btn-primary">
+          <div className="profile-layout">
+            <div className="profile-photo-col">
+              <div className="profile-photo-wrap">
+                <Photo src={photoUrl} className="profile-photo" />
+              </div>
+              <p className="profile-photo-hint">Upload a new photo</p>
               <Input type="file" accept="image/*" name="photo" />
             </div>
-            <div className="col">
+            <div className="profile-fields-col">
               <Input type="email" name="email" value={user.email} readOnly />
               <Input type="text" name="firstName" value={user.firstName} required />
               <Input type="text" name="lastName" value={user.lastName} required />
@@ -63,10 +67,12 @@ export class ProfilePage {
 }
 
 const Photo = styled.img`
-  width: 200px;
-  height: 205px;
-  margin-bottom: 1rem;
-  object-fit: contain;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
   user-select: none;
   user-drag: none;
+  border: 3px solid #e4e7ec;
+  background: #f3f4f6;
 `
