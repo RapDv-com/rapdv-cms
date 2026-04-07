@@ -77,72 +77,60 @@ export class PostsPage {
     const isUserLoggedIn = !!req.user
 
     return (
-      <div>
-        <div>
-          <h1>{parse(post.title)}</h1>
-          <div className="d-flex">
-            <div className="flex-grow-1">{spacetime(post.publishedDate).unixFmt("dd MMM YYYY")}</div>
-            {canEdit && (
-              <div>
-                <Link href={`/publish/${key}`}>Edit</Link>
-              </div>
-            )}
+      <article className="article-view">
+        <header className="article-header">
+          <h1 className="article-title">{parse(post.title)}</h1>
+          <div className="article-meta">
+            <span className="article-date">{spacetime(post.publishedDate).unixFmt("dd MMM YYYY")}</span>
+            {canEdit && <Link href={`/publish/${key}`} className="article-edit-link">Edit</Link>}
           </div>
-        </div>
-        <div>
-          <hr />
-        </div>
-        <div>{parse(post.content)}</div>
-        <br />
-        <div>
+        </header>
+        <hr className="article-divider" />
+        <div className="article-content">{parse(post.content)}</div>
+        <div className="article-comments">
           {areComments && (
             <>
-              <hr />
-              <List
-                fields={[
-                  { key: "content", title: "Comment" },
-                  {
-                    key: "author",
-                    custom: (entry) => (
-                      <>
-                        {entry.author.firstName ?? "Anonymous"} {entry.author.lastName}
-                      </>
-                    )
-                  },
-                  { key: "publishedDate", custom: (entry) => <>{spacetime(entry.publishedDate).unixFmt("dd MMM YYYY HH:mm")}</> },
-                  {
-                    key: "",
-                    custom: (entry) => {
-                      const isAuthor = Collection.areEntriesSame(entry.author, req.user)
-                      if (req?.user?.isAdmin() || isAuthor) {
-                        return (
-                          <ButtonAjax
-                            className="btn btn-light"
-                            action={`/article/comment/${post.key}`}
-                            method={ReqType.Delete}
-                            params={{ commentId: entry._id }}
-                          >
-                            <i className="bi bi-trash3"></i>
-                          </ButtonAjax>
-                        )
-                      }
-                      return <></>
-                    }
-                  }
-                ]}
-                data={allComments}
-              />
+              <hr className="article-divider" />
+              <h3 className="comments-heading">Comments</h3>
+              <div className="comment-list">
+                {allComments.map((entry: any, index: number) => {
+                  const isAuthor = Collection.areEntriesSame(entry.author, req.user)
+                  return (
+                    <div key={index} className="comment-item">
+                      <div className="comment-body">
+                        <p className="comment-text">{entry.content}</p>
+                        <div className="comment-footer">
+                          <span className="comment-author">{entry.author?.firstName ?? "Anonymous"} {entry.author?.lastName}</span>
+                          <span className="comment-date">{spacetime(entry.publishedDate).unixFmt("dd MMM YYYY HH:mm")}</span>
+                        </div>
+                      </div>
+                      {(req?.user?.isAdmin() || isAuthor) && (
+                        <ButtonAjax
+                          className="btn btn-light btn-sm comment-delete"
+                          action={`/article/comment/${post.key}`}
+                          method={ReqType.Delete}
+                          params={{ commentId: entry._id }}
+                        >
+                          <i className="bi bi-trash3"></i>
+                        </ButtonAjax>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
             </>
           )}
-          {isUserLoggedIn && <hr />}
           {isUserLoggedIn && (
-            <SubmitForm title="Post comment" name="comment" action={`/article/comment/${post.key}`} submitText="Post">
-              <Input type="hidden" name="postId" value={post._id} required />
-              <Input type="text" name="comment" required />
-            </SubmitForm>
+            <>
+              <hr className="article-divider" />
+              <SubmitForm title="Post a comment" name="comment" action={`/article/comment/${post.key}`} submitText="Post">
+                <Input type="hidden" name="postId" value={post._id} required />
+                <Input type="text" name="comment" required />
+              </SubmitForm>
+            </>
           )}
         </div>
-      </div>
+      </article>
     )
   }
 

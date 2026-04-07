@@ -19,33 +19,24 @@ export class LogInPage {
   public static render = async (req: Request): Promise<ReactNode> => {
     return (
       <>
-        <div className="container-max-xsm">
+        <div className="login-card">
           <PageId>login</PageId>
-          <SubmitForm title="Log In" submitText="Log in">
+          <h1 className="login-title">Welcome back</h1>
+          <p className="login-subtitle">No account needed. Just enter your email to get started.</p>
+          <SubmitForm title="" submitBtnClass="btn-primary w-100" submitBtnIcon="bi-arrow-right" submitText="Continue">
             <Input type="email" name="email" req={req} required />
             <div id="cloudFlareTurnslide" className="mb-3" style={{ overflow: "hidden" }}></div>
           </SubmitForm>
-          <div className="mt-3">
-            <Link href="/log-in/google" icon="bi-google" className="btn btn-md btn-outline-danger noPjax">
-              Log in With Google
-            </Link>
-          </div>
-          <div className="mt-5">
-            No need to create an account. <br />
-            Just log in with your email.
-          </div>
-          <div className="mt-5">
-            <div>
-              By logging in, you accept
-              <a href="/terms" target="_blank">
-                terms and conditions
-              </a>
-              and
-              <a href="/privacy" target="_blank">
-                privacy policy
-              </a>
-            </div>
-          </div>
+          <div className="login-divider"><span>or</span></div>
+          <Link href="/log-in/google" icon="bi-google" className="btn btn-outline-secondary w-100 noPjax">
+            Continue with Google
+          </Link>
+          <p className="login-terms">
+            By logging in, you accept our{" "}
+            <a href="/terms" target="_blank">terms and conditions</a>{" "}
+            and{" "}
+            <a href="/privacy" target="_blank">privacy policy</a>.
+          </p>
         </div>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" async defer></script>
       </>

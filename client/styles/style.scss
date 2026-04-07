@@ -66,6 +66,205 @@ footer {
   background: linear-gradient(#5e9efd, #1f64ca);
 }
 
+// Login page
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 36px;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  margin-top: 32px;
+}
+
+.login-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+  color: #adb5bd;
+  font-size: 0.8rem;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #e4e7ec;
+  }
+}
+
+.login-terms {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 0;
+  line-height: 1.5;
+
+  a {
+    color: #6b7280;
+    text-decoration: underline;
+
+    &:hover {
+      color: #1a1a2e;
+    }
+  }
+}
+
+// Article view
+.article-view {
+  width: 100%;
+  max-width: 720px;
+  padding-bottom: 48px;
+}
+
+.article-header {
+  padding-top: 12px;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.article-date {
+  font-size: 0.85rem;
+  color: #8a94a6;
+}
+
+.article-edit-link {
+  font-size: 0.85rem;
+}
+
+.article-divider {
+  border-color: #e4e7ec;
+  margin: 24px 0;
+}
+
+.article-content {
+  color: #2d3748;
+  font-size: 1rem;
+  line-height: 1.75;
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul, ol {
+    padding-left: 1.4rem;
+    margin-bottom: 1rem;
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+  }
+}
+
+.article-comments {
+  margin-top: 8px;
+}
+
+.comments-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  background: #fafbfc;
+}
+
+.comment-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-text {
+  margin: 0 0 8px;
+  color: #2d3748;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.comment-footer {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.comment-author {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.comment-date {
+  font-size: 0.78rem;
+  color: #8a94a6;
+}
+
+.comment-delete {
+  flex-shrink: 0;
+  color: #8a94a6;
+
+  &:hover {
+    color: #e53e3e;
+  }
+}
+
 // Article list
 .post-list {
   display: flex;
