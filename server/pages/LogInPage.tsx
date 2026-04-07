@@ -21,7 +21,7 @@ export class LogInPage {
       <>
         <div className="login-card">
           <PageId>login</PageId>
-          <h1 className="login-title">Welcome back</h1>
+          <h1 className="login-title">Welcome</h1>
           <p className="login-subtitle">No account needed. Just enter your email to get started.</p>
           <SubmitForm title="" submitBtnClass="btn-primary w-100" submitBtnIcon="bi-arrow-right" submitText="Continue">
             <Input type="email" name="email" req={req} required />

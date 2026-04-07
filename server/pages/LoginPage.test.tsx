@@ -7,7 +7,7 @@ describe("Login page", () => {
   it("renders log in fields", async () => {
     const renderedPage = await LogInPage.render(undefined)
     const html = ReactDOMServer.renderToStaticMarkup(renderedPage)
-    expect(html).includes('Log in With Google')
-    expect(html).includes('Just log in with your email.')
+    expect(html).includes('No account needed. Just enter your email to get started.')
+    expect(html).includes('Continue with Google')
   })
 })
