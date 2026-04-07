@@ -42,15 +42,15 @@ export class PostsPage {
 
     return (
       <>
-        <div className="list-group mb-4">
+        <div className="post-list mb-4">
           {posts.map((post, index) => (
-            <a key={index} href={`/article/${post.key}`} className="list-group-item list-group-item-action" aria-current="true">
-              <div className="d-flex w-100 justify-content-between">
-                <h5 className="mb-1">{parse(post?.title ?? "")}</h5>
-                <small className="ps-4">{spacetime.now().since(spacetime(post?.publishedDate)).rounded}</small>
+            <a key={index} href={`/article/${post.key}`} className="post-list-item">
+              <div className="post-list-item-header">
+                <h5 className="post-list-item-title">{parse(post?.title ?? "")}</h5>
+                <span className="post-list-item-date">{spacetime.now().since(spacetime(post?.publishedDate)).rounded}</span>
               </div>
-              <p className="mb-1">{parse(post?.description ?? "")}</p>
-              <small>{showCommentsCount(post)}</small>
+              <p className="post-list-item-description">{parse(post?.description ?? "")}</p>
+              <span className="post-list-item-comments">{showCommentsCount(post)}</span>
             </a>
           ))}
         </div>
