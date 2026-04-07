@@ -23,22 +23,25 @@ export class UsersPage {
     const users = await collectionUsers.findAll(undefined, from, Paginator.ITEMS_PER_PAGE)
 
     return (
-      <>
-        <h1>Users list</h1>
-        {!users && <div>There are no users</div>}
+      <div className="users-page">
+        <h1 className="users-page-title">Users</h1>
+        {!users && <p className="users-empty">No users found.</p>}
         {!!users && (
-          <List
-            fields={[
-              { key: "firstName" },
-              { key: "lastName" },
-              { key: "email" },
-              { key: "edit", custom: (entry) => <a href={`/user/${entry.email}`}>Edit</a> }
-            ]}
-            data={users}
-          />
+          <div className="users-table-wrap">
+            <List
+              fields={[
+                { key: "firstName" },
+                { key: "lastName" },
+                { key: "email", custom: (entry) => <>{entry.email}</> },
+                { key: "edit", title: "", custom: (entry) => <a className="users-edit-link" href={`/user/${entry.email}`}>Edit</a> }
+              ]}
+              data={users}
+              className="users-table"
+            />
+          </div>
         )}
         <Paginator req={req} itemsCount={count} />
-      </>
+      </div>
     )
   }
 
@@ -56,14 +59,18 @@ export class UsersPage {
     const isUserAdmin = entry.isAdmin()
 
     return (
-      <div>
-        <SubmitForm title="Profile" submitText="Save">
-          <div className="row">
-            <div className="col-md">
-              <Photo src={photoUrl} />
+      <div className="profile-card">
+        <h1 className="profile-title">Edit User</h1>
+        <SubmitForm title="" submitText="Save changes" submitBtnClass="btn-primary">
+          <div className="profile-layout">
+            <div className="profile-photo-col">
+              <div className="profile-photo-wrap">
+                <Photo src={photoUrl} className="profile-photo" />
+              </div>
+              <p className="profile-photo-hint">Upload a new photo</p>
               <Input type="file" accept="image/*" name="photo" />
             </div>
-            <div className="col-md">
+            <div className="profile-fields-col">
               <Input type="email" name="email" value={entry.email} readOnly />
               <Input type="text" name="firstName" value={entry.firstName} required />
               <Input type="text" name="lastName" value={entry.lastName} required />
@@ -119,10 +126,12 @@ export class UsersPage {
 }
 
 const Photo = styled.img`
-  width: 200px;
-  height: 205px;
-  margin-bottom: 1rem;
-  object-fit: contain;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
   user-select: none;
   user-drag: none;
+  border: 3px solid #e4e7ec;
+  background: #f3f4f6;
 `

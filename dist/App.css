@@ -22061,6 +22061,89 @@ footer {
   font-size: .78rem;
 }
 
+.users-page {
+  width: 100%;
+  max-width: 720px;
+  padding-top: 8px;
+}
+
+.users-page-title {
+  color: #1a1a2e;
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.users-empty {
+  color: #6b7280;
+}
+
+.users-table-wrap {
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.users-table {
+  margin-bottom: 0 !important;
+}
+
+.users-table thead th {
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #8a94a6;
+  background: #f8f9fb;
+  border-bottom-color: #e4e7ec;
+  padding: 10px 16px;
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.users-table tbody td {
+  color: #2d3748;
+  vertical-align: middle;
+  border-color: #f0f2f5;
+  padding: 12px 16px;
+  font-size: .92rem;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.users-edit-link {
+  color: #4a7fd4;
+  font-size: .85rem;
+  text-decoration: none;
+}
+
+.users-edit-link:hover {
+  text-decoration: underline;
+}
+
+.edit-post-page {
+  width: 100%;
+  max-width: 800px;
+  padding-bottom: 90px;
+}
+
+.edit-post-header {
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-top: 8px;
+  display: flex;
+}
+
+.edit-post-title {
+  color: #1a1a2e;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
 .profile-card {
   background: #fff;
   border: 1px solid #e4e7ec;

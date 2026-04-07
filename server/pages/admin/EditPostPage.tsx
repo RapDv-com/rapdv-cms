@@ -21,17 +21,22 @@ export class EditPostPage {
       return (
         <>
           <PageId>edit-post</PageId>
-          <ProfileForm title={`${isNew ? "Publish" : "Edit"} Article`} name="edit" submitText={`${isNew ? "Publish" : "Save"}`}>
-            <Input type="text" name="title" value={entry?.title} req={req} required />
-            <Textarea id="description" name="description" value={entry?.description} req={req} required />
-            <Textarea id="content" name="content" value={entry?.content} req={req} required />
-            <Input type="date" name="publishedDate" value={spacetime(entry?.publishedDate).unixFmt("YYYY-MM-dd")} req={req} required />
-          </ProfileForm>
-          {!isNew && !!entry && (
-            <ProfileForm method={ReqType.Delete} name="delete" submitText="Delete" submitBtnClass="btn-danger">
-              <Input type="hidden" name="id" value={entry?._id} required />
+          <div className="edit-post-page">
+            <div className="edit-post-header">
+              <h1 className="edit-post-title">{isNew ? "Publish Article" : "Edit Article"}</h1>
+              {!isNew && !!entry && (
+                <DeleteForm method={ReqType.Delete} name="delete" submitText="Delete" submitBtnClass="btn-outline-danger">
+                  <Input type="hidden" name="id" value={entry?._id} required />
+                </DeleteForm>
+              )}
+            </div>
+            <ProfileForm title="" name="edit" submitText={isNew ? "Publish" : "Save changes"} submitBtnClass="btn-primary" showActionInFixedPanel>
+              <Input type="text" name="title" value={entry?.title} req={req} required />
+              <Input type="date" name="publishedDate" value={spacetime(entry?.publishedDate).unixFmt("YYYY-MM-dd")} req={req} required />
+              <Textarea id="description" name="description" value={entry?.description} req={req} required />
+              <Textarea id="content" name="content" value={entry?.content} req={req} required />
             </ProfileForm>
-          )}
+          </div>
         </>
       )
     }
@@ -89,5 +94,8 @@ export class EditPostPage {
 
 const ProfileForm = styled(SubmitForm)`
   width: 100%;
-  max-width: 800px;
+`
+
+const DeleteForm = styled(SubmitForm)`
+  margin: 0;
 `

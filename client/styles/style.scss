@@ -336,6 +336,91 @@ footer {
   color: #8a94a6;
 }
 
+// Users page
+.users-page {
+  width: 100%;
+  max-width: 720px;
+  padding-top: 8px;
+}
+
+.users-page-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+.users-empty {
+  color: #6b7280;
+}
+
+.users-table-wrap {
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.users-table {
+  margin-bottom: 0 !important;
+
+  thead th {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #8a94a6;
+    background: #f8f9fb;
+    border-bottom-color: #e4e7ec;
+    padding: 10px 16px;
+  }
+
+  tbody td {
+    font-size: 0.92rem;
+    color: #2d3748;
+    padding: 12px 16px;
+    vertical-align: middle;
+    border-color: #f0f2f5;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+.users-edit-link {
+  font-size: 0.85rem;
+  color: #4a7fd4;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Edit post page
+.edit-post-page {
+  width: 100%;
+  max-width: 800px;
+  padding-bottom: 90px;
+}
+
+.edit-post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-top: 8px;
+}
+
+.edit-post-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
 // Profile page
 .profile-card {
   width: 100%;
