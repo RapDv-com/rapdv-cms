@@ -21,10 +21,10 @@ export class PostsPage {
     const count = await postsModel.count()
     const from = Paginator.getFromPosition(req, count)
     const collectionComment = Collection.get("Comment")
-    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE, [], { publishedDate: Database.DESC })
+    let posts = await postsModel.findAll(undefined, from, Paginator.ITEMS_PER_PAGE, [], [["publishedDate", Database.DESC as "DESC"]])
     posts = await Promise.all(
       posts.map(async (post, index) => {
-        const commentsCount = await collectionComment.count({ post: post._id })
+        const commentsCount = await collectionComment.count({ postId: post.id })
         const postData = post.toObject()
         return { ...postData, commentsCount }
       })
@@ -72,7 +72,7 @@ export class PostsPage {
 
     const canEdit = [UserRole.Admin, "Writer"].includes(req?.user?.role)
     const collectionComment = Collection.get("Comment")
-    const allComments = await collectionComment.findAll({ post: post._id }, undefined, undefined, ["author"], { publishedDate: Database.DESC })
+    const allComments = await collectionComment.findAll({ postId: post.id }, undefined, undefined, ["author"], [["publishedDate", Database.DESC as "DESC"]])
     const areComments = allComments.length > 0
     const isUserLoggedIn = !!req.user
 
@@ -94,7 +94,7 @@ export class PostsPage {
               <h3 className="comments-heading">Comments</h3>
               <div className="comment-list">
                 {allComments.map((entry: any, index: number) => {
-                  const isAuthor = Collection.areEntriesSame(entry.author, req.user)
+                  const isAuthor = entry.author?.id === req.user?.id
                   return (
                     <div key={index} className="comment-item">
                       <div className="comment-body">
@@ -109,7 +109,7 @@ export class PostsPage {
                           className="btn btn-light btn-sm comment-delete"
                           action={`/article/comment/${post.key}`}
                           method={ReqType.Delete}
-                          params={{ commentId: entry._id }}
+                          params={{ commentId: entry.id }}
                         >
                           <i className="bi bi-trash3"></i>
                         </ButtonAjax>
@@ -124,7 +124,7 @@ export class PostsPage {
             <>
               <hr className="article-divider" />
               <SubmitForm title="Post a comment" name="comment" action={`/article/comment/${post.key}`} submitText="Post">
-                <Input type="hidden" name="postId" value={post._id} required />
+                <Input type="hidden" name="postId" value={post.id} required />
                 <Input type="text" name="comment" required />
               </SubmitForm>
             </>

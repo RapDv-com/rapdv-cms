@@ -12,7 +12,7 @@ export class RssFeed {
     const postsModel = Collection.get("Post")
     const FROM = 0
     const MAX = 50
-    const posts = await postsModel.findAll(undefined, FROM, MAX, [], { publishedDate: Database.DESC })
+    const posts = await postsModel.findAll(undefined, FROM, MAX, [], [["publishedDate", Database.DESC as "DESC"]])
     const lastPublishedDate = posts[0]?.publishedDate ?? new Date()
 
     res.header("Content-Type", "application/xml")
@@ -35,7 +35,7 @@ export class RssFeed {
           <item>
             <title>${HtmlUtils.removeAllTags(post.title)}</title>
             <link>${process.env.BASE_URL}/article/${post.key}</link>
-            <guid isPermaLink="false">urn:uuid:{${post._id}}</guid>
+            <guid isPermaLink="false">urn:uuid:{${post.id}}</guid>
             <description>${HtmlUtils.removeAllTags(post.description)}</description>
             <pubDate>${post.publishedDate.toUTCString()}</pubDate>
           </item>

@@ -14,7 +14,7 @@ import { AuthEmailCodes } from "../../submodules/rapdv/server/auth/AuthEmailCode
 import { LogInPage } from "./LogInPage"
 
 export class VerifyEmailPage {
-  public static render = async (req: Request, res: Response): Promise<ReactNode> => {
+  public static render = async (req: Request, res: Response, next?: NextFunction, app?: RapDvApp): Promise<ReactNode> => {
     await check("email").notEmpty().run(req)
 
     if (!Auth.areParamsValid(req, res, "/log-in")) return
@@ -23,7 +23,7 @@ export class VerifyEmailPage {
     const code = req.params["code"] ?? ""
 
     if (code && code.trim().length > 0) {
-      return VerifyEmailPage.verifyEmailCode(req, res, email, code)
+      return VerifyEmailPage.verifyEmailCode(req, res, email, code, app)
     }
 
     return (
@@ -55,10 +55,10 @@ export class VerifyEmailPage {
     const code = form.inputs["code"]?.value
     const email = req.params["email"]
 
-    return VerifyEmailPage.verifyEmailCode(req, res, email, code)
+    return VerifyEmailPage.verifyEmailCode(req, res, email, code, app)
   }
 
-  public static verifyEmailCode = async (req: Request, res: Response, email: string, code: string): Promise<ReactNode> => {
+  public static verifyEmailCode = async (req: Request, res: Response, email: string, code: string, app?: RapDvApp): Promise<ReactNode> => {
     let redirectTo = "/"
 
     try {
@@ -67,7 +67,8 @@ export class VerifyEmailPage {
 
       redirectTo = await LogInPage.getUrlOnSuccessfulLogin(user)
 
-      await AuthEmailCodes.verifyEmail(req, email, code)
+      const t = app?.getTranslations(req) ?? ((text: string) => text)
+      await AuthEmailCodes.verifyEmail(req, email, code, t)
     } catch (error) {
       req.flash(FlashType.Errors, error.message ?? error)
       res.redirect(`/verify-email/${email}`)

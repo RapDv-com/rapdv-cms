@@ -22,7 +22,7 @@ npm run migration:run
 ```
 
 ## Run application in development
-`npm start`
+`npm start` runs the server. In a separate terminal, run `npm run build-dev` to build and watch the client code.
 
 ## Run application in production
 `npm run start-prod`

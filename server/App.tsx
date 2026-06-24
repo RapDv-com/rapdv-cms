@@ -16,6 +16,8 @@ import { Request } from "../submodules/rapdv/server/server/Request"
 import { Mailer } from "../submodules/rapdv/server/mailer/Mailer"
 import { VerifyEmailPage } from "./pages/VerifyEmailPage"
 import { AuthGoogle } from "../submodules/rapdv/server/auth/AuthGoogle"
+import { DatabaseConnection } from "../submodules/rapdv/server/database/DatabaseConnection"
+import { ConnectMariaDb } from "../submodules/rapdv/server/database/connectors/ConnectMariaDb"
 import { ViewError } from "./pages/base/ViewError"
 import { ViewLayout } from "./pages/base/ViewLayout"
 import { Post } from "./entities/Post"
@@ -34,7 +36,11 @@ export class App extends RapDvApp {
   })
 
   public initAuth: () => Promise<void> = async () => {
-    AuthGoogle.configure()
+    AuthGoogle.configure(this)
+  }
+
+  public connectDatabase = async (isProduction: boolean, entities: Function[]): Promise<DatabaseConnection> => {
+    return ConnectMariaDb.connect(entities)
   }
 
   getPages = async () => {

@@ -26,7 +26,7 @@ export class EditPostPage {
               <h1 className="edit-post-title">{isNew ? "Publish Article" : "Edit Article"}</h1>
               {!isNew && !!entry && (
                 <DeleteForm method={ReqType.Delete} name="delete" submitText="Delete" submitBtnClass="btn-outline-danger">
-                  <Input type="hidden" name="id" value={entry?._id} required />
+                  <Input type="hidden" name="id" value={entry?.id} required />
                 </DeleteForm>
               )}
             </div>
@@ -82,7 +82,7 @@ export class EditPostPage {
     const { success, form } = await Form.getParams(req, EditPostPage.render(req), "delete")
     if (!success) return
     try {
-      await Collection.deleteEntry("Post", { _id: req.body.id })
+      await Collection.deleteEntry("Post", { id: req.body.id })
     } catch (error) {
       req.flash(FlashType.Errors, error)
       return EditPostPage.render(req)

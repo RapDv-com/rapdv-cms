@@ -95,8 +95,8 @@ export class LogInPage {
       passport.authenticate("google", { failureRedirect: "/log-in" })(req, res, async () => {
         let redirectTo = "/"
 
-        if (req?.user?._id) {
-          const user = !!req?.user ? await CollectionUser.findUserById(req.user._id) : undefined
+        if (req?.user?.id) {
+          const user = !!req?.user ? await CollectionUser.findUserById(req.user.id) : undefined
           redirectTo = await LogInPage.getUrlOnSuccessfulLogin(user)
           req.flash(FlashType.Success, "Welcome! It's great to see you!")
         }

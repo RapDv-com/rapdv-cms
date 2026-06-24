@@ -52,7 +52,7 @@ export class ProfilePage {
       const photoFile = req.files?.find((entry) => entry.fieldname === "photo")
       if (!!photoFile) {
         const image = await Images.savePhoto(photoFile, FileStorageType.Database)
-        req.user.photoId = image._id
+        req.user.photoId = image.id
       }
 
       await req.user.save()

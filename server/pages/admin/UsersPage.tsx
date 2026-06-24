@@ -110,7 +110,7 @@ export class UsersPage {
       const photoFile = req.files?.find((entry) => entry.fieldname === "photo")
       if (!!photoFile) {
         const image = await Images.savePhoto(photoFile, FileStorageType.Database)
-        entry.photoId = image._id
+        entry.photoId = image.id
       }
 
       await entry.save()
