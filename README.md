@@ -36,3 +36,10 @@ npm run migration:run
 - All code should be writted in an object-oriented way, and all functions should be methods of a class
 - Don't use variables with single letter names, except for loop counters. Use descriptive names for variables and functions.
 - Don't use magic numbers, use constants with descriptive names instead.
+  
+---
+
+### Creator
+
+Crafted with care at **[Digital Jetty](https://digitaljetty.com)** - Software design and development company.  
+Need a hand with your next project? [Get in touch](https://digitaljetty.com/services).
