@@ -102,7 +102,7 @@ export class ViewLayout extends React.Component<Props> {
             {children}
           </main>
           <Footer>
-            Company Inc ©{year}
+            Company Inc © {year}
             <Link href="/terms">Terms and Conditions</Link>
             <Link href="/privacy">Privacy Policy</Link>
           </Footer>
